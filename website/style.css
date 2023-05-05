@@ -1,0 +1,116 @@
+/* Define color variables */
+:root {
+    --primary-color: #2D4059; /* dark blue */
+    --secondary-color: #EA5455; /* red */
+    --tertiary-color: #F7B801; /* yellow */
+    --quaternary-color: #00A896; /* teal */
+    --accent-color: #F46A6A; /* pink */
+    --background-color: #F2F2F2; /* light grey */
+    --text-color: #333; /* dark grey */
+  }
+  
+  /* Apply colors to various elements */
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+  }
+  
+  header {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 20px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+  }
+  
+  h1 {
+    margin: 0;
+    font-size: 32px;
+    font-weight: bold;
+  }
+  
+  nav ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+  }
+  
+  nav li {
+    margin: 0 10px;
+  }
+  
+  nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease-in-out;
+  }
+  
+  nav a:hover {
+    background-color: white;
+    color: var(--primary-color);
+  }
+  
+  main {
+    width: 100%;
+    padding: 100px 0 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .image {
+    height: 550px;
+    width: 500px;
+    
+    cursor: zoom-in;
+  }
+
+
+  
+  .image:hover {
+    transform: scale(1.5);
+  }
+  
+  section {
+    width: 80%;
+    margin-bottom: 50px;
+    padding: 50px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+  }
+  
+  h2 {
+    font-size: 24px;
+    margin-top: 0;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    color: var(--primary-color);
+  }
+  
+  p {
+    font-size: 18px;
+    line-height: 1.5;
+    margin: 0;
+  }
+  
+  footer {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 20px;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+  }
+  

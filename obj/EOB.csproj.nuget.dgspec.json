@@ -11,7 +11,7 @@
         "projectName": "EOB",
         "projectPath": "C:\\Users\\alanl\\source\\repos\\Lap-Project\\EOB.csproj",
         "packagesPath": "C:\\Users\\alanl\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\alanl\\source\\repos\\Lap-Project\\obj\\",
+        "outputPath": "C:\\Users\\alanl\\Source\\Repos\\Lap-Project\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\alanl\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -55,7 +55,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
         }
       }
     }

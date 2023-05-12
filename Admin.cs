@@ -8,15 +8,16 @@ namespace EOB
 {
     internal class Admin : User
     {
-
+        
+        
         public Admin(string firstname, string lastname, string password, string email) : base ( firstname, lastname, password, email)
         {
-
+            
         }
 
         private void CreateUser()
         {
-
+            
         }
 
         private void EditUser()

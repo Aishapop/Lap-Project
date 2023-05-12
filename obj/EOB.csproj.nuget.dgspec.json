@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\alanl\\source\\repos\\Lap-Project\\EOB.csproj": {}
+    "C:\\Users\\aisha\\source\\repos\\Aishapop\\Lap-Project\\EOB.csproj": {}
   },
   "projects": {
-    "C:\\Users\\alanl\\source\\repos\\Lap-Project\\EOB.csproj": {
+    "C:\\Users\\aisha\\source\\repos\\Aishapop\\Lap-Project\\EOB.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\alanl\\source\\repos\\Lap-Project\\EOB.csproj",
+        "projectUniqueName": "C:\\Users\\aisha\\source\\repos\\Aishapop\\Lap-Project\\EOB.csproj",
         "projectName": "EOB",
-        "projectPath": "C:\\Users\\alanl\\source\\repos\\Lap-Project\\EOB.csproj",
-        "packagesPath": "C:\\Users\\alanl\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\alanl\\Source\\Repos\\Lap-Project\\obj\\",
+        "projectPath": "C:\\Users\\aisha\\source\\repos\\Aishapop\\Lap-Project\\EOB.csproj",
+        "packagesPath": "C:\\Users\\aisha\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\aisha\\source\\repos\\Aishapop\\Lap-Project\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\alanl\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\aisha\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -39,6 +43,12 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
+          "dependencies": {
+            "MySqlConnector": {
+              "target": "Package",
+              "version": "[2.2.6, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",

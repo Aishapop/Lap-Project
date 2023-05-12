@@ -14,8 +14,13 @@ namespace EOB
         protected int Amount { get; set; }
         protected DateOnly Date { get; set; }
 
-        public Transaction()
+        public Transaction(Account fromaccount ,Account toaccount, int amount)
         {
+            FromAccount = fromaccount;
+            ToAccount = toaccount;
+            Amount = amount;
+            //bij elke nieuwe transactie de datum nemen van die dag 
+            Date = new DateOnly();
 
         }
 

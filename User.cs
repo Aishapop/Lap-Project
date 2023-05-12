@@ -21,6 +21,36 @@ namespace EOB
             Password = password;
             Email = email;
         }
+        public void CreateAccount()
+        {
+
+        }
+
+        public void Login()
+        {
+
+        }
+
+        public void ChangePassword()
+        {
+
+        }
+
+        public void DeleteAccount()
+        {
+
+        }
+
+        public void UploadProfilePicture()
+        {
+
+        }
+
+        public void GetAccountOverview()
+        {
+
+        }
+
 
     }
 

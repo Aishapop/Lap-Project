@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "8YasTzCf/cIaVHbW51jwbkEDrydVub2DPpqpctB6dnqdY5fEu8kFbXOrqrJBruJIqZ+wHnhvJc5W41aLLs3O+w==",
+  "dgSpecHash": "luIeXbubtBi3Uxm6kdEi86ljLbX0a+XRWJNdQASUL1Mue7JXh0YSenYsHxLXgWv0tiz7Nl/8Okdw+q+gpqJQwA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\alanl\\source\\repos\\Lap-Project\\EOB.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "C:\\Users\\aisha\\source\\repos\\Aishapop\\Lap-Project\\EOB.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\aisha\\.nuget\\packages\\mysqlconnector\\2.2.6\\mysqlconnector.2.2.6.nupkg.sha512"
+  ],
   "logs": []
 }

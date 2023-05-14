@@ -18,7 +18,7 @@ namespace EOB
             "username=root;" +
             "password=root;database=eob;";
 
-        public void Insert(string query)
+        public int Insert(string query)
         {
 
 
@@ -27,13 +27,17 @@ namespace EOB
             try
             {
                 connection.Open();
+                int result = commandDatabase.ExecuteNonQuery();
+                return (int)commandDatabase.LastInsertedId;
+                
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
             }
-
+            return -1;
         }
+
 
 
 

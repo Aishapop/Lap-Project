@@ -8,12 +8,29 @@ namespace EOB
 {
     internal class Account
     {
-        protected int AccountNumber { get; set; }
-        protected int Balance { get; set; }
-        protected List<Transaction> Transactions { get; set; }
-        protected AccountTypes AccountType { get; set; }
-        protected User User { get; set; }
-
+        public int AccountNumber { get; set; }
+        public int Balance { get; set; }
+        public List<Transaction> Transactions { get; set; }
+        public Types AccountType { get; set; }
+        public User User { get; set; }
+        private Data _data = new Data();
+        public Account(Types accountTypes,User user)
+        {
+            Random random = new Random();
+            int accountnumber = random.Next(1000000000);
+            while (_data.CheckIfAccountNumberExist(accountnumber))
+            {
+                Random random2 = new Random();
+                accountnumber = random.Next(1000000000);
+            }
+            AccountNumber = accountnumber;           
+            Balance = 0;
+            Transactions = new List<Transaction>();
+            AccountType = accountTypes;
+            User = user;
+        }
 
     }
+
+    
 }

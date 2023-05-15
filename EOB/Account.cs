@@ -8,6 +8,7 @@ namespace EOB
 {
     internal class Account
     {
+        public int ID { get; set; }
         public int AccountNumber { get; set; }
         public int Balance { get; set; }
         public List<Transaction> Transactions { get; set; }
@@ -16,6 +17,7 @@ namespace EOB
         private Data _data = new Data();
         public Account(Types accountTypes,User user)
         {
+            //get 9 random number
             Random random = new Random();
             int accountnumber = random.Next(1000000000);
             while (_data.CheckIfAccountNumberExist(accountnumber))
@@ -28,6 +30,7 @@ namespace EOB
             Transactions = new List<Transaction>();
             AccountType = accountTypes;
             User = user;
+            ID = _data.InsertAccount(this,user);
         }
 
     }

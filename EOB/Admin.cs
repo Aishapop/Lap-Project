@@ -10,7 +10,7 @@ namespace EOB
     {
 
 
-        public Admin(string firstname, string lastname, string password, string email) : base(firstname, lastname, password, email)
+        public Admin(string firstname, string lastname, string password, string email, byte[] profilepicture) : base(firstname, lastname, password, email,profilepicture)
         {
 
         }
@@ -28,10 +28,7 @@ namespace EOB
         {
 
         }
-        private void Login()
-        {
-
-        }
+        
         private void GetUserOverview()
         {
 

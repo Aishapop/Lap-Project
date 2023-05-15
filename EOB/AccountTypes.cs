@@ -6,14 +6,12 @@ using System.Threading.Tasks;
 
 namespace EOB
 {
-    internal class AccountTypes
+    
+    enum Types
     {
+        SavingsAccount,
+        CurrentAccount
 
-        enum Types
-        {
-            SavingsAccount,
-            CurrentAccount
-
-        }
     }
+    
 }

@@ -8,20 +8,24 @@ namespace EOB
 {
     internal class Transaction
     {
-        protected int TransactionId { get; set; }
-        protected Account FromAccount { get; set; }
-        protected Account ToAccount { get; set; }
-        protected int Amount { get; set; }
-        protected DateTime Date { get; set; }
+        public int ID { get; set; }
+        public int FromAccount { get; set; }
+        public int ToAccount { get; set; }
+        public int Amount { get; set; }
+        public string Date { get; set; }
+
+        private Data _data = new Data();
 
         public Transaction(Account fromaccount, Account toaccount, int amount)
         {
-            FromAccount = fromaccount;
-            ToAccount = toaccount;
+            //new transaction is directly add in account list
+            fromaccount.Transactions.Add(this);
+            FromAccount = fromaccount.AccountNumber;
+            ToAccount = toaccount.AccountNumber;
             Amount = amount;
-            //bij elke nieuwe transactie de datum nemen van die dag 
-            Date = new DateTime();
-
+            //bij elke nieuwe transactie 
+            Date = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+            ID = _data.InsertTransaction(this);
         }
 
     }

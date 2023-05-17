@@ -3,10 +3,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Windows.Forms;
 
 namespace EOB
 {
@@ -18,6 +21,8 @@ namespace EOB
             "username=root;" +
             "password=root;database=eob;";
 
+
+        /******INSERT******/
         public int Insert(string query)
         {
 
@@ -35,26 +40,32 @@ namespace EOB
             {
                 Console.WriteLine(ex.Message);
             }
+            finally
+            {
+                connection.Close();
+                
+            }
             return -1;
         }
 
         
         public int InsertUser(User user)
         {
-            try
-            {
-                string query = "INSERT INTO user (Firstname,Lastname,Email,Password,ProfilePicture,Admin,Deleted) " +
+            string query = "INSERT INTO user (Firstname,Lastname,Email,Password,ProfilePicture,Admin,Deleted) " +
                "VALUES(@Firstname, @Lastname, @Email, @Password, @ProfilePicture, @Admin, @Deleted)";
-                MySqlConnection connection = new MySqlConnection(connectionString);
-                MySqlCommand command = new MySqlCommand(query, connection);
-                command.Parameters.AddWithValue("@Firstname", user.Firstname);
-                command.Parameters.AddWithValue("@Lastname", user.Lastname);
-                command.Parameters.AddWithValue("@Email", user.Email);
-                command.Parameters.AddWithValue("@Password", user.Password);
-                command.Parameters.AddWithValue("@ProfilePicture", user.ProfilePicture);
-                command.Parameters.AddWithValue("@Admin", 0);
-                command.Parameters.AddWithValue("@Deleted", 0);
 
+            MySqlConnection connection = new MySqlConnection(connectionString);
+            MySqlCommand command = new MySqlCommand(query, connection);
+            
+            command.Parameters.AddWithValue("@Firstname", user.Firstname);
+            command.Parameters.AddWithValue("@Lastname", user.Lastname);
+            command.Parameters.AddWithValue("@Email", user.Email);
+            command.Parameters.AddWithValue("@Password", user.Password);
+            command.Parameters.AddWithValue("@ProfilePicture", user.ProfilePicture);
+            command.Parameters.AddWithValue("@Admin", 0);
+            command.Parameters.AddWithValue("@Deleted", 0);
+            try
+            {                                             
                 connection.Open();
                 int result = command.ExecuteNonQuery();
                 return (int)command.LastInsertedId;
@@ -63,6 +74,10 @@ namespace EOB
             catch (Exception ex)
             {
                 Console.WriteLine(ex);
+            }
+            finally
+            {
+                connection.Close();
             }
             return -1;
         }
@@ -98,28 +113,40 @@ namespace EOB
 
             MySqlConnection connection = new MySqlConnection(connectionString);
             MySqlCommand commandDatabase = new MySqlCommand(query, connection);
-            connection.Open();
-            using(MySqlDataReader reader = commandDatabase.ExecuteReader())
+            int count = 0;
+            try
             {
-                int count = 0;
-                while (reader.Read())
+                connection.Open();
+                using (MySqlDataReader reader = commandDatabase.ExecuteReader())
                 {
-                    count++;
-                }
-                connection.Close();
-                if (count > 0)
-                {
-                    return true;
-                }
+                    
+                    while (reader.Read())
+                    {
+                        count++;
+                    }
+                    
 
-                else
-                {
-                    return false;
                 }
-
             }
-            
-            
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+            finally
+            {
+                connection.Close();
+            }
+            connection.Close();
+            if (count > 0)
+            {
+                return true;
+            }
+
+            else
+            {
+                return false;
+            }
+
         }
 
 
@@ -173,12 +200,66 @@ namespace EOB
 
             return -1;
         }
-        public int UpdateAccountToforget()
+        public int UpdateUserToDeleted(User user)
         {
+
+            string query = $"UPDATE user SET Deleted = 1 WHERE id like {user.ID};";
+
+            Insert(query);
 
             return -1;
         }
 
+        /*******SELECT*****/
+        public User SelectUSerIfExist(string email, string password)
+
+        {
+            
+            string query = $"SELECT* FROM user WHERE Email LIKE '{email}' AND Password LIKE {password} AND Deleted LIKE 0;";
+            MySqlConnection connection = new MySqlConnection(connectionString);
+            MySqlCommand commandDatabase = new MySqlCommand(query, connection);
+
+            try
+            {
+                connection.Open();
+                MySqlDataReader reader = commandDatabase.ExecuteReader();
+
+                if (reader.Read())
+                {                                      
+                    int id = reader.GetInt32(0);
+                    string firstname = reader.GetString(1);
+                    string lastname = reader.GetString(2);
+                    string email1 = reader.GetString(3);
+                    string password1 = reader.GetString(4);
+                    var profilepicture = reader.GetValue(5);
+
+                    return new User(id, firstname, lastname, password1, email1, (byte[])profilepicture);
+                }
+                else
+                {
+                    return null;
+                }
+
+            }
+            
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex);
+                return null;
+            }
+            finally
+            {
+                connection.Close();
+                
+            }
+            return null;
+        }
+
+        public Account SelectAllAccountNrBel()
+        {
+            return null;
+        }
+        /******DELETE******/
         public int DeleteAccount(Account account)
         {
             string query = $"DELETE FROM rekening WHERE Rekening_nr like {account.AccountNumber};";
@@ -187,5 +268,6 @@ namespace EOB
 
             return 1;
         }
+
     }
 }

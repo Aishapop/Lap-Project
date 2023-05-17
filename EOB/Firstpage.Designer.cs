@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Firstpage));
             this.wordKlantButton = new System.Windows.Forms.Button();
             this.aanmeldButton = new System.Windows.Forms.Button();
             this.adminButton = new System.Windows.Forms.Button();
@@ -67,7 +66,7 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Image = global::EOB.Properties.Resources.EOB_Logo;
             this.pictureBox1.Location = new System.Drawing.Point(187, 12);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(200, 200);
@@ -79,7 +78,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(616, 438);
+            this.ClientSize = new System.Drawing.Size(593, 469);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.adminButton);
             this.Controls.Add(this.aanmeldButton);

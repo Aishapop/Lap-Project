@@ -27,12 +27,17 @@ namespace EOB
             WordKlantPage wordKlantPage = new WordKlantPage();
 
             wordKlantPage.Show();
-            this.Close();
+            this.Hide();
         }
 
         private void aanmeldButton_Click(object sender, EventArgs e)
         {
 
+        }
+
+        public void ShowHiddenForm()
+        {
+            this.Show();
         }
     }
 }

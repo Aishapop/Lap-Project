@@ -21,5 +21,17 @@ namespace EOB
         {
 
         }
+
+        private void WordKlantPage_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void returnButton_Click(object sender, EventArgs e)
+        {
+            Firstpage hiddenform = new Firstpage();
+            hiddenform.ShowHiddenForm();
+            this.Close();
+        }
     }
 }

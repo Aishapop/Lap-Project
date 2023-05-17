@@ -17,7 +17,7 @@ namespace EOB
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new Firstpage());
 
             /*byte[] imageData = System.IO.File.ReadAllBytes("C:\\Users\\aisha\\Logo.png");
 
@@ -39,21 +39,12 @@ namespace EOB
 
             /*Transaction tran = new Transaction(zichtrekening, zichtrekening2, 200);*/
 
+            /*
             Data data = new Data();
 
             User aisha = data.SelectUSerIfExist("Aisha123@gmail.com", "123");
-            Console.WriteLine(aisha.ID+ " "+ aisha.Firstname); ;
-
-
-
-
-
-
-
-
-
-
-
+            Console.WriteLine(aisha.ID+ " "+ aisha.Firstname);
+            */
         }
     }
 }

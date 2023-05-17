@@ -24,20 +24,12 @@ namespace EOB
 
         private void wordKlantButton_Click(object sender, EventArgs e)
         {
-            WordKlantPage wordKlantPage = new WordKlantPage();
-
-            wordKlantPage.Show();
-            this.Hide();
+            FormUtils.OpenForm(new WordKlantPage());
         }
 
         private void aanmeldButton_Click(object sender, EventArgs e)
         {
 
-        }
-
-        public void ShowHiddenForm()
-        {
-            this.Show();
         }
     }
 }

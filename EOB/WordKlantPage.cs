@@ -16,12 +16,6 @@ namespace EOB
         {
             InitializeComponent();
         }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void WordKlantPage_Load(object sender, EventArgs e)
         {
 
@@ -29,9 +23,7 @@ namespace EOB
 
         private void returnButton_Click(object sender, EventArgs e)
         {
-            Firstpage hiddenform = new Firstpage();
-            hiddenform.ShowHiddenForm();
-            this.Close();
+            FormUtils.OpenForm(new Firstpage());
         }
     }
 }

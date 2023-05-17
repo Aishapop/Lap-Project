@@ -12,12 +12,28 @@ namespace EOB
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
+
+        private static Form currentForm;
+        private static bool isRunning = false;
+
         [STAThread]
         static void Main()
         {
+            if (!isRunning)
+            {
+                isRunning = true; // Set the flag to indicate that the application is running
+                Application.EnableVisualStyles();
+                Application.SetCompatibleTextRenderingDefault(false);
+                FormUtils.OpenForm(new Firstpage());
+                Application.Run();
+                isRunning = false; // Reset the flag when the application is closed
+            }
+            /*
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            OpenForm(new Firstpage());
             Application.Run(new Firstpage());
+            */
 
             /*byte[] imageData = System.IO.File.ReadAllBytes("C:\\Users\\aisha\\Logo.png");
 
@@ -45,6 +61,24 @@ namespace EOB
             User aisha = data.SelectUSerIfExist("Aisha123@gmail.com", "123");
             Console.WriteLine(aisha.ID+ " "+ aisha.Firstname);
             */
+        }
+        public static void OpenForm(Form form)
+        {
+            if (currentForm != null)
+            {
+                currentForm.Close();  // Close the current form if one is open
+            }
+
+            currentForm = form;  // Set the new form as the current form
+            form.FormClosed += (sender, e) => currentForm = null;  // Clear the current form reference when it's closed
+            form.Show();  // Show the new form
+        }
+    }
+    public static class FormUtils
+    {
+        public static void OpenForm(Form form)
+        {
+            Program.OpenForm(form);  // Call the OpenForm function from Program class
         }
     }
 }

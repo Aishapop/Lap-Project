@@ -21,5 +21,18 @@ namespace EOB
         {
 
         }
+
+        private void wordKlantButton_Click(object sender, EventArgs e)
+        {
+            WordKlantPage wordKlantPage = new WordKlantPage();
+
+            wordKlantPage.Show();
+            this.Close();
+        }
+
+        private void aanmeldButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

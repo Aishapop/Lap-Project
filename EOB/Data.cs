@@ -313,8 +313,9 @@ namespace EOB
             string query0 = $"DELETE FROM overschrijvingen WHERE Verzender_nr LIKE {account.AccountNumber} OR Ontvanger_nr LIKE {account.AccountNumber};";
             string query = $"DELETE FROM rekening WHERE Rekening_nr like {account.AccountNumber};";
 
+            Insert(query0);
             Insert(query);
-
+            
             return 1;
         }
 

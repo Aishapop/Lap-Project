@@ -16,10 +16,14 @@ namespace EOB
         {
             InitializeComponent();
         }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
+        private void WordKlantPage_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void returnButton_Click(object sender, EventArgs e)
+        {
+            FormUtils.OpenForm(new Firstpage());
         }
     }
 }

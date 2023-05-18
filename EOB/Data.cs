@@ -215,7 +215,7 @@ namespace EOB
 
         {
             
-            string query = $"SELECT* FROM user WHERE Email LIKE '{email}' AND Password LIKE {password} AND Deleted LIKE 0;";
+            string query = $"SELECT* FROM user WHERE Email LIKE '{email}' AND Password LIKE '{password}' AND Deleted LIKE 0;";
             MySqlConnection connection = new MySqlConnection(connectionString);
             MySqlCommand commandDatabase = new MySqlCommand(query, connection);
 
@@ -255,8 +255,56 @@ namespace EOB
             return null;
         }
 
-        public Account SelectAllAccountNrBel()
+        public List<Account> SelectAllAccount(User user)
         {
+            if (user == null)
+            {
+                return null;
+            } 
+            string query = $"SELECT * FROM rekening WHERE User_id like {user.ID}";
+            MySqlConnection connection = new MySqlConnection(connectionString);
+            MySqlCommand command = new MySqlCommand(query, connection);
+            
+            try
+            {
+                connection.Open();
+                MySqlDataReader reader = command.ExecuteReader();
+                List<Account> accountslist = new List<Account>();
+
+                while (reader.Read())
+                {
+                   
+                    int accountnr = (int)reader.GetInt32(0);
+                    int soortrekening = (int)reader.GetInt32(1);
+                    
+                    float balance = (float)reader.GetFloat(2);
+                    
+                    if (soortrekening == 1)
+                    {
+                        Account account = new Account(accountnr, balance, Types.CurrentAccount, user);
+                        accountslist.Add(account);
+                    }
+                    else if (soortrekening == 2)
+                    {
+                        Account account = new Account(accountnr, balance, Types.SavingsAccount, user);
+                        accountslist.Add(account);
+                    }
+                    
+
+                }
+                return accountslist;
+                
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+
             return null;
         }
         /******DELETE******/

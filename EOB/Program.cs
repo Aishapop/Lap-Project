@@ -17,7 +17,7 @@ namespace EOB
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new Test());
 
             /*byte[] imageData = System.IO.File.ReadAllBytes("C:\\Users\\aisha\\Logo.png");
 
@@ -41,8 +41,14 @@ namespace EOB
 
             Data data = new Data();
 
-            User aisha = data.SelectUSerIfExist("Aisha123@gmail.com", "123");
-            Console.WriteLine(aisha.ID+ " "+ aisha.Firstname); ;
+            User aisha = data.SelectUSerIfExist("aisha@gmail.com", "ooo");
+            Console.WriteLine(aisha.ID);
+
+            List<Account> accounts = data.SelectAllAccount(aisha);
+            foreach(Account account in accounts)
+            {
+                Console.WriteLine(account.AccountType);
+            }
 
 
 

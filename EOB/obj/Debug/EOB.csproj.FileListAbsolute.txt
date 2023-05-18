@@ -18,7 +18,6 @@ C:\Users\aisha\source\repos\Lap-Project\EOB\bin\Debug\System.Threading.Tasks.Ext
 C:\Users\aisha\source\repos\Lap-Project\EOB\obj\Debug\EOB.csproj.AssemblyReference.cache
 C:\Users\aisha\source\repos\Lap-Project\EOB\obj\Debug\EOB.csproj.SuggestedBindingRedirects.cache
 C:\Users\aisha\source\repos\Lap-Project\EOB\obj\Debug\EOB.Firstpage.resources
-C:\Users\aisha\source\repos\Lap-Project\EOB\obj\Debug\EOB.Form1.resources
 C:\Users\aisha\source\repos\Lap-Project\EOB\obj\Debug\EOB.Properties.Resources.resources
 C:\Users\aisha\source\repos\Lap-Project\EOB\obj\Debug\EOB.csproj.GenerateResource.cache
 C:\Users\aisha\source\repos\Lap-Project\EOB\obj\Debug\EOB.csproj.CoreCompileInputs.cache
@@ -34,3 +33,5 @@ C:\Users\alanl\source\repos\Lap-Project\EOB\obj\Debug\EOB.exe
 C:\Users\alanl\source\repos\Lap-Project\EOB\obj\Debug\EOB.pdb
 C:\Users\alanl\source\repos\Lap-Project\EOB\obj\Debug\EOB.Test.resources
 C:\Users\alanl\source\repos\Lap-Project\EOB\obj\Debug\EOB.WordKlantPage.resources
+C:\Users\aisha\source\repos\Lap-Project\EOB\obj\Debug\EOB.Test.resources
+C:\Users\aisha\source\repos\Lap-Project\EOB\obj\Debug\EOB.WordKlantPage.resources

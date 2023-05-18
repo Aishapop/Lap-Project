@@ -8,9 +8,9 @@ namespace EOB
 {
     internal class Account
     {
-        public int ID { get; set; }
+        
         public int AccountNumber { get; set; }
-        public int Balance { get; set; }
+        public float Balance { get; set; }
         public List<Transaction> Transactions { get; set; }
         public Types AccountType { get; set; }
         public User User { get; set; }
@@ -30,7 +30,15 @@ namespace EOB
             Transactions = new List<Transaction>();
             AccountType = accountTypes;
             User = user;
-            ID = _data.InsertAccount(this,user);
+            _data.InsertAccount(this,user);
+        }
+        public Account(int accountnr,float balance,Types accountTypes ,User user)
+        {
+            AccountNumber = accountnr;
+            Balance = balance;
+            Transactions = new List<Transaction>();
+            AccountType = accountTypes;
+            User = user;
         }
 
 

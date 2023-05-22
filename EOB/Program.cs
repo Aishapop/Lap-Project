@@ -28,22 +28,27 @@ namespace EOB
                 Application.Run();
                 isRunning = false; // Reset the flag when the application is closed
             }
-            /*
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             OpenForm(new Firstpage());
             Application.Run(new Firstpage());
-            */
+
 
             /*byte[] imageData = System.IO.File.ReadAllBytes("C:\\Users\\aisha\\Logo.png");
 
 
-            User Omar = new User("school", "thuis", "777", "school@gmail.com", imageData);*/
+            User Aisha = new User("Aisha", "Kafita", "123", "aisha@gmail.com", imageData);
 
-            /*User lili = new User("lilim1", "O'Branm1", "ooo21", "ai1@gmail.com", imageData);
-*/
 
-            /*Account zichtrekening = new Account(Types.CurrentAccount, Omar);*/
+            User Lili = new User("Lili", "O'Branm1", "lili456", "lili456@gmail.com", imageData);
+
+
+            Account zichtrekening = new Account(Types.CurrentAccount, Aisha);
+            Account zichtrekening2 = new Account(Types.CurrentAccount, Lili);*/
+
+
+
             /*Account zichtrekening1 = new Account(Types.CurrentAccount, Omar);
             Account zichtrekening2 = new Account(Types.CurrentAccount, Omar);*/
             /*Account zichtrekening2 = new Account(Types.CurrentAccount, lili);*/
@@ -55,12 +60,40 @@ namespace EOB
 
             /*Transaction tran = new Transaction(zichtrekening, zichtrekening2, 200);*/
 
-            /*
+
             Data data = new Data();
 
-            User aisha = data.SelectUSerIfExist("Aisha123@gmail.com", "123");
-            Console.WriteLine(aisha.ID+ " "+ aisha.Firstname);
-            */
+            Account account = data.SelectAccountBynr(252830839);
+            Account account2 = data.SelectAccountBynr(416451126);
+
+            Console.WriteLine(account.Balance +" "+ account2.Balance);
+
+
+            Console.WriteLine(account.Transactions);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         }
         public static void OpenForm(Form form)
         {
@@ -72,6 +105,7 @@ namespace EOB
             currentForm = form;  // Set the new form as the current form
             form.FormClosed += (sender, e) => currentForm = null;  // Clear the current form reference when it's closed
             form.Show();  // Show the new form
+
         }
     }
     public static class FormUtils

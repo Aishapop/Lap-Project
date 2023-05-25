@@ -11,12 +11,12 @@ namespace EOB
         public int ID { get; set; }
         public int FromAccount { get; set; }
         public int ToAccount { get; set; }
-        public int Amount { get; set; }
+        public float Amount { get; set; }
         public string Date { get; set; }
 
         private Data _data = new Data();
 
-        public Transaction(Account fromaccount, Account toaccount, int amount)
+        public Transaction(Account fromaccount, Account toaccount, float amount)
         {
             //new transaction is directly add in account list
             fromaccount.Transactions.Add(this);
@@ -26,6 +26,17 @@ namespace EOB
             //bij elke nieuwe transactie 
             Date = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
             ID = _data.InsertTransaction(this);
+        }
+        public Transaction(Account fromaccount, Account toaccount, float amount, int id)
+        {
+            //new transaction is directly add in account list
+            fromaccount.Transactions.Add(this);
+            FromAccount = fromaccount.AccountNumber;
+            ToAccount = toaccount.AccountNumber;
+            Amount = amount;
+            //bij elke nieuwe transactie 
+            Date = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+            ID = id;
         }
 
     }

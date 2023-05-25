@@ -15,9 +15,11 @@ namespace EOB
         public string Password { get; set; }
         public string Email { get; set; }
         public byte[] ProfilePicture { get; set; }
+        public List<Account> AccountList { get; set; }
 
         private Data _data = new Data();
 
+        // new user ---> database
         public User(string firstname, string lastname, string password, string email, byte[] profilepicture)
         {
             Firstname = firstname;
@@ -26,7 +28,9 @@ namespace EOB
             Email = email;
             ProfilePicture = profilepicture;
             ID = _data.InsertUser(this);
+            AccountList = new List<Account>();
         }
+        // new user <--- database
         public User(int id,string firstname ,string lastname, string password, string email, byte[] profilepicture)
         {
             Firstname = firstname;
@@ -35,38 +39,47 @@ namespace EOB
             Email = email;
             ProfilePicture = profilepicture;
             ID = id;
+            AccountList = _data.SelectAllAccount(this);
         }
 
-
+        //new user for tests
         public User(string firstname, string lastname)
         {
             Firstname = firstname;
             Lastname= lastname;
 
         }
-        public void CreateAccount()
+        public void CreateAccount(Types type)
         {
-
+            Account account = new Account(type,this);
+            this.AccountList.Add(account);
         }
 
-        public void Login()
+        public User Login()
         {
-
+            try
+            {
+               return _data.SelectUSerIfExist(this.Email, this.Password);
+            }
+            catch
+            {
+                return null;
+            }
         }
 
-        public void ChangePassword()
+        public void ChangePassword(string Newpw)
         {
-
+            _data.UpdateUserPassword(this, Newpw);
         }
 
-        public void DeleteAccount()
+        public void DeleteAccount(Account account)
         {
-
+            _data.DeleteAccount(account);
         }
 
         public void GetAccountOverview()
         {
-
+            _data.SelectAllAccount(this);
         }
 
 

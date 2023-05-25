@@ -81,7 +81,6 @@ namespace EOB
             }
             return -1;
         }
-
         public int InsertAccount(Account account,User user)
         {
             try
@@ -106,7 +105,6 @@ namespace EOB
             }
             return -1;
         }
-
         public bool CheckIfAccountNumberExist(int accountnumber)
         {
             string query = $"SELECT * FROM rekening WHERE Rekening_nr like {accountnumber};";
@@ -148,8 +146,6 @@ namespace EOB
             }
 
         }
-
-
         public int InsertTransaction(Transaction transaction)
         {
             try
@@ -165,7 +161,6 @@ namespace EOB
             }
             return -1;
         }
-
         public int InsertAutomaticTransaction(Account account,string startingdate,string endingdate,int amount)
         {
             try
@@ -209,13 +204,22 @@ namespace EOB
 
             return -1;
         }
+        public int UpdateBalance(int rekeningnr, float amount)
+        {
+            string query = $"UPDATE rekening SET StartBedrag = {amount} WHERE Rekening_nr like {rekeningnr};";
+
+            Insert(query);
+            
+            return -1;
+        }
+        
 
         /*******SELECT*****/
         public User SelectUSerIfExist(string email, string password)
 
         {
             
-            string query = $"SELECT* FROM user WHERE Email LIKE '{email}' AND Password LIKE {password} AND Deleted LIKE 0;";
+            string query = $"SELECT* FROM user WHERE Email LIKE '{email}' AND Password LIKE '{password}' AND Deleted LIKE 0;";
             MySqlConnection connection = new MySqlConnection(connectionString);
             MySqlCommand commandDatabase = new MySqlCommand(query, connection);
 
@@ -254,18 +258,160 @@ namespace EOB
             }
             return null;
         }
-
-        public Account SelectAllAccountNrBel()
+        public Account SelectAccountBynr(int accountnumer)
         {
+            string query = $"SELECT * FROM rekening INNER JOIN user on user.id = rekening.User_id WHERE Rekening_nr like {accountnumer}";
+            MySqlConnection connection = new MySqlConnection(connectionString);
+            MySqlCommand commandDatabase = new MySqlCommand(query, connection);
+
+            try
+            {
+                connection.Open();
+                MySqlDataReader reader = commandDatabase.ExecuteReader();
+                if (reader.Read())
+                {
+                    int accountnr = (int)reader.GetInt32(0);
+                    int soortrekening = (int)reader.GetInt32(1);
+                    float balance = (float)reader.GetFloat(2);
+                    string email = reader.GetString(7);
+                    string pw = reader.GetString(8);
+
+                    User user = SelectUSerIfExist(email, pw);
+                    List<Transaction> transactions = new List<Transaction>();   
+                    if (soortrekening == 1)
+                    {
+                        Account account = new Account(accountnr, balance, Types.CurrentAccount, user);
+                        return account;
+                    }
+                    else if (soortrekening == 2)
+                    {
+                        Account account = new Account(accountnr, balance, Types.SavingsAccount, user);
+                        return account;
+                    }
+
+                }
+                else
+                {
+                    return null;
+                }
+
+            }
+            catch
+            {
+                return null;
+            }
+            finally
+            {
+                connection.Close();
+            }
             return null;
         }
+
+        public List<Transaction> SelectAllTransactions(Account account)
+        {
+            string query = $"SELECT * FROM overschrijvingen WHERE Verzender_nr LIKE {account.AccountNumber} ;";
+            MySqlConnection connection = new MySqlConnection(connectionString);
+            MySqlCommand command = new MySqlCommand(query, connection);
+
+            try
+            {
+                connection.Open();
+                MySqlDataReader reader = command.ExecuteReader();
+                List<Transaction> transactionslist = new List<Transaction>();
+
+                while (reader.Read())
+                {
+
+                    int id = (int)reader.GetInt32(0);
+                    int amount = (int)reader.GetInt32(1);
+                    int sender = (int)reader.GetInt32(2);
+                    int reciver = (int)reader.GetInt32(3);
+
+                    Account accountreciver = SelectAccountBynr(reciver);
+
+                    Transaction transaction = new Transaction(account, accountreciver, amount, id);
+                    transactionslist.Add(transaction);
+
+                }
+                return transactionslist;
+
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+
+
+        }
+        public List<Account> SelectAllAccount(User user)
+        {
+            if (user == null)
+            {
+                return null;
+            } 
+            string query = $"SELECT * FROM rekening WHERE User_id like {user.ID}";
+            MySqlConnection connection = new MySqlConnection(connectionString);
+            MySqlCommand command = new MySqlCommand(query, connection);
+            
+            try
+            {
+                connection.Open();
+                MySqlDataReader reader = command.ExecuteReader();
+                List<Account> accountslist = new List<Account>();
+
+                while (reader.Read())
+                {
+                   
+                    int accountnr = (int)reader.GetInt32(0);
+                    int soortrekening = (int)reader.GetInt32(1);
+                    
+                    float balance = (float)reader.GetFloat(2);
+                    
+                    
+                    if (soortrekening == 1)
+                    {
+                        Account account = new Account(accountnr, balance, Types.CurrentAccount, user);
+                        accountslist.Add(account);
+                    }
+                    else if (soortrekening == 2)
+                    {
+                        Account account = new Account(accountnr, balance, Types.SavingsAccount,user);
+                        accountslist.Add(account);
+                    }
+                    
+
+                }
+                return accountslist;
+                
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+
+            return null;
+        }
+
+        
         /******DELETE******/
         public int DeleteAccount(Account account)
         {
+            string query0 = $"DELETE FROM overschrijvingen WHERE Verzender_nr LIKE {account.AccountNumber} OR Ontvanger_nr LIKE {account.AccountNumber};";
             string query = $"DELETE FROM rekening WHERE Rekening_nr like {account.AccountNumber};";
 
+            Insert(query0);
             Insert(query);
-
+            
             return 1;
         }
 

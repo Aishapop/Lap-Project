@@ -1,4 +1,7 @@
-﻿namespace EOB
+﻿using System.Windows.Forms;
+using System;
+
+namespace EOB
 {
     partial class Firstpage
     {
@@ -19,6 +22,9 @@
             }
             base.Dispose(disposing);
         }
+
+        
+
 
         #region Windows Form Designer generated code
 

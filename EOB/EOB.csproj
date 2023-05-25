@@ -109,6 +109,9 @@
     <Compile Include="WordKlantPage.Designer.cs">
       <DependentUpon>WordKlantPage.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AanmeldPage.resx">
+      <DependentUpon>AanmeldPage.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Firstpage.resx">
       <DependentUpon>Firstpage.cs</DependentUpon>
     </EmbeddedResource>
@@ -138,21 +141,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\EOB Logo.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Logo kleiner.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Logo.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Logo kleiner1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Logo kleiner 3.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Logo kleiner 2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

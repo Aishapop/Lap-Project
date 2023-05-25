@@ -1,5 +1,4 @@
 C:\Users\alanl\source\repos\Lap-Project\EOB\obj\Debug\EOB.csproj.AssemblyReference.cache
-C:\Users\alanl\source\repos\Lap-Project\EOB\obj\Debug\EOB.csproj.SuggestedBindingRedirects.cache
 C:\Users\alanl\source\repos\Lap-Project\EOB\obj\Debug\EOB.Firstpage.resources
 C:\Users\alanl\source\repos\Lap-Project\EOB\obj\Debug\EOB.csproj.GenerateResource.cache
 C:\Users\alanl\source\repos\Lap-Project\EOB\obj\Debug\EOB.exe
@@ -53,3 +52,4 @@ C:\Users\aisha\source\repos\Lap-Project\EOB\obj\Debug\EOB.csproj.CoreCompileInpu
 C:\Users\aisha\source\repos\Lap-Project\EOB\obj\Debug\EOB.csproj.CopyComplete
 C:\Users\aisha\source\repos\Lap-Project\EOB\obj\Debug\EOB.exe
 C:\Users\aisha\source\repos\Lap-Project\EOB\obj\Debug\EOB.pdb
+C:\Users\alanl\source\repos\Lap-Project\EOB\obj\Debug\EOB.AanmeldPage.resources

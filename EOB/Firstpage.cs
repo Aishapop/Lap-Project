@@ -29,7 +29,7 @@ namespace EOB
 
         private void aanmeldButton_Click(object sender, EventArgs e)
         {
-
+            FormUtils.OpenForm(new AanmeldPage());
         }
     }
 }

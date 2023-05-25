@@ -29,6 +29,15 @@
         private void InitializeComponent()
         {
             this.returnButton = new System.Windows.Forms.Button();
+            this.FirstName = new System.Windows.Forms.TextBox();
+            this.LastName = new System.Windows.Forms.TextBox();
+            this.Email = new System.Windows.Forms.TextBox();
+            this.Password = new System.Windows.Forms.TextBox();
+            this.LabelLastName = new System.Windows.Forms.Label();
+            this.LabelEmail = new System.Windows.Forms.Label();
+            this.LabelPassword = new System.Windows.Forms.Label();
+            this.LabelFirstName = new System.Windows.Forms.Label();
+            this.CreateAccountButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // returnButton
@@ -41,21 +50,122 @@
             this.returnButton.UseVisualStyleBackColor = true;
             this.returnButton.Click += new System.EventHandler(this.returnButton_Click);
             // 
+            // FirstName
+            // 
+            this.FirstName.Location = new System.Drawing.Point(253, 105);
+            this.FirstName.Name = "FirstName";
+            this.FirstName.Size = new System.Drawing.Size(169, 20);
+            this.FirstName.TabIndex = 1;
+            this.FirstName.TextChanged += new System.EventHandler(this.FirstName_TextChanged_2);
+            // 
+            // LastName
+            // 
+            this.LastName.Location = new System.Drawing.Point(253, 153);
+            this.LastName.Name = "LastName";
+            this.LastName.Size = new System.Drawing.Size(169, 20);
+            this.LastName.TabIndex = 2;
+            this.LastName.TextChanged += new System.EventHandler(this.LastName_TextChanged);
+            // 
+            // Email
+            // 
+            this.Email.Location = new System.Drawing.Point(253, 202);
+            this.Email.Name = "Email";
+            this.Email.Size = new System.Drawing.Size(169, 20);
+            this.Email.TabIndex = 3;
+            this.Email.TextChanged += new System.EventHandler(this.Email_TextChanged);
+            // 
+            // Password
+            // 
+            this.Password.Location = new System.Drawing.Point(253, 251);
+            this.Password.Name = "Password";
+            this.Password.Size = new System.Drawing.Size(169, 20);
+            this.Password.TabIndex = 4;
+            this.Password.TextChanged += new System.EventHandler(this.Password_TextChanged);
+            // 
+            // LabelLastName
+            // 
+            this.LabelLastName.AutoSize = true;
+            this.LabelLastName.Location = new System.Drawing.Point(250, 137);
+            this.LabelLastName.Name = "LabelLastName";
+            this.LabelLastName.Size = new System.Drawing.Size(55, 13);
+            this.LabelLastName.TabIndex = 6;
+            this.LabelLastName.Text = "LastName";
+            this.LabelLastName.Click += new System.EventHandler(this.LabelLastName_Click);
+            // 
+            // LabelEmail
+            // 
+            this.LabelEmail.AutoSize = true;
+            this.LabelEmail.Location = new System.Drawing.Point(250, 186);
+            this.LabelEmail.Name = "LabelEmail";
+            this.LabelEmail.Size = new System.Drawing.Size(32, 13);
+            this.LabelEmail.TabIndex = 7;
+            this.LabelEmail.Text = "Email";
+            this.LabelEmail.Click += new System.EventHandler(this.LabelEmail_Click);
+            // 
+            // LabelPassword
+            // 
+            this.LabelPassword.AutoSize = true;
+            this.LabelPassword.Location = new System.Drawing.Point(250, 235);
+            this.LabelPassword.Name = "LabelPassword";
+            this.LabelPassword.Size = new System.Drawing.Size(53, 13);
+            this.LabelPassword.TabIndex = 8;
+            this.LabelPassword.Text = "Password";
+            this.LabelPassword.Click += new System.EventHandler(this.LabelPassword_Click);
+            // 
+            // LabelFirstName
+            // 
+            this.LabelFirstName.AutoSize = true;
+            this.LabelFirstName.Location = new System.Drawing.Point(250, 89);
+            this.LabelFirstName.Name = "LabelFirstName";
+            this.LabelFirstName.Size = new System.Drawing.Size(54, 13);
+            this.LabelFirstName.TabIndex = 9;
+            this.LabelFirstName.Text = "FirstName";
+            this.LabelFirstName.Click += new System.EventHandler(this.LabelFirstName_Click);
+            // 
+            // CreateAccountButton
+            // 
+            this.CreateAccountButton.Location = new System.Drawing.Point(269, 305);
+            this.CreateAccountButton.Name = "CreateAccountButton";
+            this.CreateAccountButton.Size = new System.Drawing.Size(133, 31);
+            this.CreateAccountButton.TabIndex = 10;
+            this.CreateAccountButton.Text = "Create Account";
+            this.CreateAccountButton.UseVisualStyleBackColor = true;
+            this.CreateAccountButton.Click += new System.EventHandler(this.CreateAccountButton_Click);
+            // 
             // WordKlantPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.CreateAccountButton);
+            this.Controls.Add(this.LabelFirstName);
+            this.Controls.Add(this.LabelPassword);
+            this.Controls.Add(this.LabelEmail);
+            this.Controls.Add(this.LabelLastName);
+            this.Controls.Add(this.Password);
+            this.Controls.Add(this.Email);
+            this.Controls.Add(this.LastName);
+            this.Controls.Add(this.FirstName);
             this.Controls.Add(this.returnButton);
             this.Name = "WordKlantPage";
             this.Text = "WordKlantPage";
             this.Load += new System.EventHandler(this.WordKlantPage_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
         private System.Windows.Forms.Button returnButton;
+        private System.Windows.Forms.TextBox FirstName;
+        private System.Windows.Forms.TextBox LastName;
+        private System.Windows.Forms.TextBox Email;
+        private System.Windows.Forms.TextBox Password;
+        private System.Windows.Forms.Label LabelLastName;
+        private System.Windows.Forms.Label LabelEmail;
+        private System.Windows.Forms.Label LabelPassword;
+        private System.Windows.Forms.Label LabelFirstName;
+        private System.Windows.Forms.Button CreateAccountButton;
     }
 }

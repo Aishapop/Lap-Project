@@ -16,5 +16,10 @@ namespace EOB
         {
             InitializeComponent();
         }
+
+        private void returnButton_Click(object sender, EventArgs e)
+        {
+            FormUtils.OpenForm(new Firstpage());
+        }
     }
 }

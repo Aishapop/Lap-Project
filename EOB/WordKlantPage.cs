@@ -76,11 +76,14 @@ namespace EOB
                 string password = Password.Text;
                 string firstname = FirstName.Text;
                 string lastname = LastName.Text;
+                byte[] imageData = System.IO.File.ReadAllBytes("C:\\Users\\alanl\\Pictures\\profile pictures\\Fl0w.jpg");
+
 
                 // Validate input (e.g., check for empty fields, validate email format, etc.)
 
                 // Store the account information in the database
-                // TODO: Implement database storage logic
+                Data data  = new Data();
+                User user = new User(firstname, lastname,password, email,imageData);
 
                 MessageBox.Show("Account created successfully!");
 

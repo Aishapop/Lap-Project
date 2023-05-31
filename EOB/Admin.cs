@@ -8,30 +8,49 @@ namespace EOB
 {
     internal class Admin : User
     {
-
+        private Data _data = new Data();
 
         public Admin(string firstname, string lastname, string password, string email, byte[] profilepicture) : base(firstname, lastname, password, email,profilepicture)
         {
 
         }
 
-        private void CreateUser()
+        public void CreateUser(string firstname,string lastname,string password,string email, byte[] profilepicture)
         {
-
+            User user = new User(firstname, lastname, password, email, profilepicture);
+            _data.InsertUser(user);
         }
 
-        private void EditUser()
+        public void EditUser(User user, string columnedit, string newvalue)
         {
+            if (columnedit == "Firstname")
+            {
+                user.Firstname = newvalue;
+            }
+            else if (columnedit == "Lastname")
+            {
+                user.Lastname = newvalue;
+            }
+            else if (columnedit == "Email")
+            {
+                user.Email = newvalue;
+            }
+            else if (columnedit == "Password")
+            {
+                user.Password = newvalue;
+            }
 
+            _data.EditUser(user, columnedit, newvalue);
         }
-        private void DeleteUser()
+        public void DeleteUser(User user)
         {
-
+            user = null;
+            _data.UpdateUserToDeleted(user);
         }
-        
-        private void GetUserOverview()
-        {
 
+        public List<User> GetUserOverview()
+        {
+           return _data.SelectAllUser();
         }
     }
 }

@@ -63,16 +63,19 @@ namespace EOB
 
             Data data = new Data();
 
-            Account account = data.SelectAccountBynr(252830839);
+            /*Account account = data.SelectAccountBynr(252830839);
             Account account2 = data.SelectAccountBynr(416451126);
 
             Console.WriteLine(account.Balance +" "+ account2.Balance);
 
 
-            Console.WriteLine(account.Transactions);
+            Console.WriteLine(account.Transactions);*/
 
 
-
+            foreach (User u in data.SelectAllUser())
+            {
+                Console.WriteLine(u.Firstname);
+            }
 
 
 

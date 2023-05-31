@@ -16,6 +16,7 @@ namespace EOB
 
         private Data _data = new Data();
 
+        //new transaction ---> database
         public Transaction(Account fromaccount, Account toaccount, float amount)
         {
             //new transaction is directly add in account list
@@ -27,10 +28,12 @@ namespace EOB
             Date = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
             ID = _data.InsertTransaction(this);
         }
+
+        //new transaction <---- database
         public Transaction(Account fromaccount, Account toaccount, float amount, int id)
         {
             //new transaction is directly add in account list
-            fromaccount.Transactions.Add(this);
+            
             FromAccount = fromaccount.AccountNumber;
             ToAccount = toaccount.AccountNumber;
             Amount = amount;

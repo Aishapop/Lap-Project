@@ -189,6 +189,7 @@ namespace EOB
         }
         public int EditUser(User user, string columnedit,string newvalue)
         {
+            //edit option (firtname,lastname,email,password)
             string query = $"UPDATE user SET {columnedit} = '{newvalue}' WHERE id like {user.ID};";
 
             Insert(query);
@@ -402,7 +403,49 @@ namespace EOB
             return null;
         }
 
-        
+        public List<User> SelectAllUser()
+        {
+            
+            string query = $"SELECT * FROM user WHERE Deleted LIKE 0;";
+            MySqlConnection connection = new MySqlConnection(connectionString);
+            MySqlCommand command = new MySqlCommand(query, connection);
+
+            try
+            {
+                connection.Open();
+                MySqlDataReader reader = command.ExecuteReader();
+                List<User> userslist = new List<User>();
+
+                while (reader.Read())
+                {
+
+                    int id = (int)reader.GetInt32(0);
+                    string firstname = (string)reader.GetString(1);
+                    string lastname = (string)reader.GetString(2);
+                    string email = (string)reader.GetString(3);
+                    string password = (string)reader.GetString(4);
+                    var profilepicture = reader.GetValue(5);
+
+                    User user = new User(id, firstname, lastname, password, email, (byte[])profilepicture);
+                    userslist.Add(user);
+
+                }
+                return userslist;
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+
+            return null;
+        }
+
         /******DELETE******/
         public int DeleteAccount(Account account)
         {

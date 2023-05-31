@@ -20,6 +20,7 @@ namespace EOB
         {
             // Set the password TextBox to display asterisks
             Password.UseSystemPasswordChar = true;
+            VerifyPasswordText.UseSystemPasswordChar= true;
         }
 
         private void returnButton_Click(object sender, EventArgs e)
@@ -72,11 +73,18 @@ namespace EOB
             if (ValidateInput())
             {
                 // Retrieve user input
-                string email = Email.Text;
-                string password = Password.Text;
                 string firstname = FirstName.Text;
+
                 string lastname = LastName.Text;
-                byte[] imageData = System.IO.File.ReadAllBytes("C:\\Users\\alanl\\Pictures\\profile pictures\\Fl0w.jpg");
+
+                string email = Email.Text;
+
+                string password = Password.Text;
+
+                string verifypassword = VerifyPasswordText.Text;
+
+                string picturelocation = PictureLocation.Text;
+                byte[] imageData = System.IO.File.ReadAllBytes(picturelocation);
 
 
                 // Validate input (e.g., check for empty fields, validate email format, etc.)
@@ -88,24 +96,29 @@ namespace EOB
                 MessageBox.Show("Account created successfully!");
 
                 // Clear the input fields
+                FirstName.Clear();
+                LastName.Clear();                
                 Email.Clear();
                 Password.Clear();
-                FirstName.Clear();
-                LastName.Clear();
+                VerifyPasswordText.Clear();
+                PictureLocation.Clear();    
             }
         }
 
         private bool ValidateInput()
         {
             // Retrieve user input
+            string firstname = FirstName.Text;
+            string lastname = LastName.Text;            
             string email = Email.Text;
             string password = Password.Text;
-            string firstname = FirstName.Text;
-            string lastname = LastName.Text;
+            string verifypassword = VerifyPasswordText.Text;
+            string picturelocation = PictureLocation.Text;
+
 
             // Check if any field is empty
             if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password) ||
-                string.IsNullOrEmpty(firstname) || string.IsNullOrEmpty(lastname))
+                string.IsNullOrEmpty(firstname) || string.IsNullOrEmpty(lastname) || string.IsNullOrEmpty(picturelocation))
             {
                 MessageBox.Show("Please fill in all the fields.");
                 return false;
@@ -115,6 +128,13 @@ namespace EOB
             if (!IsValidEmail(email))
             {
                 MessageBox.Show("Please enter a valid email address.");
+                return false;
+            }
+
+            // Check if the passwords are the same
+            if (password == verifypassword)
+            {
+                MessageBox.Show("The password you filled in doesn't match");
                 return false;
             }
             return true;
@@ -131,6 +151,29 @@ namespace EOB
             {
                 return false;
             }
+        }
+
+        private void ProfilePictureBtn_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openfiledialog1 = new OpenFileDialog();
+            openfiledialog1.Title = "Select Picture";
+            openfiledialog1.InitialDirectory = @"C:\";
+            openfiledialog1.Filter = "Pictures (*.png)|*.png|Pictures(*.jpg)|*.jpg";
+            openfiledialog1.FilterIndex = 1;
+            openfiledialog1.ShowDialog();
+            if (openfiledialog1.FileName != "")
+            {
+                PictureLocation.Text = openfiledialog1.FileName;
+            }
+            else
+            {
+                PictureLocation.Text = "";
+            }
+        }
+
+        private void PictureLocation_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

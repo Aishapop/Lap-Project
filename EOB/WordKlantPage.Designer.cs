@@ -78,7 +78,6 @@
             this.Email.Name = "Email";
             this.Email.Size = new System.Drawing.Size(169, 20);
             this.Email.TabIndex = 3;
-            this.Email.Text = "ex: name@something.com";
             this.Email.TextChanged += new System.EventHandler(this.Email_TextChanged);
             // 
             // Password

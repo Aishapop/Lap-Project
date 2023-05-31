@@ -81,8 +81,6 @@ namespace EOB
 
                 string password = Password.Text;
 
-                string verifypassword = VerifyPasswordText.Text;
-
                 string picturelocation = PictureLocation.Text;
                 byte[] imageData = System.IO.File.ReadAllBytes(picturelocation);
 
@@ -132,7 +130,7 @@ namespace EOB
             }
 
             // Check if the passwords are the same
-            if (password == verifypassword)
+            if (password != verifypassword)
             {
                 MessageBox.Show("The password you filled in doesn't match");
                 return false;

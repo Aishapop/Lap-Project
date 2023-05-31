@@ -24,16 +24,16 @@ namespace EOB
                 isRunning = true; // Set the flag to indicate that the application is running
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
-                FormUtils.OpenForm(new Firstpage());
+                FormUtils.OpenForm(new WordKlantPage());
                 Application.Run();
                 isRunning = false; // Reset the flag when the application is closed
             }
-
+            /*
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             OpenForm(new Firstpage());
             Application.Run(new Firstpage());
-
+            */
 
             /*byte[] imageData = System.IO.File.ReadAllBytes("C:\\Users\\aisha\\Logo.png");
 

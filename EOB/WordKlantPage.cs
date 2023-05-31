@@ -91,7 +91,7 @@ namespace EOB
                 Data data  = new Data();
                 User user = new User(firstname, lastname,password, email,imageData);
 
-                MessageBox.Show("Account created successfully!");
+                //        FormUtils.OpenForm(new ClientMainPage(email, password));
 
                 // Clear the input fields
                 FirstName.Clear();

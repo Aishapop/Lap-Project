@@ -128,7 +128,7 @@
             // ZichtrekeningenLabel
             // 
             this.ZichtrekeningenLabel.AutoSize = true;
-            this.ZichtrekeningenLabel.Location = new System.Drawing.Point(43, 141);
+            this.ZichtrekeningenLabel.Location = new System.Drawing.Point(70, 156);
             this.ZichtrekeningenLabel.Name = "ZichtrekeningenLabel";
             this.ZichtrekeningenLabel.Size = new System.Drawing.Size(110, 13);
             this.ZichtrekeningenLabel.TabIndex = 1;
@@ -138,7 +138,7 @@
             // SpaarrekeningenLabel
             // 
             this.SpaarrekeningenLabel.AutoSize = true;
-            this.SpaarrekeningenLabel.Location = new System.Drawing.Point(371, 141);
+            this.SpaarrekeningenLabel.Location = new System.Drawing.Point(367, 156);
             this.SpaarrekeningenLabel.Name = "SpaarrekeningenLabel";
             this.SpaarrekeningenLabel.Size = new System.Drawing.Size(114, 13);
             this.SpaarrekeningenLabel.TabIndex = 2;
@@ -148,7 +148,7 @@
             // 
             // ZichtrekeningHistoryButton
             // 
-            this.ZichtrekeningHistoryButton.Location = new System.Drawing.Point(46, 157);
+            this.ZichtrekeningHistoryButton.Location = new System.Drawing.Point(73, 172);
             this.ZichtrekeningHistoryButton.Name = "ZichtrekeningHistoryButton";
             this.ZichtrekeningHistoryButton.Size = new System.Drawing.Size(105, 25);
             this.ZichtrekeningHistoryButton.TabIndex = 5;
@@ -158,7 +158,7 @@
             // 
             // SpaarrekeningHistoryButton
             // 
-            this.SpaarrekeningHistoryButton.Location = new System.Drawing.Point(374, 157);
+            this.SpaarrekeningHistoryButton.Location = new System.Drawing.Point(370, 172);
             this.SpaarrekeningHistoryButton.Name = "SpaarrekeningHistoryButton";
             this.SpaarrekeningHistoryButton.Size = new System.Drawing.Size(105, 25);
             this.SpaarrekeningHistoryButton.TabIndex = 6;

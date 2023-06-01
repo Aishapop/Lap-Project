@@ -23,6 +23,7 @@ namespace EOB
             "database=eob;";
 
 
+
         /******INSERT******/
         public int Insert(string query)
         {
@@ -250,7 +251,7 @@ namespace EOB
             
             catch(Exception ex)
             {
-                Console.WriteLine(ex);
+                MessageBox.Show(ex.Message);
                 return null;
             }
             finally

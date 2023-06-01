@@ -81,6 +81,12 @@
     <Compile Include="Account.cs" />
     <Compile Include="AccountTypes.cs" />
     <Compile Include="Admin.cs" />
+    <Compile Include="ClientMainPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ClientMainPage.Designer.cs">
+      <DependentUpon>ClientMainPage.cs</DependentUpon>
+    </Compile>
     <Compile Include="Data.cs" />
     <Compile Include="Firstpage.cs">
       <SubType>Form</SubType>
@@ -111,6 +117,9 @@
     </Compile>
     <EmbeddedResource Include="AanmeldPage.resx">
       <DependentUpon>AanmeldPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ClientMainPage.resx">
+      <DependentUpon>ClientMainPage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Firstpage.resx">
       <DependentUpon>Firstpage.cs</DependentUpon>

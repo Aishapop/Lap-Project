@@ -88,10 +88,9 @@ namespace EOB
                 // Validate input (e.g., check for empty fields, validate email format, etc.)
 
                 // Store the account information in the database
-                Data data  = new Data();
                 User user = new User(firstname, lastname,password, email,imageData);
 
-                MessageBox.Show("Account created successfully!");
+                FormUtils.OpenForm(new ClientMainPage(email, password));
 
                 // Clear the input fields
                 FirstName.Clear();
@@ -118,14 +117,14 @@ namespace EOB
             if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password) ||
                 string.IsNullOrEmpty(firstname) || string.IsNullOrEmpty(lastname) || string.IsNullOrEmpty(picturelocation))
             {
-                MessageBox.Show("Please fill in all the fields.");
+                MessageBox.Show("Please fill in all the fields!");
                 return false;
             }
 
             // Validate email format
             if (!IsValidEmail(email))
             {
-                MessageBox.Show("Please enter a valid email address.");
+                MessageBox.Show("Please enter a valid email address");
                 return false;
             }
 

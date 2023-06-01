@@ -12,13 +12,12 @@ namespace EOB
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
-
         private static Form currentForm;
         private static bool isRunning = false;
 
         [STAThread]
         static void Main()
-        {
+        {          
             if (!isRunning)
             {
                 isRunning = true; // Set the flag to indicate that the application is running
@@ -27,20 +26,12 @@ namespace EOB
                 FormUtils.OpenForm(new Firstpage());
                 Application.Run();
                 isRunning = false; // Reset the flag when the application is closed
-            }
-
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            OpenForm(new Firstpage());
-            Application.Run(new Firstpage());
-
-
-            /*byte[] imageData = System.IO.File.ReadAllBytes("C:\\Users\\aisha\\Logo.png");
-
-
+            }           
+            /*
+            byte[] imageData = System.IO.File.ReadAllBytes("C:\\Users\\aisha\\Logo.png");
+           
             User Aisha = new User("Aisha", "Kafita", "123", "aisha@gmail.com", imageData);
-
-
+           
             User Lili = new User("Lili", "O'Branm1", "lili456", "lili456@gmail.com", imageData);
 
 
@@ -59,23 +50,21 @@ namespace EOB
             /*data.InsertAutomaticTransaction(zichtrekening, "2023-10-02", "2023-11-01", 100);*/
 
             /*Transaction tran = new Transaction(zichtrekening, zichtrekening2, 200);*/
-
+            /*
 
             Data data = new Data();
 
-            /*Account account = data.SelectAccountBynr(252830839);
+            Account account = data.SelectAccountBynr(252830839);
             Account account2 = data.SelectAccountBynr(416451126);
 
             Console.WriteLine(account.Balance +" "+ account2.Balance);
 
 
-            Console.WriteLine(account.Transactions);*/
+            Console.WriteLine(account.Transactions);
+            */
 
 
-            foreach (User u in data.SelectAllUser())
-            {
-                Console.WriteLine(u.Firstname);
-            }
+
 
 
 
@@ -117,5 +106,6 @@ namespace EOB
         {
             Program.OpenForm(form);  // Call the OpenForm function from Program class
         }
+        
     }
 }

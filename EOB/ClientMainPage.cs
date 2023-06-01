@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.IO;
 using System.Linq;
 using System.Security.AccessControl;
@@ -26,7 +27,7 @@ namespace EOB
             this.Password = password;
         }
 
-        private void ProfilePicture_Click(object sender, EventArgs e)
+        private void ProfilePicturePictureBox_Click(object sender, EventArgs e)
         {
             Data data = new Data();
             User user = data.SelectUSerIfExist(Email,Password);
@@ -115,9 +116,6 @@ namespace EOB
                 command.Dispose();
                 connection.Close();
             }
-            
-
-            
         }
 
         private void ZichtrekeningBalancesListView_SelectedIndexChanged(object sender, EventArgs e)

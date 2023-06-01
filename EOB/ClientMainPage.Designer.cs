@@ -113,7 +113,7 @@
             this.ProfilePicturePictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.ProfilePicturePictureBox.TabIndex = 1;
             this.ProfilePicturePictureBox.TabStop = false;
-            this.ProfilePicturePictureBox.Click += new System.EventHandler(this.ProfilePicture_Click);
+            this.ProfilePicturePictureBox.Click += new System.EventHandler(this.ProfilePicturePictureBox_Click);
             // 
             // Logo
             // 

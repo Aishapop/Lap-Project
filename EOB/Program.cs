@@ -23,7 +23,7 @@ namespace EOB
                 isRunning = true; // Set the flag to indicate that the application is running
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
-                FormUtils.OpenForm(new AanmeldPage());
+                FormUtils.OpenForm(new Firstpage());
                 Application.Run();
                 isRunning = false; // Reset the flag when the application is closed
             }           
@@ -50,7 +50,7 @@ namespace EOB
             /*data.InsertAutomaticTransaction(zichtrekening, "2023-10-02", "2023-11-01", 100);*/
 
             /*Transaction tran = new Transaction(zichtrekening, zichtrekening2, 200);*/
-
+            /*
 
             Data data = new Data();
 
@@ -61,6 +61,7 @@ namespace EOB
 
 
             Console.WriteLine(account.Transactions);
+            */
 
 
 

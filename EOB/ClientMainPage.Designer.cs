@@ -42,7 +42,10 @@
             this.SpaarrekeningHistoryButton = new System.Windows.Forms.Button();
             this.ZichtrekeningBalancesListView = new System.Windows.Forms.ListView();
             this.ZichtrekeningNr = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Balance = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.BalanceZichtrekening = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.SpaarrekeningBalancesListView = new System.Windows.Forms.ListView();
+            this.SpaarrekeningNr = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.BalanceSpaarrekening = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.panel1.SuspendLayout();
             this.OverschrijvingenDropDown.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ProfilePicturePictureBox)).BeginInit();
@@ -151,6 +154,7 @@
             this.ZichtrekeningHistoryButton.TabIndex = 5;
             this.ZichtrekeningHistoryButton.Text = "HISTORY";
             this.ZichtrekeningHistoryButton.UseVisualStyleBackColor = true;
+            this.ZichtrekeningHistoryButton.Click += new System.EventHandler(this.ZichtrekeningHistoryButton_Click);
             // 
             // SpaarrekeningHistoryButton
             // 
@@ -160,14 +164,15 @@
             this.SpaarrekeningHistoryButton.TabIndex = 6;
             this.SpaarrekeningHistoryButton.Text = "HISTORY";
             this.SpaarrekeningHistoryButton.UseVisualStyleBackColor = true;
+            this.SpaarrekeningHistoryButton.Click += new System.EventHandler(this.SpaarrekeningHistoryButton_Click);
             // 
             // ZichtrekeningBalancesListView
             // 
             this.ZichtrekeningBalancesListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.ZichtrekeningNr,
-            this.Balance});
+            this.BalanceZichtrekening});
             this.ZichtrekeningBalancesListView.HideSelection = false;
-            this.ZichtrekeningBalancesListView.Location = new System.Drawing.Point(12, 226);
+            this.ZichtrekeningBalancesListView.Location = new System.Drawing.Point(12, 225);
             this.ZichtrekeningBalancesListView.Name = "ZichtrekeningBalancesListView";
             this.ZichtrekeningBalancesListView.Size = new System.Drawing.Size(228, 118);
             this.ZichtrekeningBalancesListView.TabIndex = 7;
@@ -180,16 +185,41 @@
             this.ZichtrekeningNr.Text = "ZichtrekeningNr";
             this.ZichtrekeningNr.Width = 99;
             // 
-            // Balance
+            // BalanceZichtrekening
             // 
-            this.Balance.Text = "Balance €";
-            this.Balance.Width = 72;
+            this.BalanceZichtrekening.Text = "Balance €";
+            this.BalanceZichtrekening.Width = 72;
+            // 
+            // SpaarrekeningBalancesListView
+            // 
+            this.SpaarrekeningBalancesListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.SpaarrekeningNr,
+            this.BalanceSpaarrekening});
+            this.SpaarrekeningBalancesListView.HideSelection = false;
+            this.SpaarrekeningBalancesListView.Location = new System.Drawing.Point(306, 225);
+            this.SpaarrekeningBalancesListView.Name = "SpaarrekeningBalancesListView";
+            this.SpaarrekeningBalancesListView.Size = new System.Drawing.Size(228, 118);
+            this.SpaarrekeningBalancesListView.TabIndex = 8;
+            this.SpaarrekeningBalancesListView.UseCompatibleStateImageBehavior = false;
+            this.SpaarrekeningBalancesListView.View = System.Windows.Forms.View.Details;
+            this.SpaarrekeningBalancesListView.SelectedIndexChanged += new System.EventHandler(this.SpaarrekeningBalancesListView_SelectedIndexChanged);
+            // 
+            // SpaarrekeningNr
+            // 
+            this.SpaarrekeningNr.Text = "SpaarrekeningNr";
+            this.SpaarrekeningNr.Width = 99;
+            // 
+            // BalanceSpaarrekening
+            // 
+            this.BalanceSpaarrekening.Text = "Balance €";
+            this.BalanceSpaarrekening.Width = 72;
             // 
             // ClientMainPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(546, 581);
+            this.Controls.Add(this.SpaarrekeningBalancesListView);
             this.Controls.Add(this.ZichtrekeningBalancesListView);
             this.Controls.Add(this.SpaarrekeningHistoryButton);
             this.Controls.Add(this.ZichtrekeningHistoryButton);
@@ -226,6 +256,9 @@
         private System.Windows.Forms.Button SpaarrekeningHistoryButton;
         private System.Windows.Forms.ListView ZichtrekeningBalancesListView;
         private System.Windows.Forms.ColumnHeader ZichtrekeningNr;
-        private System.Windows.Forms.ColumnHeader Balance;
+        private System.Windows.Forms.ColumnHeader BalanceZichtrekening;
+        private System.Windows.Forms.ListView SpaarrekeningBalancesListView;
+        private System.Windows.Forms.ColumnHeader SpaarrekeningNr;
+        private System.Windows.Forms.ColumnHeader BalanceSpaarrekening;
     }
 }

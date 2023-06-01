@@ -19,7 +19,6 @@ namespace EOB
     {
         private string Email;
         private string Password;
-        private string UserId;
         public ClientMainPage(string email, string password) 
         {
             InitializeComponent();
@@ -88,12 +87,19 @@ namespace EOB
                 {
                     if (Convert.ToInt32(row["User_id"]) == user.ID)
                     {
-                        if (Convert.ToInt32(row["SoortRekening_id"]) == '1')
+                        if (Convert.ToInt32(row["SoortRekening_id"]) == 1)
                         {
                             ListViewItem item = new ListViewItem(row["Rekening_nr"].ToString());
                             item.SubItems.Add(row["StartBedrag"].ToString());
 
                             ZichtrekeningBalancesListView.Items.Add(item);
+                        }
+                        else if (Convert.ToInt32(row["SoortRekening_id"]) == 2)
+                        {
+                            ListViewItem item = new ListViewItem(row["Rekening_nr"].ToString());
+                            item.SubItems.Add(row["StartBedrag"].ToString());
+
+                            SpaarrekeningBalancesListView.Items.Add(item);
                         }
                     }
                 }
@@ -115,6 +121,21 @@ namespace EOB
         }
 
         private void ZichtrekeningBalancesListView_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void SpaarrekeningBalancesListView_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void SpaarrekeningHistoryButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ZichtrekeningHistoryButton_Click(object sender, EventArgs e)
         {
 
         }

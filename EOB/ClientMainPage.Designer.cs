@@ -30,19 +30,22 @@
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.OverschrijvingenDropDown = new System.Windows.Forms.ToolStrip();
-            this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
-            this.ProfilePicture = new System.Windows.Forms.PictureBox();
-            this.Logo = new System.Windows.Forms.PictureBox();
             this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
             this.automatischeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.normaleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
+            this.ProfilePicturePictureBox = new System.Windows.Forms.PictureBox();
+            this.Logo = new System.Windows.Forms.PictureBox();
             this.ZichtrekeningenLabel = new System.Windows.Forms.Label();
             this.SpaarrekeningenLabel = new System.Windows.Forms.Label();
-            this.BalanceLabel = new System.Windows.Forms.Label();
-            this.BalanceOfZichtrekeningLabel = new System.Windows.Forms.Label();
+            this.ZichtrekeningHistoryButton = new System.Windows.Forms.Button();
+            this.SpaarrekeningHistoryButton = new System.Windows.Forms.Button();
+            this.ZichtrekeningBalancesListView = new System.Windows.Forms.ListView();
+            this.ZichtrekeningNr = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Balance = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.panel1.SuspendLayout();
             this.OverschrijvingenDropDown.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ProfilePicture)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ProfilePicturePictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Logo)).BeginInit();
             this.SuspendLayout();
             // 
@@ -50,11 +53,11 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.Controls.Add(this.OverschrijvingenDropDown);
-            this.panel1.Controls.Add(this.ProfilePicture);
+            this.panel1.Controls.Add(this.ProfilePicturePictureBox);
             this.panel1.Controls.Add(this.Logo);
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(800, 101);
+            this.panel1.Size = new System.Drawing.Size(547, 101);
             this.panel1.TabIndex = 0;
             // 
             // OverschrijvingenDropDown
@@ -68,31 +71,6 @@
             this.OverschrijvingenDropDown.Size = new System.Drawing.Size(137, 25);
             this.OverschrijvingenDropDown.TabIndex = 4;
             this.OverschrijvingenDropDown.Text = "Overschrijvingen";
-            // 
-            // toolStripLabel1
-            // 
-            this.toolStripLabel1.Name = "toolStripLabel1";
-            this.toolStripLabel1.Size = new System.Drawing.Size(96, 22);
-            this.toolStripLabel1.Text = "Overschrijvingen";
-            // 
-            // ProfilePicture
-            // 
-            this.ProfilePicture.Location = new System.Drawing.Point(713, 12);
-            this.ProfilePicture.Name = "ProfilePicture";
-            this.ProfilePicture.Size = new System.Drawing.Size(75, 75);
-            this.ProfilePicture.TabIndex = 1;
-            this.ProfilePicture.TabStop = false;
-            this.ProfilePicture.Click += new System.EventHandler(this.ProfilePicture_Click);
-            // 
-            // Logo
-            // 
-            this.Logo.Image = global::EOB.Properties.Resources.EOB_Logo;
-            this.Logo.Location = new System.Drawing.Point(0, 0);
-            this.Logo.Name = "Logo";
-            this.Logo.Size = new System.Drawing.Size(100, 100);
-            this.Logo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.Logo.TabIndex = 0;
-            this.Logo.TabStop = false;
             // 
             // toolStripDropDownButton1
             // 
@@ -109,14 +87,40 @@
             // automatischeToolStripMenuItem
             // 
             this.automatischeToolStripMenuItem.Name = "automatischeToolStripMenuItem";
-            this.automatischeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.automatischeToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.automatischeToolStripMenuItem.Text = "Automatische";
             // 
             // normaleToolStripMenuItem
             // 
             this.normaleToolStripMenuItem.Name = "normaleToolStripMenuItem";
-            this.normaleToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.normaleToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.normaleToolStripMenuItem.Text = "Normale";
+            // 
+            // toolStripLabel1
+            // 
+            this.toolStripLabel1.Name = "toolStripLabel1";
+            this.toolStripLabel1.Size = new System.Drawing.Size(96, 22);
+            this.toolStripLabel1.Text = "Overschrijvingen";
+            // 
+            // ProfilePicturePictureBox
+            // 
+            this.ProfilePicturePictureBox.Location = new System.Drawing.Point(459, 12);
+            this.ProfilePicturePictureBox.Name = "ProfilePicturePictureBox";
+            this.ProfilePicturePictureBox.Size = new System.Drawing.Size(75, 75);
+            this.ProfilePicturePictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.ProfilePicturePictureBox.TabIndex = 1;
+            this.ProfilePicturePictureBox.TabStop = false;
+            this.ProfilePicturePictureBox.Click += new System.EventHandler(this.ProfilePicture_Click);
+            // 
+            // Logo
+            // 
+            this.Logo.Image = global::EOB.Properties.Resources.EOB_Logo;
+            this.Logo.Location = new System.Drawing.Point(0, 0);
+            this.Logo.Name = "Logo";
+            this.Logo.Size = new System.Drawing.Size(100, 100);
+            this.Logo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.Logo.TabIndex = 0;
+            this.Logo.TabStop = false;
             // 
             // ZichtrekeningenLabel
             // 
@@ -126,53 +130,80 @@
             this.ZichtrekeningenLabel.Size = new System.Drawing.Size(110, 13);
             this.ZichtrekeningenLabel.TabIndex = 1;
             this.ZichtrekeningenLabel.Text = "ZICHTREKENINGEN";
+            this.ZichtrekeningenLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // SpaarrekeningenLabel
             // 
             this.SpaarrekeningenLabel.AutoSize = true;
-            this.SpaarrekeningenLabel.Location = new System.Drawing.Point(281, 140);
+            this.SpaarrekeningenLabel.Location = new System.Drawing.Point(371, 141);
             this.SpaarrekeningenLabel.Name = "SpaarrekeningenLabel";
             this.SpaarrekeningenLabel.Size = new System.Drawing.Size(114, 13);
             this.SpaarrekeningenLabel.TabIndex = 2;
             this.SpaarrekeningenLabel.Text = "SPAARREKENINGEN";
+            this.SpaarrekeningenLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.SpaarrekeningenLabel.Click += new System.EventHandler(this.Spaarrekeningen_Click);
             // 
-            // BalanceLabel
+            // ZichtrekeningHistoryButton
             // 
-            this.BalanceLabel.AutoSize = true;
-            this.BalanceLabel.Location = new System.Drawing.Point(46, 196);
-            this.BalanceLabel.Name = "BalanceLabel";
-            this.BalanceLabel.Size = new System.Drawing.Size(46, 13);
-            this.BalanceLabel.TabIndex = 3;
-            this.BalanceLabel.Text = "Balance";
+            this.ZichtrekeningHistoryButton.Location = new System.Drawing.Point(46, 157);
+            this.ZichtrekeningHistoryButton.Name = "ZichtrekeningHistoryButton";
+            this.ZichtrekeningHistoryButton.Size = new System.Drawing.Size(105, 25);
+            this.ZichtrekeningHistoryButton.TabIndex = 5;
+            this.ZichtrekeningHistoryButton.Text = "HISTORY";
+            this.ZichtrekeningHistoryButton.UseVisualStyleBackColor = true;
             // 
-            // BalanceOfZichtrekeningLabel
+            // SpaarrekeningHistoryButton
             // 
-            this.BalanceOfZichtrekeningLabel.AutoSize = true;
-            this.BalanceOfZichtrekeningLabel.Location = new System.Drawing.Point(46, 213);
-            this.BalanceOfZichtrekeningLabel.Name = "BalanceOfZichtrekeningLabel";
-            this.BalanceOfZichtrekeningLabel.Size = new System.Drawing.Size(35, 13);
-            this.BalanceOfZichtrekeningLabel.TabIndex = 4;
-            this.BalanceOfZichtrekeningLabel.Text = "label1";
-            this.BalanceOfZichtrekeningLabel.Click += new System.EventHandler(this.BalanceOfZichtrekeningLabel_Click);
+            this.SpaarrekeningHistoryButton.Location = new System.Drawing.Point(374, 157);
+            this.SpaarrekeningHistoryButton.Name = "SpaarrekeningHistoryButton";
+            this.SpaarrekeningHistoryButton.Size = new System.Drawing.Size(105, 25);
+            this.SpaarrekeningHistoryButton.TabIndex = 6;
+            this.SpaarrekeningHistoryButton.Text = "HISTORY";
+            this.SpaarrekeningHistoryButton.UseVisualStyleBackColor = true;
+            // 
+            // ZichtrekeningBalancesListView
+            // 
+            this.ZichtrekeningBalancesListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.ZichtrekeningNr,
+            this.Balance});
+            this.ZichtrekeningBalancesListView.HideSelection = false;
+            this.ZichtrekeningBalancesListView.Location = new System.Drawing.Point(12, 226);
+            this.ZichtrekeningBalancesListView.Name = "ZichtrekeningBalancesListView";
+            this.ZichtrekeningBalancesListView.Size = new System.Drawing.Size(228, 118);
+            this.ZichtrekeningBalancesListView.TabIndex = 7;
+            this.ZichtrekeningBalancesListView.UseCompatibleStateImageBehavior = false;
+            this.ZichtrekeningBalancesListView.View = System.Windows.Forms.View.Details;
+            this.ZichtrekeningBalancesListView.SelectedIndexChanged += new System.EventHandler(this.ZichtrekeningBalancesListView_SelectedIndexChanged);
+            // 
+            // ZichtrekeningNr
+            // 
+            this.ZichtrekeningNr.Text = "ZichtrekeningNr";
+            this.ZichtrekeningNr.Width = 99;
+            // 
+            // Balance
+            // 
+            this.Balance.Text = "Balance €";
+            this.Balance.Width = 72;
             // 
             // ClientMainPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.BalanceOfZichtrekeningLabel);
-            this.Controls.Add(this.BalanceLabel);
+            this.ClientSize = new System.Drawing.Size(546, 581);
+            this.Controls.Add(this.ZichtrekeningBalancesListView);
+            this.Controls.Add(this.SpaarrekeningHistoryButton);
+            this.Controls.Add(this.ZichtrekeningHistoryButton);
             this.Controls.Add(this.SpaarrekeningenLabel);
             this.Controls.Add(this.ZichtrekeningenLabel);
             this.Controls.Add(this.panel1);
             this.Name = "ClientMainPage";
             this.Text = "ClientMainPage";
+            this.Load += new System.EventHandler(this.ClientMainPage_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.OverschrijvingenDropDown.ResumeLayout(false);
             this.OverschrijvingenDropDown.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ProfilePicture)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ProfilePicturePictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Logo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -183,7 +214,7 @@
 
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox Logo;
-        private System.Windows.Forms.PictureBox ProfilePicture;
+        private System.Windows.Forms.PictureBox ProfilePicturePictureBox;
         private System.Windows.Forms.ToolStrip OverschrijvingenDropDown;
         private System.Windows.Forms.ToolStripLabel toolStripLabel1;
         private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton1;
@@ -191,7 +222,10 @@
         private System.Windows.Forms.ToolStripMenuItem normaleToolStripMenuItem;
         private System.Windows.Forms.Label ZichtrekeningenLabel;
         private System.Windows.Forms.Label SpaarrekeningenLabel;
-        private System.Windows.Forms.Label BalanceLabel;
-        private System.Windows.Forms.Label BalanceOfZichtrekeningLabel;
+        private System.Windows.Forms.Button ZichtrekeningHistoryButton;
+        private System.Windows.Forms.Button SpaarrekeningHistoryButton;
+        private System.Windows.Forms.ListView ZichtrekeningBalancesListView;
+        private System.Windows.Forms.ColumnHeader ZichtrekeningNr;
+        private System.Windows.Forms.ColumnHeader Balance;
     }
 }

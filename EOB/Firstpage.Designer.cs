@@ -69,6 +69,7 @@ namespace EOB
             this.adminButton.TabIndex = 2;
             this.adminButton.Text = "Admin";
             this.adminButton.UseVisualStyleBackColor = true;
+            this.adminButton.Click += new System.EventHandler(this.adminButton_Click);
             // 
             // pictureBox1
             // 
@@ -84,6 +85,7 @@ namespace EOB
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.SlateGray;
             this.ClientSize = new System.Drawing.Size(593, 469);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.adminButton);

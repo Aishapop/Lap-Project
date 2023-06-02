@@ -31,5 +31,10 @@ namespace EOB
         {
             FormUtils.OpenForm(new AanmeldPage());
         }
+
+        private void adminButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

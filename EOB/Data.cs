@@ -40,7 +40,7 @@ namespace EOB
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                MessageBox.Show(ex.Message);
             }
             finally
             {
@@ -163,18 +163,36 @@ namespace EOB
             }
             return -1;
         }
-        public int InsertAutomaticTransaction(Account account,string startingdate,string endingdate,int amount)
+        public int InsertAutomaticTransaction(Account account,string startingdate,string termijn, string endingdate,int amount)
         {
             try
             {
-                string query = $"INSERT INTO automatic_transfer(StartDatum,Einddatum,Termijn_id,Bedrag,rekening_id) " +
+                if(termijn == "wekelijks")
+                {
+                    string query = $"INSERT INTO automatic_transfer(StartDatum,Einddatum,Termijn_id,Bedrag,rekening_id) " +
                     $"VALUES('{startingdate}','{endingdate}',{1},{amount},{account.AccountNumber});";
-
-                return Insert(query);
+                    return Insert(query);
+                }
+                else if(termijn == "maandelijks")
+                {
+                    string query = $"INSERT INTO automatic_transfer(StartDatum,Einddatum,Termijn_id,Bedrag,rekening_id) " +
+                    $"VALUES('{startingdate}','{endingdate}',{2},{amount},{account.AccountNumber});";
+                    return Insert(query);
+                }
+                else if(termijn == "jaarlijks")
+                {
+                    string query = $"INSERT INTO automatic_transfer(StartDatum,Einddatum,Termijn_id,Bedrag,rekening_id) " +
+                    $"VALUES('{startingdate}','{endingdate}',{3},{amount},{account.AccountNumber});";
+                    return Insert(query);
+                }
+                else
+                {
+                    MessageBox.Show("Het ingevoerde termijn is geen optie");
+                }                        
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex);
+                MessageBox.Show(ex.Message);
             }
             return -1;
         }

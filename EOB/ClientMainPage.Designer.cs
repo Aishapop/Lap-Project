@@ -28,12 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.OverschrijvingenDropDown = new System.Windows.Forms.ToolStrip();
-            this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
-            this.automatischeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.normaleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.ProfilePicturePictureBox = new System.Windows.Forms.PictureBox();
             this.Logo = new System.Windows.Forms.PictureBox();
             this.ZichtrekeningenLabel = new System.Windows.Forms.Label();
@@ -46,16 +42,27 @@
             this.SpaarrekeningBalancesListView = new System.Windows.Forms.ListView();
             this.SpaarrekeningNr = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.BalanceSpaarrekening = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.DropDownMenuOfPfp = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.passwordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.accountToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.logOutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.OverschrijvingenDropdownMenu = new System.Windows.Forms.Button();
+            this.DropDownMenuOfOverschrijvingen = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.automatischToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.normaalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.DepositButton = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
-            this.OverschrijvingenDropDown.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ProfilePicturePictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Logo)).BeginInit();
+            this.DropDownMenuOfPfp.SuspendLayout();
+            this.DropDownMenuOfOverschrijvingen.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.Controls.Add(this.OverschrijvingenDropDown);
+            this.panel1.BackColor = System.Drawing.Color.SteelBlue;
+            this.panel1.Controls.Add(this.DepositButton);
+            this.panel1.Controls.Add(this.OverschrijvingenDropdownMenu);
             this.panel1.Controls.Add(this.ProfilePicturePictureBox);
             this.panel1.Controls.Add(this.Logo);
             this.panel1.Location = new System.Drawing.Point(0, 0);
@@ -63,50 +70,9 @@
             this.panel1.Size = new System.Drawing.Size(547, 101);
             this.panel1.TabIndex = 0;
             // 
-            // OverschrijvingenDropDown
-            // 
-            this.OverschrijvingenDropDown.Dock = System.Windows.Forms.DockStyle.None;
-            this.OverschrijvingenDropDown.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripDropDownButton1,
-            this.toolStripLabel1});
-            this.OverschrijvingenDropDown.Location = new System.Drawing.Point(135, 12);
-            this.OverschrijvingenDropDown.Name = "OverschrijvingenDropDown";
-            this.OverschrijvingenDropDown.Size = new System.Drawing.Size(137, 25);
-            this.OverschrijvingenDropDown.TabIndex = 4;
-            this.OverschrijvingenDropDown.Text = "Overschrijvingen";
-            // 
-            // toolStripDropDownButton1
-            // 
-            this.toolStripDropDownButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripDropDownButton1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.automatischeToolStripMenuItem,
-            this.normaleToolStripMenuItem});
-            this.toolStripDropDownButton1.Image = global::EOB.Properties.Resources.EOB_Logo;
-            this.toolStripDropDownButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripDropDownButton1.Name = "toolStripDropDownButton1";
-            this.toolStripDropDownButton1.Size = new System.Drawing.Size(29, 22);
-            this.toolStripDropDownButton1.Text = "toolStripDropDownButton1";
-            // 
-            // automatischeToolStripMenuItem
-            // 
-            this.automatischeToolStripMenuItem.Name = "automatischeToolStripMenuItem";
-            this.automatischeToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
-            this.automatischeToolStripMenuItem.Text = "Automatische";
-            // 
-            // normaleToolStripMenuItem
-            // 
-            this.normaleToolStripMenuItem.Name = "normaleToolStripMenuItem";
-            this.normaleToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
-            this.normaleToolStripMenuItem.Text = "Normale";
-            // 
-            // toolStripLabel1
-            // 
-            this.toolStripLabel1.Name = "toolStripLabel1";
-            this.toolStripLabel1.Size = new System.Drawing.Size(96, 22);
-            this.toolStripLabel1.Text = "Overschrijvingen";
-            // 
             // ProfilePicturePictureBox
             // 
+            this.ProfilePicturePictureBox.ContextMenuStrip = this.DropDownMenuOfPfp;
             this.ProfilePicturePictureBox.Location = new System.Drawing.Point(459, 12);
             this.ProfilePicturePictureBox.Name = "ProfilePicturePictureBox";
             this.ProfilePicturePictureBox.Size = new System.Drawing.Size(75, 75);
@@ -214,10 +180,82 @@
             this.BalanceSpaarrekening.Text = "Balance €";
             this.BalanceSpaarrekening.Width = 72;
             // 
+            // DropDownMenuOfPfp
+            // 
+            this.DropDownMenuOfPfp.BackColor = System.Drawing.Color.SlateGray;
+            this.DropDownMenuOfPfp.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.passwordToolStripMenuItem,
+            this.accountToolStripMenuItem,
+            this.logOutToolStripMenuItem});
+            this.DropDownMenuOfPfp.Name = "DropDownMenuOfPfp";
+            this.DropDownMenuOfPfp.Size = new System.Drawing.Size(181, 92);
+            // 
+            // passwordToolStripMenuItem
+            // 
+            this.passwordToolStripMenuItem.Name = "passwordToolStripMenuItem";
+            this.passwordToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.passwordToolStripMenuItem.Text = "Password";
+            // 
+            // accountToolStripMenuItem
+            // 
+            this.accountToolStripMenuItem.Name = "accountToolStripMenuItem";
+            this.accountToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.accountToolStripMenuItem.Text = "Account";
+            // 
+            // logOutToolStripMenuItem
+            // 
+            this.logOutToolStripMenuItem.Name = "logOutToolStripMenuItem";
+            this.logOutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.logOutToolStripMenuItem.Text = "Log out";
+            this.logOutToolStripMenuItem.Click += new System.EventHandler(this.logOutToolStripMenuItem_Click);
+            // 
+            // OverschrijvingenDropdownMenu
+            // 
+            this.OverschrijvingenDropdownMenu.ContextMenuStrip = this.DropDownMenuOfOverschrijvingen;
+            this.OverschrijvingenDropdownMenu.Location = new System.Drawing.Point(140, 12);
+            this.OverschrijvingenDropdownMenu.Name = "OverschrijvingenDropdownMenu";
+            this.OverschrijvingenDropdownMenu.Size = new System.Drawing.Size(120, 25);
+            this.OverschrijvingenDropdownMenu.TabIndex = 2;
+            this.OverschrijvingenDropdownMenu.Text = "Overschrijvingen";
+            this.OverschrijvingenDropdownMenu.UseVisualStyleBackColor = true;
+            this.OverschrijvingenDropdownMenu.Click += new System.EventHandler(this.OverschrijvingenDropdownMenu_Click);
+            // 
+            // DropDownMenuOfOverschrijvingen
+            // 
+            this.DropDownMenuOfOverschrijvingen.BackColor = System.Drawing.Color.SlateGray;
+            this.DropDownMenuOfOverschrijvingen.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.automatischToolStripMenuItem,
+            this.normaalToolStripMenuItem});
+            this.DropDownMenuOfOverschrijvingen.Name = "DropDownMenuOfOverschrijvingen";
+            this.DropDownMenuOfOverschrijvingen.Size = new System.Drawing.Size(143, 48);
+            // 
+            // automatischToolStripMenuItem
+            // 
+            this.automatischToolStripMenuItem.Name = "automatischToolStripMenuItem";
+            this.automatischToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.automatischToolStripMenuItem.Text = "Automatisch";
+            this.automatischToolStripMenuItem.Click += new System.EventHandler(this.automatischToolStripMenuItem_Click);
+            // 
+            // normaalToolStripMenuItem
+            // 
+            this.normaalToolStripMenuItem.Name = "normaalToolStripMenuItem";
+            this.normaalToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.normaalToolStripMenuItem.Text = "Normaal";
+            // 
+            // DepositButton
+            // 
+            this.DepositButton.Location = new System.Drawing.Point(294, 12);
+            this.DepositButton.Name = "DepositButton";
+            this.DepositButton.Size = new System.Drawing.Size(120, 25);
+            this.DepositButton.TabIndex = 3;
+            this.DepositButton.Text = "Deposit";
+            this.DepositButton.UseVisualStyleBackColor = true;
+            // 
             // ClientMainPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.SlateGray;
             this.ClientSize = new System.Drawing.Size(546, 581);
             this.Controls.Add(this.SpaarrekeningBalancesListView);
             this.Controls.Add(this.ZichtrekeningBalancesListView);
@@ -226,15 +264,15 @@
             this.Controls.Add(this.SpaarrekeningenLabel);
             this.Controls.Add(this.ZichtrekeningenLabel);
             this.Controls.Add(this.panel1);
+            this.ForeColor = System.Drawing.Color.Black;
             this.Name = "ClientMainPage";
             this.Text = "ClientMainPage";
             this.Load += new System.EventHandler(this.ClientMainPage_Load);
             this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            this.OverschrijvingenDropDown.ResumeLayout(false);
-            this.OverschrijvingenDropDown.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ProfilePicturePictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Logo)).EndInit();
+            this.DropDownMenuOfPfp.ResumeLayout(false);
+            this.DropDownMenuOfOverschrijvingen.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -245,11 +283,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox Logo;
         private System.Windows.Forms.PictureBox ProfilePicturePictureBox;
-        private System.Windows.Forms.ToolStrip OverschrijvingenDropDown;
-        private System.Windows.Forms.ToolStripLabel toolStripLabel1;
-        private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton1;
-        private System.Windows.Forms.ToolStripMenuItem automatischeToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem normaleToolStripMenuItem;
         private System.Windows.Forms.Label ZichtrekeningenLabel;
         private System.Windows.Forms.Label SpaarrekeningenLabel;
         private System.Windows.Forms.Button ZichtrekeningHistoryButton;
@@ -260,5 +293,14 @@
         private System.Windows.Forms.ListView SpaarrekeningBalancesListView;
         private System.Windows.Forms.ColumnHeader SpaarrekeningNr;
         private System.Windows.Forms.ColumnHeader BalanceSpaarrekening;
+        private System.Windows.Forms.ContextMenuStrip DropDownMenuOfPfp;
+        private System.Windows.Forms.ToolStripMenuItem passwordToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem accountToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem logOutToolStripMenuItem;
+        private System.Windows.Forms.Button OverschrijvingenDropdownMenu;
+        private System.Windows.Forms.ContextMenuStrip DropDownMenuOfOverschrijvingen;
+        private System.Windows.Forms.ToolStripMenuItem automatischToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem normaalToolStripMenuItem;
+        private System.Windows.Forms.Button DepositButton;
     }
 }

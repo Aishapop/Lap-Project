@@ -50,7 +50,7 @@
             // 
             // EmailText
             // 
-            this.EmailText.Location = new System.Drawing.Point(165, 166);
+            this.EmailText.Location = new System.Drawing.Point(121, 188);
             this.EmailText.Name = "EmailText";
             this.EmailText.Size = new System.Drawing.Size(175, 20);
             this.EmailText.TabIndex = 2;
@@ -58,7 +58,7 @@
             // 
             // PasswordText
             // 
-            this.PasswordText.Location = new System.Drawing.Point(165, 234);
+            this.PasswordText.Location = new System.Drawing.Point(121, 236);
             this.PasswordText.Name = "PasswordText";
             this.PasswordText.Size = new System.Drawing.Size(175, 20);
             this.PasswordText.TabIndex = 3;
@@ -67,7 +67,7 @@
             // EmailLabel
             // 
             this.EmailLabel.AutoSize = true;
-            this.EmailLabel.Location = new System.Drawing.Point(166, 150);
+            this.EmailLabel.Location = new System.Drawing.Point(122, 172);
             this.EmailLabel.Name = "EmailLabel";
             this.EmailLabel.Size = new System.Drawing.Size(32, 13);
             this.EmailLabel.TabIndex = 4;
@@ -76,7 +76,7 @@
             // PasswordLabel
             // 
             this.PasswordLabel.AutoSize = true;
-            this.PasswordLabel.Location = new System.Drawing.Point(166, 218);
+            this.PasswordLabel.Location = new System.Drawing.Point(122, 220);
             this.PasswordLabel.Name = "PasswordLabel";
             this.PasswordLabel.Size = new System.Drawing.Size(53, 13);
             this.PasswordLabel.TabIndex = 5;
@@ -85,7 +85,7 @@
             // 
             // LoginButton
             // 
-            this.LoginButton.Location = new System.Drawing.Point(214, 288);
+            this.LoginButton.Location = new System.Drawing.Point(170, 290);
             this.LoginButton.Name = "LoginButton";
             this.LoginButton.Size = new System.Drawing.Size(75, 23);
             this.LoginButton.TabIndex = 6;
@@ -96,9 +96,9 @@
             // LogoPictureBox
             // 
             this.LogoPictureBox.Image = global::EOB.Properties.Resources.EOB_Logo;
-            this.LogoPictureBox.Location = new System.Drawing.Point(200, 10);
+            this.LogoPictureBox.Location = new System.Drawing.Point(121, 0);
             this.LogoPictureBox.Name = "LogoPictureBox";
-            this.LogoPictureBox.Size = new System.Drawing.Size(100, 100);
+            this.LogoPictureBox.Size = new System.Drawing.Size(171, 149);
             this.LogoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.LogoPictureBox.TabIndex = 7;
             this.LogoPictureBox.TabStop = false;
@@ -107,7 +107,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(484, 389);
+            this.BackColor = System.Drawing.Color.SlateGray;
+            this.ClientSize = new System.Drawing.Size(408, 371);
             this.Controls.Add(this.LogoPictureBox);
             this.Controls.Add(this.LoginButton);
             this.Controls.Add(this.PasswordLabel);

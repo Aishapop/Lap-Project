@@ -44,6 +44,8 @@
             this.VerifyPasswordLabel = new System.Windows.Forms.Label();
             this.PictureLocation = new System.Windows.Forms.TextBox();
             this.PictureLocationLabel = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // returnButton
@@ -58,7 +60,7 @@
             // 
             // FirstName
             // 
-            this.FirstName.Location = new System.Drawing.Point(254, 39);
+            this.FirstName.Location = new System.Drawing.Point(162, 151);
             this.FirstName.Name = "FirstName";
             this.FirstName.Size = new System.Drawing.Size(169, 20);
             this.FirstName.TabIndex = 1;
@@ -66,7 +68,7 @@
             // 
             // LastName
             // 
-            this.LastName.Location = new System.Drawing.Point(254, 82);
+            this.LastName.Location = new System.Drawing.Point(162, 194);
             this.LastName.Name = "LastName";
             this.LastName.Size = new System.Drawing.Size(169, 20);
             this.LastName.TabIndex = 2;
@@ -74,7 +76,7 @@
             // 
             // Email
             // 
-            this.Email.Location = new System.Drawing.Point(253, 131);
+            this.Email.Location = new System.Drawing.Point(161, 243);
             this.Email.Name = "Email";
             this.Email.Size = new System.Drawing.Size(169, 20);
             this.Email.TabIndex = 3;
@@ -82,7 +84,7 @@
             // 
             // Password
             // 
-            this.Password.Location = new System.Drawing.Point(253, 179);
+            this.Password.Location = new System.Drawing.Point(161, 291);
             this.Password.Name = "Password";
             this.Password.Size = new System.Drawing.Size(169, 20);
             this.Password.TabIndex = 4;
@@ -91,7 +93,7 @@
             // LabelLastName
             // 
             this.LabelLastName.AutoSize = true;
-            this.LabelLastName.Location = new System.Drawing.Point(251, 66);
+            this.LabelLastName.Location = new System.Drawing.Point(159, 178);
             this.LabelLastName.Name = "LabelLastName";
             this.LabelLastName.Size = new System.Drawing.Size(55, 13);
             this.LabelLastName.TabIndex = 6;
@@ -101,7 +103,7 @@
             // LabelEmail
             // 
             this.LabelEmail.AutoSize = true;
-            this.LabelEmail.Location = new System.Drawing.Point(251, 115);
+            this.LabelEmail.Location = new System.Drawing.Point(159, 227);
             this.LabelEmail.Name = "LabelEmail";
             this.LabelEmail.Size = new System.Drawing.Size(32, 13);
             this.LabelEmail.TabIndex = 7;
@@ -111,7 +113,7 @@
             // LabelPassword
             // 
             this.LabelPassword.AutoSize = true;
-            this.LabelPassword.Location = new System.Drawing.Point(250, 163);
+            this.LabelPassword.Location = new System.Drawing.Point(158, 275);
             this.LabelPassword.Name = "LabelPassword";
             this.LabelPassword.Size = new System.Drawing.Size(53, 13);
             this.LabelPassword.TabIndex = 8;
@@ -121,7 +123,7 @@
             // LabelFirstName
             // 
             this.LabelFirstName.AutoSize = true;
-            this.LabelFirstName.Location = new System.Drawing.Point(251, 23);
+            this.LabelFirstName.Location = new System.Drawing.Point(159, 135);
             this.LabelFirstName.Name = "LabelFirstName";
             this.LabelFirstName.Size = new System.Drawing.Size(54, 13);
             this.LabelFirstName.TabIndex = 9;
@@ -130,7 +132,7 @@
             // 
             // CreateAccountButton
             // 
-            this.CreateAccountButton.Location = new System.Drawing.Point(266, 360);
+            this.CreateAccountButton.Location = new System.Drawing.Point(174, 472);
             this.CreateAccountButton.Name = "CreateAccountButton";
             this.CreateAccountButton.Size = new System.Drawing.Size(133, 31);
             this.CreateAccountButton.TabIndex = 10;
@@ -140,7 +142,7 @@
             // 
             // ProfilePictureBtn
             // 
-            this.ProfilePictureBtn.Location = new System.Drawing.Point(282, 308);
+            this.ProfilePictureBtn.Location = new System.Drawing.Point(190, 420);
             this.ProfilePictureBtn.Name = "ProfilePictureBtn";
             this.ProfilePictureBtn.Size = new System.Drawing.Size(98, 23);
             this.ProfilePictureBtn.TabIndex = 11;
@@ -154,7 +156,7 @@
             // 
             // VerifyPasswordText
             // 
-            this.VerifyPasswordText.Location = new System.Drawing.Point(253, 227);
+            this.VerifyPasswordText.Location = new System.Drawing.Point(161, 339);
             this.VerifyPasswordText.Name = "VerifyPasswordText";
             this.VerifyPasswordText.Size = new System.Drawing.Size(169, 20);
             this.VerifyPasswordText.TabIndex = 12;
@@ -162,7 +164,7 @@
             // VerifyPasswordLabel
             // 
             this.VerifyPasswordLabel.AutoSize = true;
-            this.VerifyPasswordLabel.Location = new System.Drawing.Point(251, 211);
+            this.VerifyPasswordLabel.Location = new System.Drawing.Point(158, 323);
             this.VerifyPasswordLabel.Name = "VerifyPasswordLabel";
             this.VerifyPasswordLabel.Size = new System.Drawing.Size(113, 13);
             this.VerifyPasswordLabel.TabIndex = 13;
@@ -170,7 +172,7 @@
             // 
             // PictureLocation
             // 
-            this.PictureLocation.Location = new System.Drawing.Point(232, 282);
+            this.PictureLocation.Location = new System.Drawing.Point(140, 394);
             this.PictureLocation.Name = "PictureLocation";
             this.PictureLocation.Size = new System.Drawing.Size(205, 20);
             this.PictureLocation.TabIndex = 14;
@@ -179,17 +181,29 @@
             // PictureLocationLabel
             // 
             this.PictureLocationLabel.AutoSize = true;
-            this.PictureLocationLabel.Location = new System.Drawing.Point(251, 266);
+            this.PictureLocationLabel.Location = new System.Drawing.Point(159, 378);
             this.PictureLocationLabel.Name = "PictureLocationLabel";
             this.PictureLocationLabel.Size = new System.Drawing.Size(80, 13);
             this.PictureLocationLabel.TabIndex = 15;
             this.PictureLocationLabel.Text = "Picture location";
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::EOB.Properties.Resources.EOB_Logo;
+            this.pictureBox1.Location = new System.Drawing.Point(190, 12);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(100, 100);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 16;
+            this.pictureBox1.TabStop = false;
+            // 
             // WordKlantPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.BackColor = System.Drawing.Color.SlateGray;
+            this.ClientSize = new System.Drawing.Size(499, 520);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.PictureLocationLabel);
             this.Controls.Add(this.PictureLocation);
             this.Controls.Add(this.VerifyPasswordLabel);
@@ -205,9 +219,11 @@
             this.Controls.Add(this.LastName);
             this.Controls.Add(this.FirstName);
             this.Controls.Add(this.returnButton);
+            this.ForeColor = System.Drawing.Color.Black;
             this.Name = "WordKlantPage";
             this.Text = "WordKlantPage";
             this.Load += new System.EventHandler(this.WordKlantPage_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -231,5 +247,6 @@
         private System.Windows.Forms.Label VerifyPasswordLabel;
         private System.Windows.Forms.TextBox PictureLocation;
         private System.Windows.Forms.Label PictureLocationLabel;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

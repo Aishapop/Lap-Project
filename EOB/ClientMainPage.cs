@@ -29,14 +29,7 @@ namespace EOB
 
         private void ProfilePicturePictureBox_Click(object sender, EventArgs e)
         {
-            Data data = new Data();
-            User user = data.SelectUSerIfExist(Email,Password);
-            byte[] picture = user.ProfilePicture;
-            // Convert the blob data into an image
-            Image image = ConvertBlobToImage(picture);
-            // Assign the converted image to the PictureBox control
-            ProfilePicturePictureBox.Image = image;
-            ProfilePicturePictureBox.Refresh();
+            DropDownMenuOfPfp.Show(ProfilePicturePictureBox, new Point(0, ProfilePicturePictureBox.Height));
         }
         private Image ConvertBlobToImage(byte[] imageData)
         {
@@ -116,6 +109,19 @@ namespace EOB
                 command.Dispose();
                 connection.Close();
             }
+            Data data1 = new Data();
+            User user1 = data1.SelectUSerIfExist(Email, Password);
+            byte[] picture = user1.ProfilePicture;
+            // Convert the blob data into an image
+            Image image = ConvertBlobToImage(picture);
+            // Assign the converted image to the PictureBox control
+            ProfilePicturePictureBox.Image = image;
+            GraphicsPath path = new GraphicsPath();
+            path.AddEllipse(new RectangleF(0, 0, ProfilePicturePictureBox.Width, ProfilePicturePictureBox.Height));
+            ProfilePicturePictureBox.Region = new Region(path);
+
+            // Set the PictureBox background to transparent
+            ProfilePicturePictureBox.BackColor = Color.Transparent;
         }
 
         private void ZichtrekeningBalancesListView_SelectedIndexChanged(object sender, EventArgs e)
@@ -136,6 +142,21 @@ namespace EOB
         private void ZichtrekeningHistoryButton_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void automatischToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void OverschrijvingenDropdownMenu_Click(object sender, EventArgs e)
+        {
+            DropDownMenuOfOverschrijvingen.Show(OverschrijvingenDropdownMenu, new Point(0, OverschrijvingenDropdownMenu.Height));
+        }
+
+        private void logOutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormUtils.OpenForm(new Firstpage());
         }
     }
 }

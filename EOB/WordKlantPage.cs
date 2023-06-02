@@ -4,9 +4,11 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace EOB
 {
@@ -101,6 +103,15 @@ namespace EOB
                 PictureLocation.Clear();    
             }
         }
+        public static string HashPassword(string password) //hash a pw
+        {
+            using (var sha256 = SHA256.Create())
+            {
+                byte[] hashedBytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(password));
+                string hashedPassword = Convert.ToBase64String(hashedBytes);
+                return hashedPassword;
+            }
+        }
 
         private bool ValidateInput()
         {
@@ -112,12 +123,26 @@ namespace EOB
             string verifypassword = VerifyPasswordText.Text;
             string picturelocation = PictureLocation.Text;
 
+            password = HashPassword(password);
+            verifypassword = HashPassword(verifypassword);
 
             // Check if any field is empty
             if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password) ||
                 string.IsNullOrEmpty(firstname) || string.IsNullOrEmpty(lastname) || string.IsNullOrEmpty(picturelocation))
             {
                 MessageBox.Show("Please fill in all the fields!");
+                return false;
+            }
+            if (EmailAlreadyExist(email))
+            {
+                MessageBox.Show("this email already exist", "Email error",MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Email.Clear();
+                return false;
+            }
+            if (PasswordAlreadyExist(password))
+            {
+                MessageBox.Show("this password already exist", "password error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Password.Clear();
                 return false;
             }
 
@@ -148,6 +173,55 @@ namespace EOB
             {
                 return false;
             }
+        }
+        bool EmailAlreadyExist(string email)
+        {
+            try
+            {
+                
+                Data data = new Data();
+                List<User> users = data.SelectAllUser();
+
+                foreach(User user in users)
+                {
+                    if (user.Email == email)
+                    {
+                        return true;
+                    }
+                }
+                return false;
+            }
+            catch(Exception e)
+            {
+                MessageBox.Show(e.ToString(), "Error",MessageBoxButtons.OK, MessageBoxIcon.Error);
+                
+            }
+            return false;
+        }
+        bool PasswordAlreadyExist(string pw)
+        {
+            try
+            {
+                Data data = new Data();
+                List<User> users = data.SelectAllUser();
+
+
+                foreach (User user in users)
+                {
+
+                    if (user.Password == pw)
+                    {
+                        return true;
+                    }
+                }
+                return false;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+            return false;
         }
 
         private void ProfilePictureBtn_Click(object sender, EventArgs e)

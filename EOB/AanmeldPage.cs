@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -31,7 +32,8 @@ namespace EOB
                 string password = PasswordText.Text;
 
                 Data data = new Data();
-                User userData = data.SelectUSerIfExist(email, password);
+                User userData = data.SelectUSerIfExist(email);
+                password = HashPassword(password);
                 if(userData == null)
                 {
                     MessageBox.Show("Incorrect Email or Password, Try again");
@@ -65,6 +67,17 @@ namespace EOB
             }
             return true;
         }
+        public static string HashPassword(string password) //hash a pw
+        {
+            using (var sha256 = SHA256.Create())
+            {
+                byte[] hashedBytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(password));
+                string hashedPassword = Convert.ToBase64String(hashedBytes);
+                return hashedPassword;
+            }
+        }
+        
+
         private bool IsValidEmail(string email)
         {
             try

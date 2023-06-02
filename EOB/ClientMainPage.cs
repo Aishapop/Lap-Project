@@ -74,7 +74,7 @@ namespace EOB
 
                 // Get the users id
                 Data data = new Data();
-                User user = data.SelectUSerIfExist(Email, Password);
+                User user = data.SelectUSerIfExist(Email);
 
                 // Iterate over the data and populate the ListView control
                 foreach (DataRow row in dataTable.Rows)
@@ -110,7 +110,7 @@ namespace EOB
                 connection.Close();
             }
             Data data1 = new Data();
-            User user1 = data1.SelectUSerIfExist(Email, Password);
+            User user1 = data1.SelectUSerIfExist(Email);
             byte[] picture = user1.ProfilePicture;
             // Convert the blob data into an image
             Image image = ConvertBlobToImage(picture);

@@ -54,3 +54,5 @@ C:\Users\aisha\source\repos\Lap-Project\EOB\obj\Debug\EOB.exe
 C:\Users\aisha\source\repos\Lap-Project\EOB\obj\Debug\EOB.pdb
 C:\Users\alanl\source\repos\Lap-Project\EOB\obj\Debug\EOB.AanmeldPage.resources
 C:\Users\alanl\source\repos\Lap-Project\EOB\obj\Debug\EOB.ClientMainPage.resources
+C:\Users\aisha\source\repos\Lap-Project\EOB\obj\Debug\EOB.AanmeldPage.resources
+C:\Users\aisha\source\repos\Lap-Project\EOB\obj\Debug\EOB.ClientMainPage.resources

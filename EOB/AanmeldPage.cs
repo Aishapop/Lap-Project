@@ -36,7 +36,7 @@ namespace EOB
                 password = HashPassword(password);
                 if(userData == null)
                 {
-                    MessageBox.Show("Incorrect Email or Password, Try again");
+                    MessageBox.Show("Incorrect Email or Password, Try again", "Incorrect email or password", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else if(email == userData.Email && password == userData.Password)
                 {
@@ -57,12 +57,12 @@ namespace EOB
             string password = PasswordText.Text;
             if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
             {
-                MessageBox.Show("Please fill in all the fields!");
+                MessageBox.Show("Please fill in all the fields!","Empty fields", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
             if (!IsValidEmail(email))
             {
-                MessageBox.Show("Please enter a valid email address");
+                MessageBox.Show("Please enter a valid email address","Invalid Email", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
             return true;
@@ -101,6 +101,11 @@ namespace EOB
         }
 
         private void EmailText_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void AanmeldPage_Load(object sender, EventArgs e)
         {
 
         }

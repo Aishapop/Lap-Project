@@ -96,7 +96,7 @@
             // LogoPictureBox
             // 
             this.LogoPictureBox.Image = global::EOB.Properties.Resources.EOB_Logo;
-            this.LogoPictureBox.Location = new System.Drawing.Point(121, 0);
+            this.LogoPictureBox.Location = new System.Drawing.Point(121, 12);
             this.LogoPictureBox.Name = "LogoPictureBox";
             this.LogoPictureBox.Size = new System.Drawing.Size(171, 149);
             this.LogoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -118,6 +118,7 @@
             this.Controls.Add(this.returnButton);
             this.Name = "AanmeldPage";
             this.Text = "AanmeldPage";
+            this.Load += new System.EventHandler(this.AanmeldPage_Load);
             ((System.ComponentModel.ISupportInitialize)(this.LogoPictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

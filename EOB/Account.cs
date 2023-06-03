@@ -25,7 +25,6 @@ namespace EOB
             int accountnumber = random.Next(1000000000);
             while (_data.CheckIfAccountNumberExist(accountnumber))
             {
-                Random random2 = new Random();
                 accountnumber = random.Next(1000000000);
             }
             AccountNumber = accountnumber;

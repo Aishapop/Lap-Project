@@ -146,7 +146,7 @@ namespace EOB
 
         private void automatischToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            FormUtils.OpenForm(new AutomatischeOverschrijvingPage(Email, Password));
         }
 
         private void OverschrijvingenDropdownMenu_Click(object sender, EventArgs e)
@@ -157,6 +157,11 @@ namespace EOB
         private void logOutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FormUtils.OpenForm(new Firstpage());
+        }
+
+        private void DepositButton_Click(object sender, EventArgs e)
+        {
+            FormUtils.OpenForm(new DepositPage(Email));
         }
     }
 }

@@ -9,8 +9,8 @@ namespace EOB
     
     enum Types
     {
-        SavingsAccount,
-        CurrentAccount
+        Zichtrekening,
+        Spaarrekening
 
     }
     

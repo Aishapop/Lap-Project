@@ -81,6 +81,12 @@
     <Compile Include="Account.cs" />
     <Compile Include="AccountTypes.cs" />
     <Compile Include="Admin.cs" />
+    <Compile Include="AutomatischeOverschrijvingPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AutomatischeOverschrijvingPage.Designer.cs">
+      <DependentUpon>AutomatischeOverschrijvingPage.cs</DependentUpon>
+    </Compile>
     <Compile Include="ClientMainPage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -88,6 +94,12 @@
       <DependentUpon>ClientMainPage.cs</DependentUpon>
     </Compile>
     <Compile Include="Data.cs" />
+    <Compile Include="DepositPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DepositPage.Designer.cs">
+      <DependentUpon>DepositPage.cs</DependentUpon>
+    </Compile>
     <Compile Include="Firstpage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -118,8 +130,14 @@
     <EmbeddedResource Include="AanmeldPage.resx">
       <DependentUpon>AanmeldPage.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AutomatischeOverschrijvingPage.resx">
+      <DependentUpon>AutomatischeOverschrijvingPage.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ClientMainPage.resx">
       <DependentUpon>ClientMainPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DepositPage.resx">
+      <DependentUpon>DepositPage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Firstpage.resx">
       <DependentUpon>Firstpage.cs</DependentUpon>

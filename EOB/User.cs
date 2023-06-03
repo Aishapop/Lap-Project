@@ -4,11 +4,15 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Security.Cryptography;
+
+
 
 namespace EOB
 {
     internal class User
     {
+
         public int ID { get; set; }
         public string Firstname { get; set; }
         public string Lastname { get; set; }
@@ -17,6 +21,16 @@ namespace EOB
         public byte[] ProfilePicture { get; set; }
         public List<Account> AccountList { get; set; }
 
+        public string HashPassword(string password)
+        {
+            using (var sha256 = SHA256.Create())
+            {
+                byte[] hashedBytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(password));
+                string hashedPassword = Convert.ToBase64String(hashedBytes);
+                return hashedPassword;
+            }
+        }
+
         private Data _data = new Data();
 
         // new user ---> database
@@ -24,11 +38,16 @@ namespace EOB
         {
             Firstname = firstname;
             Lastname = lastname;
-            Password = password;
+
+            string hashedPassword = HashPassword(password);
+
+            Password = hashedPassword;
             Email = email;
             ProfilePicture = profilepicture;
+            
             ID = _data.InsertUser(this);
             AccountList = new List<Account>();
+            
         }
         // new user <--- database
         public User(int id,string firstname ,string lastname, string password, string email, byte[] profilepicture)
@@ -59,7 +78,7 @@ namespace EOB
         {
             try
             {
-               return _data.SelectUSerIfExist(this.Email, this.Password);
+               return _data.SelectUSerIfExist(this.Email);
             }
             catch
             {
@@ -69,6 +88,7 @@ namespace EOB
 
         public void ChangePassword(string Newpw)
         {
+            Newpw = HashPassword(Newpw);
             _data.UpdateUserPassword(this, Newpw);
         }
 

@@ -15,6 +15,8 @@ namespace EOB
 {
     internal class Data
     {
+
+
         private string connectionString =
             "datasource=127.0.0.1;" +
             "port=3306;" +
@@ -201,6 +203,7 @@ namespace EOB
 
         public int UpdateUserPassword(User user, string newpassword)
         {
+
             string query = $"UPDATE user SET Password = '{newpassword}' WHERE id like {user.ID};";
 
             Insert(query);
@@ -236,11 +239,11 @@ namespace EOB
         
 
         /*******SELECT*****/
-        public User SelectUSerIfExist(string email, string password)
+        public User SelectUSerIfExist(string email)
 
         {
             
-            string query = $"SELECT* FROM user WHERE Email LIKE '{email}' AND Password LIKE '{password}' AND Deleted LIKE 0;";
+            string query = $"SELECT* FROM user WHERE Email LIKE '{email}' AND Deleted LIKE 0;";
             MySqlConnection connection = new MySqlConnection(connectionString);
             MySqlCommand commandDatabase = new MySqlCommand(query, connection);
 
@@ -297,7 +300,7 @@ namespace EOB
                     string email = reader.GetString(7);
                     string pw = reader.GetString(8);
 
-                    User user = SelectUSerIfExist(email, pw);
+                    User user = SelectUSerIfExist(email);
                     List<Transaction> transactions = new List<Transaction>();   
                     if (soortrekening == 1)
                     {

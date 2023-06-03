@@ -4,6 +4,8 @@ using System.Drawing;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace EOB
 {
@@ -12,12 +14,30 @@ namespace EOB
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
+        /// 
+
+        public static string HashPassword(string password)
+        {
+            using (var sha256 = SHA256.Create())
+            {
+                byte[] hashedBytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(password));
+                string hashedPassword = Convert.ToBase64String(hashedBytes);
+                return hashedPassword;
+            }
+        }
+
+        public static bool VerifyPassword(string enteredPassword, string savedPasswordHash)
+        {
+            string hashedEnteredPassword = HashPassword(enteredPassword);
+            return savedPasswordHash == hashedEnteredPassword;
+        }
+
         private static Form currentForm;
         private static bool isRunning = false;
 
         [STAThread]
         static void Main()
-        {          
+        {
             if (!isRunning)
             {
                 isRunning = true; // Set the flag to indicate that the application is running
@@ -26,7 +46,15 @@ namespace EOB
                 FormUtils.OpenForm(new Firstpage());
                 Application.Run();
                 isRunning = false; // Reset the flag when the application is closed
-            }           
+            }
+
+            /*byte[] imageData = System.IO.File.ReadAllBytes("C:\\Users\\aisha\\Logo.png");
+            Data data = new Data();
+            User user = new User("miranda", "sing", "lol", "mir@gmail.com",imageData);
+
+            Console.WriteLine(user.Password);*/
+
+
             /*
             byte[] imageData = System.IO.File.ReadAllBytes("C:\\Users\\aisha\\Logo.png");
            

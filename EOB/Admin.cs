@@ -37,6 +37,7 @@ namespace EOB
             }
             else if (columnedit == "Password")
             {
+                newvalue = user.HashPassword(newvalue);
                 user.Password = newvalue;
             }
 

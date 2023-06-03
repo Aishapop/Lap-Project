@@ -90,9 +90,9 @@ namespace EOB
         {
            return _data.SelectAllTransactions(this);
         }
-        public void SetAutomaticTransfer(string startingdate, string endingdate, int amount,int accountnr)
+        public void SetAutomaticTransfer(string startingdate, string termijn, string endingdate, int amount,int accountnr)
         {
-            _data.InsertAutomaticTransaction(this,startingdate,endingdate,amount);
+            _data.InsertAutomaticTransaction(this,startingdate,termijn,endingdate,amount);
             
             DateTime startdate = DateTime.Parse(startingdate);
             DateTime enddate = DateTime.Parse(endingdate);

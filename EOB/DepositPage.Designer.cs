@@ -44,6 +44,7 @@
             this.returnButton.TabIndex = 2;
             this.returnButton.Text = "Back";
             this.returnButton.UseVisualStyleBackColor = true;
+            this.returnButton.Click += new System.EventHandler(this.returnButton_Click);
             // 
             // BedragText
             // 

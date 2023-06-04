@@ -14,17 +14,15 @@ namespace EOB
     public partial class AutomatischeOverschrijvingPage : Form
     {
         private string Email;
-        private string Password;
-        public AutomatischeOverschrijvingPage(string email, string password)
+        public AutomatischeOverschrijvingPage(string email)
         {
             InitializeComponent();
             this.Email = email;
-            this.Password = password;
         }
 
         private void returnButton_Click(object sender, EventArgs e)
         {
-            FormUtils.OpenForm(new ClientMainPage(Email, Password));
+            FormUtils.OpenForm(new ClientMainPage(Email));
         }
 
         private void BeginDateAutoOverschrij_ValueChanged(object sender, EventArgs e)

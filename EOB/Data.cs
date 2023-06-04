@@ -89,18 +89,21 @@ namespace EOB
         {
             try
             {
-                int type;
-                if (account.AccountType.ToString() == "CurrentAccount")
+                string query = "";
+                if (account.AccountType.ToString() == "Zichtrekening")
                 {
-                     type = 1;
+                    query = $"INSERT INTO rekening(Rekening_nr,SoortRekening_id,StartBedrag,User_id) " +
+                    $"VALUES({account.AccountNumber},{1},{0},{user.ID});";
+                }
+                else if (account.AccountType.ToString() == "Spaarrekening")
+                {
+                    query = $"INSERT INTO rekening(Rekening_nr,SoortRekening_id,StartBedrag,User_id) " +
+                    $"VALUES({account.AccountNumber},{2},{0},{user.ID});";
                 }
                 else
                 {
-                     type = 2;
+                    MessageBox.Show("Not a valid AccountType", "Invalid AccountType", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-                string query = $"INSERT INTO rekening(Rekening_nr,SoortRekening_id,StartBedrag,User_id) " +
-                    $"VALUES({account.AccountNumber},{type},{0},{user.ID});";
-                                                                                                                                                                                                                                                                                                                                                                    
                 return Insert(query);
             }
             catch (Exception ex)

@@ -45,7 +45,6 @@ C:\Users\aisha\source\repos\Lap-Project\EOB\bin\Debug\System.Threading.Tasks.Ext
 C:\Users\aisha\source\repos\Lap-Project\EOB\obj\Debug\EOB.csproj.AssemblyReference.cache
 C:\Users\aisha\source\repos\Lap-Project\EOB\obj\Debug\EOB.Firstpage.resources
 C:\Users\aisha\source\repos\Lap-Project\EOB\obj\Debug\EOB.Properties.Resources.resources
-C:\Users\aisha\source\repos\Lap-Project\EOB\obj\Debug\EOB.Test.resources
 C:\Users\aisha\source\repos\Lap-Project\EOB\obj\Debug\EOB.WordKlantPage.resources
 C:\Users\aisha\source\repos\Lap-Project\EOB\obj\Debug\EOB.csproj.GenerateResource.cache
 C:\Users\aisha\source\repos\Lap-Project\EOB\obj\Debug\EOB.csproj.CoreCompileInputs.cache
@@ -58,3 +57,7 @@ C:\Users\aisha\source\repos\Lap-Project\EOB\obj\Debug\EOB.AanmeldPage.resources
 C:\Users\aisha\source\repos\Lap-Project\EOB\obj\Debug\EOB.ClientMainPage.resources
 C:\Users\alanl\source\repos\Lap-Project\EOB\obj\Debug\EOB.AutomatischeOverschrijving.resources
 C:\Users\alanl\source\repos\Lap-Project\EOB\obj\Debug\EOB.DepositPage.resources
+C:\Users\aisha\source\repos\Lap-Project\EOB\obj\Debug\EOB.AutomatischeOverschrijvingPage.resources
+C:\Users\aisha\source\repos\Lap-Project\EOB\obj\Debug\EOB.DepositPage.resources
+C:\Users\aisha\source\repos\Lap-Project\EOB\obj\Debug\EOB.AdminLoginpage.resources
+C:\Users\aisha\source\repos\Lap-Project\EOB\obj\Debug\EOB.AdminMainPage.resources

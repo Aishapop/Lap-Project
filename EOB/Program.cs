@@ -50,9 +50,7 @@ namespace EOB
                 isRunning = false; // Reset the flag when the application is closed
             }
 
-            Data data = new Data();
-            User admin = data.SelectAdminIfExist("AishaKafita@gmail.com");
-            Console.WriteLine(admin.ProfilePicture);
+            
 
             /*byte[] imageData = System.IO.File.ReadAllBytes("C:\\Users\\aisha\\Logo.png");
             Data data = new Data();

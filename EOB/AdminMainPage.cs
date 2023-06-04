@@ -74,6 +74,8 @@ namespace EOB
             catch(Exception li)
             {
                 MessageBox.Show(li.Message,"Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+
+
             }
 
 
@@ -114,13 +116,13 @@ namespace EOB
                     User user = users[e.RowIndex];
                     // Perform the delete operation for the user
                     data.UpdateUserToDeleted(user);
-                    MessageBox.Show("deleted");
+                    MessageBox.Show("You deleted a user", "User deleted", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     // Remove the user from the DataGridView
                     dataGridView1.Rows.RemoveAt(e.RowIndex); 
                 }
                 catch(Exception o)
                 {
-                    MessageBox.Show(o.Message);
+                    MessageBox.Show(o.StackTrace);
                 }
                 
             }
@@ -148,6 +150,13 @@ namespace EOB
                 Data data = new Data();
                 List<User> users = data.SelectAllUser();
 
+                if(data.SelectAdminIfExist(email) != null)
+                {
+                    return true;
+                }
+                
+
+
                 foreach (User user in users)
                 {
                     if (user.Email == email)
@@ -171,6 +180,7 @@ namespace EOB
             {
                 Data data = new Data();
                 List<User> users = data.SelectAllUser();
+                
 
 
                 foreach (User user in users)
@@ -249,7 +259,7 @@ namespace EOB
             if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password) ||
                 string.IsNullOrEmpty(firstname) || string.IsNullOrEmpty(lastname) || string.IsNullOrEmpty(picturelocation))
             {
-                MessageBox.Show("Please fill in all the fields!");
+                MessageBox.Show("Please fill in all the fields!","Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
                 return false;
             }
             if (EmailAlreadyExist(email))
@@ -268,14 +278,14 @@ namespace EOB
             // Validate email format
             if (!IsValidEmail(email))
             {
-                MessageBox.Show("Please enter a valid email address");
+                MessageBox.Show("Please enter a valid email address", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
 
             // Check if the passwords are the same
             if (password != verifypassword)
             {
-                MessageBox.Show("The password you filled in doesn't match");
+                MessageBox.Show("The password you filled in doesn't match","Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
                 return false;
             }
             return true;

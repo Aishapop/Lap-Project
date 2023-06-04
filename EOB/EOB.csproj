@@ -81,6 +81,18 @@
     <Compile Include="Account.cs" />
     <Compile Include="AccountTypes.cs" />
     <Compile Include="Admin.cs" />
+    <Compile Include="AdminLoginpage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminLoginpage.Designer.cs">
+      <DependentUpon>AdminLoginpage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdminMainPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminMainPage.Designer.cs">
+      <DependentUpon>AdminMainPage.cs</DependentUpon>
+    </Compile>
     <Compile Include="AutomatischeOverschrijvingPage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -123,6 +135,12 @@
     </Compile>
     <EmbeddedResource Include="AanmeldPage.resx">
       <DependentUpon>AanmeldPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminLoginpage.resx">
+      <DependentUpon>AdminLoginpage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminMainPage.resx">
+      <DependentUpon>AdminMainPage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AutomatischeOverschrijvingPage.resx">
       <DependentUpon>AutomatischeOverschrijvingPage.cs</DependentUpon>

@@ -19,7 +19,7 @@ namespace EOB
             PasswordText.UseSystemPasswordChar = true;
         }
 
-        private void returnButton_Click(object sender, EventArgs e)
+        private void ReturnButton_Click(object sender, EventArgs e)
         {
             FormUtils.OpenForm(new Firstpage());
         }
@@ -43,7 +43,7 @@ namespace EOB
                 }
                 if (userData == null)
                 {
-                    MessageBox.Show("Incorrect Email or Password, Try again", "Incorrect email or password", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Incorrect Email, Try again", "Incorrect email", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
                 else if(email == userData.Email && password == userData.Password)
@@ -54,7 +54,7 @@ namespace EOB
                 }
                 else
                 {
-                    MessageBox.Show("Error");
+                    MessageBox.Show("Incorrect Password, Try again", "Incorrect password", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             

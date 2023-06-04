@@ -89,14 +89,12 @@ namespace EOB
         {
            return _data.SelectAllTransactions(this);
         }
-        public void SetAutomaticTransfer(string startingdate, string termijn, string endingdate, float amount,int accountnr)
+        public void SetAutomaticTransfer(DateTime startingdate, string termijn, DateTime endingdate, float amount,int accountnr)
         {
-            _data.InsertAutomaticTransaction(this,startingdate,termijn,endingdate,amount);
-            
-            DateTime startdate = DateTime.Parse(startingdate);
-            DateTime enddate = DateTime.Parse(endingdate);
+            _data.InsertAutomaticTransaction(this,startingdate,termijn,endingdate,amount,accountnr);
 
-            DateTime currentDate = startdate;
+            DateTime currentDate = startingdate;
+            DateTime enddate = endingdate;
 
             while (currentDate <= enddate)
             {
@@ -106,16 +104,6 @@ namespace EOB
                 // Move to the next date
                 currentDate = currentDate.AddDays(1);
             }
-
-
-
         }
-
-
-
-
-
-    }
-
-    
+    } 
 }

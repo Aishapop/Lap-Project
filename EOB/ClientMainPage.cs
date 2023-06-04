@@ -55,57 +55,57 @@ namespace EOB
             "password=root;" +
             "database=eob;";
 
-            MySqlConnection connection = new MySqlConnection(connectionString);
-
-            // Create a command to retrieve the data
-            MySqlCommand command = new MySqlCommand("SELECT * FROM rekening", connection);
-
-            // Create a data adapter to fill the dataset
-            MySqlDataAdapter adapter = new MySqlDataAdapter(command);
-            DataTable dataTable = new DataTable();
-
-            try
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
             {
-                connection.Open();         
-                // Fill the dataset
-                adapter.Fill(dataTable);
+                // Create a command to retrieve the data
+                MySqlCommand command = new MySqlCommand("SELECT * FROM rekening", connection);
 
-                // Get the users id
-                Data data = new Data();
-                User user = data.SelectUSerIfExist(Email);
-
-                // Iterate over the data and populate the ListView control
-                foreach (DataRow row in dataTable.Rows)
+                // Create a data adapter to fill the dataset
+                MySqlDataAdapter adapter = new MySqlDataAdapter(command);
+                DataTable dataTable = new DataTable();
+                try
                 {
-                    if (Convert.ToInt32(row["User_id"]) == user.ID)
+                    connection.Open();
+                    // Fill the dataset
+                    adapter.Fill(dataTable);
+
+                    // Get the users id
+                    Data data = new Data();
+                    User user = data.SelectUSerIfExist(Email);
+
+                    // Iterate over the data and populate the ListView control
+                    foreach (DataRow row in dataTable.Rows)
                     {
-                        if (Convert.ToInt32(row["SoortRekening_id"]) == 1)
+                        if (Convert.ToInt32(row["User_id"]) == user.ID)
                         {
-                            ListViewItem item = new ListViewItem(row["Rekening_nr"].ToString());
-                            item.SubItems.Add(row["StartBedrag"].ToString());
+                            if (Convert.ToInt32(row["SoortRekening_id"]) == 1)
+                            {
+                                ListViewItem item = new ListViewItem(row["Rekening_nr"].ToString());
+                                item.SubItems.Add(row["StartBedrag"].ToString());
 
-                            ZichtrekeningBalancesListView.Items.Add(item);
-                        }
-                        else if (Convert.ToInt32(row["SoortRekening_id"]) == 2)
-                        {
-                            ListViewItem item = new ListViewItem(row["Rekening_nr"].ToString());
-                            item.SubItems.Add(row["StartBedrag"].ToString());
+                                ZichtrekeningBalancesListView.Items.Add(item);
+                            }
+                            else if (Convert.ToInt32(row["SoortRekening_id"]) == 2)
+                            {
+                                ListViewItem item = new ListViewItem(row["Rekening_nr"].ToString());
+                                item.SubItems.Add(row["StartBedrag"].ToString());
 
-                            SpaarrekeningBalancesListView.Items.Add(item);
+                                SpaarrekeningBalancesListView.Items.Add(item);
+                            }
                         }
                     }
                 }
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                // Clean up resources
-                adapter.Dispose();
-                command.Dispose();
-                connection.Close();
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                finally
+                {
+                    // Clean up resources
+                    adapter.Dispose();
+                    command.Dispose();
+                    connection.Close();
+                }
             }
             Data data1 = new Data();
             User user1 = data1.SelectUSerIfExist(Email);

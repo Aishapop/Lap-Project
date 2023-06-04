@@ -168,26 +168,26 @@ namespace EOB
             }
             return -1;
         }
-        public int InsertAutomaticTransaction(Account account,string startingdate,string termijn, string endingdate,float amount)
+        public int InsertAutomaticTransaction(Account verzenderaccount,DateTime startingdate,string termijn, DateTime endingdate,float amount, int ontvangerrekeningNR)
         {
             try
             {
                 if(termijn == "wekelijks")
                 {
-                    string query = $"INSERT INTO automatic_transfer(StartDatum,Einddatum,Termijn_id,Bedrag,rekening_id) " +
-                    $"VALUES('{startingdate}','{endingdate}',{1},{amount},{account.AccountNumber});";
+                    string query = $"INSERT INTO automatic_transfer(StartDatum,Einddatum,Termijn_id,Bedrag,Verzender_id,Ontvanger_id) " +
+                    $"VALUES('{startingdate}','{endingdate}',{1},{amount},{verzenderaccount.AccountNumber},{ontvangerrekeningNR});";
                     return Insert(query);
                 }
                 else if(termijn == "maandelijks")
                 {
-                    string query = $"INSERT INTO automatic_transfer(StartDatum,Einddatum,Termijn_id,Bedrag,rekening_id) " +
-                    $"VALUES('{startingdate}','{endingdate}',{2},{amount},{account.AccountNumber});";
+                    string query = $"INSERT INTO automatic_transfer(StartDatum,Einddatum,Termijn_id,Bedrag,Verzender_id,Ontvanger_id) " +
+                    $"VALUES('{startingdate}','{endingdate}',{2},{amount},{verzenderaccount.AccountNumber},{ontvangerrekeningNR});";
                     return Insert(query);
                 }
                 else if(termijn == "jaarlijks")
                 {
-                    string query = $"INSERT INTO automatic_transfer(StartDatum,Einddatum,Termijn_id,Bedrag,rekening_id) " +
-                    $"VALUES('{startingdate}','{endingdate}',{3},{amount},{account.AccountNumber});";
+                    string query = $"INSERT INTO automatic_transfer(StartDatum,Einddatum,Termijn_id,Bedrag,Verzender_id,Ontvanger_id) " +
+                    $"VALUES('{startingdate}','{endingdate}',{3},{amount},{verzenderaccount.AccountNumber},{ontvangerrekeningNR});";
                     return Insert(query);
                 }
                 else

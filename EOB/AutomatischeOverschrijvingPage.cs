@@ -54,7 +54,7 @@ namespace EOB
         {
             if(ValidateInputs())
             {
-                string mijnrekeningnrtext = MijnRekeningenDropDown.Text;
+                string mijnrekeningnrtext = MijnRekeningenDropDown.Text.Replace("BE","");
                 int mijnrekeningNr = Convert.ToInt32(mijnrekeningnrtext);
                 string rekeningNrText = OntvangersRekeningNR.Text.Replace("BE", "");
                 int rekeningNr = Convert.ToInt32(rekeningNrText);
@@ -63,10 +63,8 @@ namespace EOB
                 string termijn = TermijnDropDownMenu.Text;
                 DateTime beginDate = BeginDateAutoOverschrij.Value.Date;
                 DateTime endDate = BeginDateAutoOverschrij.Value.Date;
-                string formattedBeginDate = beginDate.ToString("yyyy-MM-dd");
-                string formattedEndDate = endDate.ToString("yyyy-MM-dd");
 
-                //              all de informatie gebruiken om een auto overschrijving te maken ***********
+                //all de informatie gebruiken om een auto overschrijving te maken ***********
                 Data data = new Data();
                 User user = data.SelectUSerIfExist(Email);
                 List<Account> accounts = user.AccountList;
@@ -78,7 +76,7 @@ namespace EOB
                         rekening = account; // give this variable the right account
                     }
                 }
-                rekening.SetAutomaticTransfer(formattedBeginDate, termijn, formattedEndDate, bedrag, rekeningNr);
+                rekening.SetAutomaticTransfer(beginDate, termijn, endDate, bedrag, rekeningNr);
                 FormUtils.OpenForm(new ClientMainPage(Email));
                 OntvangersRekeningNR.Clear();
                 BedragText.Clear();
@@ -125,7 +123,7 @@ namespace EOB
                 return false;
             }
             
-            if (termijn != "wekelijks" || termijn != "maandelijks" || termijn != "jaarlijks")
+            if (termijn != "wekelijks" && termijn != "maandelijks" && termijn != "jaarlijks")
             {
                 MessageBox.Show("Het ingevoerde termijn is geen optie", "Termijn error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
@@ -150,7 +148,6 @@ namespace EOB
             // Create a data adapter to fill the dataset
             MySqlDataAdapter adapter = new MySqlDataAdapter(command);
             DataTable dataTable = new DataTable();
-
             try
             {
                 connection.Open();

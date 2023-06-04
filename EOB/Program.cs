@@ -94,30 +94,6 @@ namespace EOB
 
             Console.WriteLine(account.Transactions);
             */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         }
         public static void OpenForm(Form form)
         {

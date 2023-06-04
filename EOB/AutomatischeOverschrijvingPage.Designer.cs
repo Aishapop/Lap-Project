@@ -122,9 +122,9 @@
             this.BedragLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BedragLabel.Location = new System.Drawing.Point(129, 163);
             this.BedragLabel.Name = "BedragLabel";
-            this.BedragLabel.Size = new System.Drawing.Size(121, 16);
+            this.BedragLabel.Size = new System.Drawing.Size(124, 16);
             this.BedragLabel.TabIndex = 12;
-            this.BedragLabel.Text = "Bedrag Per Maand";
+            this.BedragLabel.Text = "Bedrag voor termijn";
             // 
             // TermijnLabel
             // 

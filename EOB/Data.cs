@@ -228,6 +228,16 @@ namespace EOB
 
             return -1;
         }
+
+        public int UpdateUserToRemoveDeleted(User user)
+        {
+
+            string query = $"UPDATE user SET Deleted = 0 WHERE id like {user.ID};";
+
+            Insert(query);
+
+            return -1;
+        }
         public int UpdateBalance(int rekeningnr, float amount)
         {
             string query = $"UPDATE rekening SET StartBedrag = {amount} WHERE Rekening_nr like {rekeningnr};";
@@ -279,6 +289,51 @@ namespace EOB
             {
                 connection.Close();
                 
+            }
+            return null;
+        }
+
+        public User SelectAdminIfExist(string email)
+
+        {
+
+            string query = $"SELECT* FROM user WHERE Email LIKE '{email}' AND Admin LIKE 1;";
+            MySqlConnection connection = new MySqlConnection(connectionString);
+            MySqlCommand commandDatabase = new MySqlCommand(query, connection);
+
+            try
+            {
+                connection.Open();
+                MySqlDataReader reader = commandDatabase.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    int id = reader.GetInt32(0);
+                    string firstname = reader.GetString(1);
+                    string lastname = reader.GetString(2);
+                    string email1 = reader.GetString(3);
+                    string password1 = reader.GetString(4);
+                    var profilepicture = reader.GetValue(5);
+                    
+
+                    return new User(id, firstname, lastname, password1, email1, (byte[])profilepicture);
+                }
+                else
+                {
+                    return null;
+                }
+
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return null;
+            }
+            finally
+            {
+                connection.Close();
+
             }
             return null;
         }
@@ -429,7 +484,7 @@ namespace EOB
         public List<User> SelectAllUser()
         {
             
-            string query = $"SELECT * FROM user WHERE Deleted LIKE 0;";
+            string query = $"SELECT * FROM user WHERE Deleted LIKE 0 AND Admin like 0;";
             MySqlConnection connection = new MySqlConnection(connectionString);
             MySqlCommand command = new MySqlCommand(query, connection);
 

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Security.Cryptography;
 using System.Text;
+using System.IO;
 
 namespace EOB
 {
@@ -26,6 +27,7 @@ namespace EOB
             }
         }
 
+        
         public static bool VerifyPassword(string enteredPassword, string savedPasswordHash)
         {
             string hashedEnteredPassword = HashPassword(enteredPassword);
@@ -47,6 +49,10 @@ namespace EOB
                 Application.Run();
                 isRunning = false; // Reset the flag when the application is closed
             }
+
+            Data data = new Data();
+            User admin = data.SelectAdminIfExist("AishaKafita@gmail.com");
+            Console.WriteLine(admin.ProfilePicture);
 
             /*byte[] imageData = System.IO.File.ReadAllBytes("C:\\Users\\aisha\\Logo.png");
             Data data = new Data();

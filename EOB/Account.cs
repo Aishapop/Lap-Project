@@ -80,7 +80,7 @@ namespace EOB
 
 
         }
-        public void DepositMoney(int amount)
+        public void DepositMoney(float amount)
         {
             this.Balance = this.Balance + amount;
             _data.UpdateBalance(this.AccountNumber,amount);
@@ -89,7 +89,7 @@ namespace EOB
         {
            return _data.SelectAllTransactions(this);
         }
-        public void SetAutomaticTransfer(string startingdate, string termijn, string endingdate, int amount,int accountnr)
+        public void SetAutomaticTransfer(string startingdate, string termijn, string endingdate, float amount,int accountnr)
         {
             _data.InsertAutomaticTransaction(this,startingdate,termijn,endingdate,amount);
             

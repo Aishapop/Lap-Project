@@ -37,7 +37,7 @@ namespace EOB
 
             foreach (var item in bedragtext)
             {
-                if (!"1234567890".Contains(item))
+                if (!"1234567890.".Contains(item))
                 {
                     MessageBox.Show("Voer enkel nummers in dit veld in", "bedrag error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     BedragText.Clear();
@@ -57,8 +57,7 @@ namespace EOB
             {
                 string soortrekening = SoortenRekeningDropDown.Text;
                 string bedragtext = BedragText.Text.Replace("€","");
-                //float bedrag = (float)Convert.ToDouble(bedragtext);
-                int bedrag = Convert.ToInt32(bedragtext);
+                float bedrag = (float)Convert.ToDouble(bedragtext);
                 Data data = new Data();
                 User user = data.SelectUSerIfExist(Email);
 

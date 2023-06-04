@@ -54,6 +54,8 @@ namespace EOB
         {
             if(ValidateInputs())
             {
+                string mijnrekeningnrtext = MijnRekeningenDropDown.Text;
+                int mijnrekeningNr = Convert.ToInt32(mijnrekeningnrtext);
                 string rekeningNrText = OntvangersRekeningNR.Text.Replace("BE", "");
                 int rekeningNr = Convert.ToInt32(rekeningNrText);
                 string bedragtext = BedragText.Text.Replace("€", "");
@@ -63,8 +65,23 @@ namespace EOB
                 DateTime endDate = BeginDateAutoOverschrij.Value.Date;
                 string formattedBeginDate = beginDate.ToString("yyyy-MM-dd");
                 string formattedEndDate = endDate.ToString("yyyy-MM-dd");
-                
+
                 //              all de informatie gebruiken om een auto overschrijving te maken ***********
+                Data data = new Data();
+                User user = data.SelectUSerIfExist(Email);
+                List<Account> accounts = user.AccountList;
+                Account rekening = accounts[0]; // give it a random account
+                foreach(Account account in accounts)
+                {
+                    if(account.AccountNumber == mijnrekeningNr)
+                    {
+                        rekening = account; // give this variable the right account
+                    }
+                }
+                rekening.SetAutomaticTransfer(formattedBeginDate, termijn, formattedEndDate, bedrag, rekeningNr);
+                FormUtils.OpenForm(new ClientMainPage(Email));
+                OntvangersRekeningNR.Clear();
+                BedragText.Clear();
             }
         }
         private bool ValidateInputs()
@@ -151,7 +168,7 @@ namespace EOB
                     {
                         if (Convert.ToInt32(row["SoortRekening_id"]) == 1)
                         {
-                            ListViewItem item = new ListViewItem("BE" + row["Rekening_nr"].ToString());
+                            string item = "BE" + row["Rekening_nr"];
 
                             MijnRekeningenDropDown.Items.Add(item);
                         }

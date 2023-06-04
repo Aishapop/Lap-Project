@@ -168,7 +168,7 @@ namespace EOB
             }
             return -1;
         }
-        public int InsertAutomaticTransaction(Account account,string startingdate,string termijn, string endingdate,int amount)
+        public int InsertAutomaticTransaction(Account account,string startingdate,string termijn, string endingdate,float amount)
         {
             try
             {

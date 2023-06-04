@@ -182,7 +182,13 @@ namespace EOB
                 Data data = new Data();
                 List<User> users = data.SelectAllUser();
 
-                foreach(User user in users)
+                if (data.SelectAdminIfExist(email) != null)
+                {
+                    return true;
+                }
+
+
+                foreach (User user in users)
                 {
                     if (user.Email == email)
                     {
@@ -205,6 +211,8 @@ namespace EOB
                 Data data = new Data();
                 List<User> users = data.SelectAllUser();
 
+                
+                
 
                 foreach (User user in users)
                 {

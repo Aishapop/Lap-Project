@@ -33,11 +33,19 @@ namespace EOB
 
                 Data data = new Data();
                 User userData = data.SelectUSerIfExist(email);
-                password = HashPassword(password);
-                if(userData == null)
+                try
+                {
+                    password = HashPassword(password);
+                }
+                catch(Exception d)
+                {
+                    MessageBox.Show(d.Message);
+                }
+                if (userData == null)
                 {
                     MessageBox.Show("Incorrect Email or Password, Try again", "Incorrect email or password", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+
                 else if(email == userData.Email && password == userData.Password)
                 {
                     FormUtils.OpenForm(new ClientMainPage(email, password));

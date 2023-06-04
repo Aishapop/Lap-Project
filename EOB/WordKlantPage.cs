@@ -130,7 +130,7 @@ namespace EOB
             if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password) ||
                 string.IsNullOrEmpty(firstname) || string.IsNullOrEmpty(lastname) || string.IsNullOrEmpty(picturelocation))
             {
-                MessageBox.Show("Please fill in all the fields!");
+                MessageBox.Show("Please fill in all the fields!", "Empty fields", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
             if (EmailAlreadyExist(email))
@@ -149,14 +149,14 @@ namespace EOB
             // Validate email format
             if (!IsValidEmail(email))
             {
-                MessageBox.Show("Please enter a valid email address");
+                MessageBox.Show("Please enter a valid email address", "Invalid Email", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
 
             // Check if the passwords are the same
             if (password != verifypassword)
             {
-                MessageBox.Show("The password you filled in doesn't match");
+                MessageBox.Show("The password you filled in doesn't match", "Password Doesn't match", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
             return true;

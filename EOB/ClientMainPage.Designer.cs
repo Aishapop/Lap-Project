@@ -66,28 +66,26 @@
             this.panel1.Controls.Add(this.ProfilePicturePictureBox);
             this.panel1.Controls.Add(this.Logo);
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(729, 124);
+            this.panel1.Size = new System.Drawing.Size(547, 101);
             this.panel1.TabIndex = 0;
             // 
             // DepositButton
             // 
-            this.DepositButton.Location = new System.Drawing.Point(392, 15);
-            this.DepositButton.Margin = new System.Windows.Forms.Padding(4);
+            this.DepositButton.Location = new System.Drawing.Point(294, 12);
             this.DepositButton.Name = "DepositButton";
-            this.DepositButton.Size = new System.Drawing.Size(160, 31);
+            this.DepositButton.Size = new System.Drawing.Size(120, 25);
             this.DepositButton.TabIndex = 3;
             this.DepositButton.Text = "Deposit";
             this.DepositButton.UseVisualStyleBackColor = true;
+            this.DepositButton.Click += new System.EventHandler(this.DepositButton_Click);
             // 
             // OverschrijvingenDropdownMenu
             // 
             this.OverschrijvingenDropdownMenu.ContextMenuStrip = this.DropDownMenuOfOverschrijvingen;
-            this.OverschrijvingenDropdownMenu.Location = new System.Drawing.Point(187, 15);
-            this.OverschrijvingenDropdownMenu.Margin = new System.Windows.Forms.Padding(4);
+            this.OverschrijvingenDropdownMenu.Location = new System.Drawing.Point(140, 12);
             this.OverschrijvingenDropdownMenu.Name = "OverschrijvingenDropdownMenu";
-            this.OverschrijvingenDropdownMenu.Size = new System.Drawing.Size(160, 31);
+            this.OverschrijvingenDropdownMenu.Size = new System.Drawing.Size(120, 25);
             this.OverschrijvingenDropdownMenu.TabIndex = 2;
             this.OverschrijvingenDropdownMenu.Text = "Overschrijvingen";
             this.OverschrijvingenDropdownMenu.UseVisualStyleBackColor = true;
@@ -96,33 +94,31 @@
             // DropDownMenuOfOverschrijvingen
             // 
             this.DropDownMenuOfOverschrijvingen.BackColor = System.Drawing.Color.SlateGray;
-            this.DropDownMenuOfOverschrijvingen.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.DropDownMenuOfOverschrijvingen.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.automatischToolStripMenuItem,
             this.normaalToolStripMenuItem});
             this.DropDownMenuOfOverschrijvingen.Name = "DropDownMenuOfOverschrijvingen";
-            this.DropDownMenuOfOverschrijvingen.Size = new System.Drawing.Size(162, 52);
+            this.DropDownMenuOfOverschrijvingen.Size = new System.Drawing.Size(143, 48);
             // 
             // automatischToolStripMenuItem
             // 
             this.automatischToolStripMenuItem.Name = "automatischToolStripMenuItem";
-            this.automatischToolStripMenuItem.Size = new System.Drawing.Size(161, 24);
+            this.automatischToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
             this.automatischToolStripMenuItem.Text = "Automatisch";
             this.automatischToolStripMenuItem.Click += new System.EventHandler(this.automatischToolStripMenuItem_Click);
             // 
             // normaalToolStripMenuItem
             // 
             this.normaalToolStripMenuItem.Name = "normaalToolStripMenuItem";
-            this.normaalToolStripMenuItem.Size = new System.Drawing.Size(161, 24);
+            this.normaalToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
             this.normaalToolStripMenuItem.Text = "Normaal";
             // 
             // ProfilePicturePictureBox
             // 
             this.ProfilePicturePictureBox.ContextMenuStrip = this.DropDownMenuOfPfp;
-            this.ProfilePicturePictureBox.Location = new System.Drawing.Point(612, 15);
-            this.ProfilePicturePictureBox.Margin = new System.Windows.Forms.Padding(4);
+            this.ProfilePicturePictureBox.Location = new System.Drawing.Point(459, 12);
             this.ProfilePicturePictureBox.Name = "ProfilePicturePictureBox";
-            this.ProfilePicturePictureBox.Size = new System.Drawing.Size(100, 92);
+            this.ProfilePicturePictureBox.Size = new System.Drawing.Size(75, 75);
             this.ProfilePicturePictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.ProfilePicturePictureBox.TabIndex = 1;
             this.ProfilePicturePictureBox.TabStop = false;
@@ -131,30 +127,29 @@
             // DropDownMenuOfPfp
             // 
             this.DropDownMenuOfPfp.BackColor = System.Drawing.Color.SlateGray;
-            this.DropDownMenuOfPfp.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.DropDownMenuOfPfp.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.passwordToolStripMenuItem,
             this.accountToolStripMenuItem,
             this.logOutToolStripMenuItem});
             this.DropDownMenuOfPfp.Name = "DropDownMenuOfPfp";
-            this.DropDownMenuOfPfp.Size = new System.Drawing.Size(140, 76);
+            this.DropDownMenuOfPfp.Size = new System.Drawing.Size(125, 70);
             // 
             // passwordToolStripMenuItem
             // 
             this.passwordToolStripMenuItem.Name = "passwordToolStripMenuItem";
-            this.passwordToolStripMenuItem.Size = new System.Drawing.Size(139, 24);
+            this.passwordToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.passwordToolStripMenuItem.Text = "Password";
             // 
             // accountToolStripMenuItem
             // 
             this.accountToolStripMenuItem.Name = "accountToolStripMenuItem";
-            this.accountToolStripMenuItem.Size = new System.Drawing.Size(139, 24);
+            this.accountToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.accountToolStripMenuItem.Text = "Account";
             // 
             // logOutToolStripMenuItem
             // 
             this.logOutToolStripMenuItem.Name = "logOutToolStripMenuItem";
-            this.logOutToolStripMenuItem.Size = new System.Drawing.Size(139, 24);
+            this.logOutToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.logOutToolStripMenuItem.Text = "Log out";
             this.logOutToolStripMenuItem.Click += new System.EventHandler(this.logOutToolStripMenuItem_Click);
             // 
@@ -162,9 +157,8 @@
             // 
             this.Logo.Image = global::EOB.Properties.Resources.EOB_Logo;
             this.Logo.Location = new System.Drawing.Point(0, 0);
-            this.Logo.Margin = new System.Windows.Forms.Padding(4);
             this.Logo.Name = "Logo";
-            this.Logo.Size = new System.Drawing.Size(133, 123);
+            this.Logo.Size = new System.Drawing.Size(100, 100);
             this.Logo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.Logo.TabIndex = 0;
             this.Logo.TabStop = false;
@@ -172,10 +166,9 @@
             // ZichtrekeningenLabel
             // 
             this.ZichtrekeningenLabel.AutoSize = true;
-            this.ZichtrekeningenLabel.Location = new System.Drawing.Point(93, 192);
-            this.ZichtrekeningenLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.ZichtrekeningenLabel.Location = new System.Drawing.Point(70, 156);
             this.ZichtrekeningenLabel.Name = "ZichtrekeningenLabel";
-            this.ZichtrekeningenLabel.Size = new System.Drawing.Size(134, 16);
+            this.ZichtrekeningenLabel.Size = new System.Drawing.Size(110, 13);
             this.ZichtrekeningenLabel.TabIndex = 1;
             this.ZichtrekeningenLabel.Text = "ZICHTREKENINGEN";
             this.ZichtrekeningenLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -183,10 +176,9 @@
             // SpaarrekeningenLabel
             // 
             this.SpaarrekeningenLabel.AutoSize = true;
-            this.SpaarrekeningenLabel.Location = new System.Drawing.Point(489, 192);
-            this.SpaarrekeningenLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.SpaarrekeningenLabel.Location = new System.Drawing.Point(367, 156);
             this.SpaarrekeningenLabel.Name = "SpaarrekeningenLabel";
-            this.SpaarrekeningenLabel.Size = new System.Drawing.Size(141, 16);
+            this.SpaarrekeningenLabel.Size = new System.Drawing.Size(114, 13);
             this.SpaarrekeningenLabel.TabIndex = 2;
             this.SpaarrekeningenLabel.Text = "SPAARREKENINGEN";
             this.SpaarrekeningenLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -194,10 +186,9 @@
             // 
             // ZichtrekeningHistoryButton
             // 
-            this.ZichtrekeningHistoryButton.Location = new System.Drawing.Point(97, 212);
-            this.ZichtrekeningHistoryButton.Margin = new System.Windows.Forms.Padding(4);
+            this.ZichtrekeningHistoryButton.Location = new System.Drawing.Point(73, 172);
             this.ZichtrekeningHistoryButton.Name = "ZichtrekeningHistoryButton";
-            this.ZichtrekeningHistoryButton.Size = new System.Drawing.Size(140, 31);
+            this.ZichtrekeningHistoryButton.Size = new System.Drawing.Size(105, 25);
             this.ZichtrekeningHistoryButton.TabIndex = 5;
             this.ZichtrekeningHistoryButton.Text = "HISTORY";
             this.ZichtrekeningHistoryButton.UseVisualStyleBackColor = true;
@@ -205,10 +196,9 @@
             // 
             // SpaarrekeningHistoryButton
             // 
-            this.SpaarrekeningHistoryButton.Location = new System.Drawing.Point(493, 212);
-            this.SpaarrekeningHistoryButton.Margin = new System.Windows.Forms.Padding(4);
+            this.SpaarrekeningHistoryButton.Location = new System.Drawing.Point(370, 172);
             this.SpaarrekeningHistoryButton.Name = "SpaarrekeningHistoryButton";
-            this.SpaarrekeningHistoryButton.Size = new System.Drawing.Size(140, 31);
+            this.SpaarrekeningHistoryButton.Size = new System.Drawing.Size(105, 25);
             this.SpaarrekeningHistoryButton.TabIndex = 6;
             this.SpaarrekeningHistoryButton.Text = "HISTORY";
             this.SpaarrekeningHistoryButton.UseVisualStyleBackColor = true;
@@ -220,10 +210,9 @@
             this.ZichtrekeningNr,
             this.BalanceZichtrekening});
             this.ZichtrekeningBalancesListView.HideSelection = false;
-            this.ZichtrekeningBalancesListView.Location = new System.Drawing.Point(16, 277);
-            this.ZichtrekeningBalancesListView.Margin = new System.Windows.Forms.Padding(4);
+            this.ZichtrekeningBalancesListView.Location = new System.Drawing.Point(12, 225);
             this.ZichtrekeningBalancesListView.Name = "ZichtrekeningBalancesListView";
-            this.ZichtrekeningBalancesListView.Size = new System.Drawing.Size(303, 144);
+            this.ZichtrekeningBalancesListView.Size = new System.Drawing.Size(228, 118);
             this.ZichtrekeningBalancesListView.TabIndex = 7;
             this.ZichtrekeningBalancesListView.UseCompatibleStateImageBehavior = false;
             this.ZichtrekeningBalancesListView.View = System.Windows.Forms.View.Details;
@@ -245,10 +234,9 @@
             this.SpaarrekeningNr,
             this.BalanceSpaarrekening});
             this.SpaarrekeningBalancesListView.HideSelection = false;
-            this.SpaarrekeningBalancesListView.Location = new System.Drawing.Point(408, 277);
-            this.SpaarrekeningBalancesListView.Margin = new System.Windows.Forms.Padding(4);
+            this.SpaarrekeningBalancesListView.Location = new System.Drawing.Point(306, 225);
             this.SpaarrekeningBalancesListView.Name = "SpaarrekeningBalancesListView";
-            this.SpaarrekeningBalancesListView.Size = new System.Drawing.Size(303, 144);
+            this.SpaarrekeningBalancesListView.Size = new System.Drawing.Size(228, 118);
             this.SpaarrekeningBalancesListView.TabIndex = 8;
             this.SpaarrekeningBalancesListView.UseCompatibleStateImageBehavior = false;
             this.SpaarrekeningBalancesListView.View = System.Windows.Forms.View.Details;
@@ -266,10 +254,10 @@
             // 
             // ClientMainPage
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.SlateGray;
-            this.ClientSize = new System.Drawing.Size(728, 715);
+            this.ClientSize = new System.Drawing.Size(546, 581);
             this.Controls.Add(this.SpaarrekeningBalancesListView);
             this.Controls.Add(this.ZichtrekeningBalancesListView);
             this.Controls.Add(this.SpaarrekeningHistoryButton);
@@ -278,7 +266,6 @@
             this.Controls.Add(this.ZichtrekeningenLabel);
             this.Controls.Add(this.panel1);
             this.ForeColor = System.Drawing.Color.Black;
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "ClientMainPage";
             this.Text = "ClientMainPage";
             this.Load += new System.EventHandler(this.ClientMainPage_Load);

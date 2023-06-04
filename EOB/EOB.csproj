@@ -81,17 +81,11 @@
     <Compile Include="Account.cs" />
     <Compile Include="AccountTypes.cs" />
     <Compile Include="Admin.cs" />
-    <Compile Include="AdminLoginpage.cs">
+    <Compile Include="AutomatischeOverschrijvingPage.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AdminLoginpage.Designer.cs">
-      <DependentUpon>AdminLoginpage.cs</DependentUpon>
-    </Compile>
-    <Compile Include="AdminMainPage.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="AdminMainPage.Designer.cs">
-      <DependentUpon>AdminMainPage.cs</DependentUpon>
+    <Compile Include="AutomatischeOverschrijvingPage.Designer.cs">
+      <DependentUpon>AutomatischeOverschrijvingPage.cs</DependentUpon>
     </Compile>
     <Compile Include="ClientMainPage.cs">
       <SubType>Form</SubType>
@@ -100,6 +94,12 @@
       <DependentUpon>ClientMainPage.cs</DependentUpon>
     </Compile>
     <Compile Include="Data.cs" />
+    <Compile Include="DepositPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DepositPage.Designer.cs">
+      <DependentUpon>DepositPage.cs</DependentUpon>
+    </Compile>
     <Compile Include="Firstpage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -110,12 +110,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Test.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Test.Designer.cs">
-      <DependentUpon>Test.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -130,14 +124,14 @@
     <EmbeddedResource Include="AanmeldPage.resx">
       <DependentUpon>AanmeldPage.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AdminLoginpage.resx">
-      <DependentUpon>AdminLoginpage.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="AdminMainPage.resx">
-      <DependentUpon>AdminMainPage.cs</DependentUpon>
+    <EmbeddedResource Include="AutomatischeOverschrijvingPage.resx">
+      <DependentUpon>AutomatischeOverschrijvingPage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ClientMainPage.resx">
       <DependentUpon>ClientMainPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DepositPage.resx">
+      <DependentUpon>DepositPage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Firstpage.resx">
       <DependentUpon>Firstpage.cs</DependentUpon>
@@ -145,9 +139,6 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Test.resx">
-      <DependentUpon>Test.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WordKlantPage.resx">
       <DependentUpon>WordKlantPage.cs</DependentUpon>

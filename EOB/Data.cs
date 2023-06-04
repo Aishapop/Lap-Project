@@ -359,12 +359,12 @@ namespace EOB
                     List<Transaction> transactions = new List<Transaction>();   
                     if (soortrekening == 1)
                     {
-                        Account account = new Account(accountnr, balance, Types.CurrentAccount, user);
+                        Account account = new Account(accountnr, balance, Types.Zichtrekening, user);
                         return account;
                     }
                     else if (soortrekening == 2)
                     {
-                        Account account = new Account(accountnr, balance, Types.SavingsAccount, user);
+                        Account account = new Account(accountnr, balance, Types.Spaarrekening, user);
                         return account;
                     }
 
@@ -454,12 +454,12 @@ namespace EOB
                     
                     if (soortrekening == 1)
                     {
-                        Account account = new Account(accountnr, balance, Types.CurrentAccount, user);
+                        Account account = new Account(accountnr, balance, Types.Zichtrekening, user);
                         accountslist.Add(account);
                     }
                     else if (soortrekening == 2)
                     {
-                        Account account = new Account(accountnr, balance, Types.SavingsAccount,user);
+                        Account account = new Account(accountnr, balance, Types.Spaarrekening,user);
                         accountslist.Add(account);
                     }
                     

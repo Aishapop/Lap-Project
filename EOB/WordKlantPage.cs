@@ -92,7 +92,7 @@ namespace EOB
                 // Store the account information in the database
                 User user = new User(firstname, lastname,password, email,imageData);
 
-                FormUtils.OpenForm(new ClientMainPage(email, password));
+                FormUtils.OpenForm(new ClientMainPage(email));
 
                 // Clear the input fields
                 FirstName.Clear();

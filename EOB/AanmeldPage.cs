@@ -48,7 +48,7 @@ namespace EOB
 
                 else if(email == userData.Email && password == userData.Password)
                 {
-                    FormUtils.OpenForm(new ClientMainPage(email, password));
+                    FormUtils.OpenForm(new ClientMainPage(email));
                     EmailText.Clear();
                     PasswordText.Clear();
                 }

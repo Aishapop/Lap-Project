@@ -27,7 +27,7 @@ namespace EOB
         private bool ValidateInputs()
         {
             string soortrekening = SoortenRekeningDropDown.Text;
-            string bedragtext = BedragText.Text;
+            string bedragtext = BedragText.Text.Replace("€","");
 
             if(string.IsNullOrEmpty(soortrekening) || string.IsNullOrEmpty(bedragtext))
             {
@@ -56,26 +56,38 @@ namespace EOB
             if(ValidateInputs())
             {
                 string soortrekening = SoortenRekeningDropDown.Text;
-                string bedragtext = BedragText.Text;
-                float bedrag = (float)Convert.ToDouble(bedragtext);
+                string bedragtext = BedragText.Text.Replace("€","");
+                //float bedrag = (float)Convert.ToDouble(bedragtext);
+                int bedrag = Convert.ToInt32(bedragtext);
                 Data data = new Data();
                 User user = data.SelectUSerIfExist(Email);
 
                 // Parse the item name into the corresponding enumeration value
-                object enumValue = Enum.Parse(Type.GetType("Types"), soortrekening);
+                object enumValue = Enum.Parse(Type.GetType("EOB.Types"), soortrekening);
 
                 // Cast the enumValue to the desired enumeration type
                 Types selectedRekening = (Types)enumValue;
 
                 user.CreateAccount(selectedRekening);
-                
-                //              zet het bedrag als balance voor de user *************
+
+                //zet het bedrag als balance voor de user
+                List<Account> balances = user.AccountList;
+                Account balance = balances[balances.Count - 1];
+                balance.DepositMoney(bedrag);
+
+                FormUtils.OpenForm(new ClientMainPage(Email));
+                BedragText.Clear();
             }
         }
 
         private void BedragText_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void returnButton_Click(object sender, EventArgs e)
+        {
+            FormUtils.OpenForm(new ClientMainPage(Email));
         }
     }
 }

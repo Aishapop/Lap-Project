@@ -19,12 +19,10 @@ namespace EOB
     public partial class ClientMainPage : Form
     {
         private string Email;
-        private string Password;
-        public ClientMainPage(string email, string password) 
+        public ClientMainPage(string email) 
         {
             InitializeComponent();
             this.Email = email;
-            this.Password = password;
         }
 
         private void ProfilePicturePictureBox_Click(object sender, EventArgs e)
@@ -146,7 +144,7 @@ namespace EOB
 
         private void automatischToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FormUtils.OpenForm(new AutomatischeOverschrijvingPage(Email, Password));
+            FormUtils.OpenForm(new AutomatischeOverschrijvingPage(Email));
         }
 
         private void OverschrijvingenDropdownMenu_Click(object sender, EventArgs e)

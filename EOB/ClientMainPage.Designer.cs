@@ -49,6 +49,7 @@
             this.SpaarrekeningBalancesListView = new System.Windows.Forms.ListView();
             this.SpaarrekeningNr = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.BalanceSpaarrekening = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.DeleteAccountButton = new System.Windows.Forms.Button();
             this.ProfilePicturePictureBox = new System.Windows.Forms.PictureBox();
             this.Logo = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
@@ -61,6 +62,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.SteelBlue;
+            this.panel1.Controls.Add(this.DeleteAccountButton);
             this.panel1.Controls.Add(this.DepositButton);
             this.panel1.Controls.Add(this.OverschrijvingenDropdownMenu);
             this.panel1.Controls.Add(this.ProfilePicturePictureBox);
@@ -76,7 +78,7 @@
             this.DepositButton.Name = "DepositButton";
             this.DepositButton.Size = new System.Drawing.Size(120, 25);
             this.DepositButton.TabIndex = 3;
-            this.DepositButton.Text = "Deposit";
+            this.DepositButton.Text = "Make account";
             this.DepositButton.UseVisualStyleBackColor = true;
             this.DepositButton.Click += new System.EventHandler(this.DepositButton_Click);
             // 
@@ -122,26 +124,26 @@
             this.accountToolStripMenuItem,
             this.logOutToolStripMenuItem});
             this.DropDownMenuOfPfp.Name = "DropDownMenuOfPfp";
-            this.DropDownMenuOfPfp.Size = new System.Drawing.Size(181, 92);
+            this.DropDownMenuOfPfp.Size = new System.Drawing.Size(156, 70);
             // 
             // passwordToolStripMenuItem
             // 
             this.passwordToolStripMenuItem.Name = "passwordToolStripMenuItem";
-            this.passwordToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.passwordToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
             this.passwordToolStripMenuItem.Text = "Password";
             this.passwordToolStripMenuItem.Click += new System.EventHandler(this.passwordToolStripMenuItem_Click);
             // 
             // accountToolStripMenuItem
             // 
             this.accountToolStripMenuItem.Name = "accountToolStripMenuItem";
-            this.accountToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.accountToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
             this.accountToolStripMenuItem.Text = "Delete Account";
             this.accountToolStripMenuItem.Click += new System.EventHandler(this.accountToolStripMenuItem_Click);
             // 
             // logOutToolStripMenuItem
             // 
             this.logOutToolStripMenuItem.Name = "logOutToolStripMenuItem";
-            this.logOutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.logOutToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
             this.logOutToolStripMenuItem.Text = "Log out";
             this.logOutToolStripMenuItem.Click += new System.EventHandler(this.logOutToolStripMenuItem_Click);
             // 
@@ -234,6 +236,16 @@
             this.BalanceSpaarrekening.Text = "Balance €";
             this.BalanceSpaarrekening.Width = 72;
             // 
+            // DeleteAccountButton
+            // 
+            this.DeleteAccountButton.Location = new System.Drawing.Point(294, 53);
+            this.DeleteAccountButton.Name = "DeleteAccountButton";
+            this.DeleteAccountButton.Size = new System.Drawing.Size(120, 25);
+            this.DeleteAccountButton.TabIndex = 4;
+            this.DeleteAccountButton.Text = "Delete account";
+            this.DeleteAccountButton.UseVisualStyleBackColor = true;
+            this.DeleteAccountButton.Click += new System.EventHandler(this.DeleteAccountButton_Click);
+            // 
             // ProfilePicturePictureBox
             // 
             this.ProfilePicturePictureBox.ContextMenuStrip = this.DropDownMenuOfPfp;
@@ -306,5 +318,6 @@
         private System.Windows.Forms.ToolStripMenuItem automatischToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem normaalToolStripMenuItem;
         private System.Windows.Forms.Button DepositButton;
+        private System.Windows.Forms.Button DeleteAccountButton;
     }
 }

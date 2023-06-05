@@ -170,5 +170,10 @@ namespace EOB
         {
             FormUtils.OpenForm(new ChangePasswordPage(User));
         }
+
+        private void DeleteAccountButton_Click(object sender, EventArgs e)
+        {
+            FormUtils.OpenForm(new DeleteRekeningPage(User));
+        }
     }
 }

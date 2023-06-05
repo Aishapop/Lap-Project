@@ -118,6 +118,12 @@
     <Compile Include="DeleteAccountPage.Designer.cs">
       <DependentUpon>DeleteAccountPage.cs</DependentUpon>
     </Compile>
+    <Compile Include="DeleteRekeningPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DeleteRekeningPage.Designer.cs">
+      <DependentUpon>DeleteRekeningPage.cs</DependentUpon>
+    </Compile>
     <Compile Include="DepositPage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -177,6 +183,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DeleteAccountPage.resx">
       <DependentUpon>DeleteAccountPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DeleteRekeningPage.resx">
+      <DependentUpon>DeleteRekeningPage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DepositPage.resx">
       <DependentUpon>DepositPage.cs</DependentUpon>

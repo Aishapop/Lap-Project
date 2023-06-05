@@ -66,3 +66,4 @@ C:\Users\alanl\source\repos\Lap-Project\EOB\obj\Debug\EOB.NormaleOverschrijvingP
 C:\Users\alanl\source\repos\Lap-Project\EOB\obj\Debug\EOB.DeleteAccountPage.resources
 C:\Users\alanl\source\repos\Lap-Project\EOB\obj\Debug\EOB.RecoverAccountPage.resources
 C:\Users\alanl\source\repos\Lap-Project\EOB\obj\Debug\EOB.ChangePasswordPage.resources
+C:\Users\alanl\source\repos\Lap-Project\EOB\obj\Debug\EOB.DeleteRekeningPage.resources

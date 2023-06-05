@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -98,7 +99,7 @@ namespace EOB
             }
             foreach (var item in bedragtext)
             {
-                if (!"1234567890.,".Contains(item))
+                if (!"1234567890.".Contains(item))
                 {
                     MessageBox.Show("Voer enkel nummers of een komma in, in dit veld", "bedrag error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     BedragText.Clear();
@@ -110,8 +111,7 @@ namespace EOB
         }
 
         private void OverschrijvenButton_Click(object sender, EventArgs e)
-        {
-            /*
+        {           
             if (ValidateInputs())
             {
                 string mijnrekeningnrtext = MijnRekeningenDropDown.Text.Replace("BE","").Trim();
@@ -119,12 +119,11 @@ namespace EOB
                 string ontvangerrekeningtext = OntvangerRekeningNrText.Text.Replace("BE", "").Trim();
                 int ontvangerrekening = Convert.ToInt32(ontvangerrekeningtext);
                 string bedragtext = BedragText.Text.Replace("€", "").Trim();
-                decimal bedrag = Convert.ToDecimal(bedragtext);
-
+                decimal bedrag = decimal.Parse(bedragtext, CultureInfo.InvariantCulture);
                 Data data = new Data();
                 User user = data.SelectUSerIfExist(Email);
                 List<Account> accounts = user.AccountList;
-                Account rekening = accounts[0]; // give it a random account
+                Account rekening = accounts[0];
                 foreach (Account account in accounts)
                 {
                     if (account.AccountNumber == mijnrekeningnr)
@@ -135,43 +134,8 @@ namespace EOB
                 rekening.TransferMoney(ontvangerrekening, bedrag);
                 FormUtils.OpenForm(new ClientMainPage(Email));
                 OntvangerRekeningNrText.Clear();
-                BedragText.Clear();
-            }
-            */
-            if (ValidateInputs())
-            {
-                string mijnrekeningnrtext = MijnRekeningenDropDown.Text.Replace("BE", "").Trim();
-                int mijnrekeningnr = Convert.ToInt32(mijnrekeningnrtext);
-                string ontvangerrekeningtext = OntvangerRekeningNrText.Text.Replace("BE", "").Trim();
-                int ontvangerrekening = Convert.ToInt32(ontvangerrekeningtext);
-                string bedragtext = BedragText.Text.Replace("€", "").Trim();
-
-                if (decimal.TryParse(bedragtext, out decimal bedrag))
-                {
-                    Data data = new Data();
-                    User user = data.SelectUSerIfExist(Email);
-                    List<Account> accounts = data.SelectAllAccount(user);
-                    Account rekening = accounts[0]; // give it a random account
-
-                    foreach (Account account in accounts)
-                    {
-                        if (account.AccountNumber == mijnrekeningnr)
-                        {
-                            rekening = account; // give this variable the right account
-                        }
-                    }                
-                    rekening.TransferMoney(ontvangerrekening, bedrag);
-                    FormUtils.OpenForm(new ClientMainPage(Email));
-                    OntvangerRekeningNrText.Clear();
-                    BedragText.Clear();
-                }
-                else
-                {
-                    MessageBox.Show("fuck you");
-                    // Handle the case where the conversion failed
-                    // Display an error message or take appropriate action
-                }
-            }
+                BedragText.Clear();             
+            }          
         }
     }
 }

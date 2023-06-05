@@ -12,15 +12,11 @@ namespace EOB
 {
     public partial class DepositPage : Form
     {
-        private string Email;
-        
-
-        public DepositPage(string email )
+        private User User;
+        internal DepositPage(User user)
         {
             InitializeComponent();
-            Email = email;
-            // Save the user object for further use in the DepositPage
-            
+            User = user;
         }
 
         private void SoortenRekeningDropDown_SelectedIndexChanged(object sender, EventArgs e)
@@ -31,9 +27,9 @@ namespace EOB
         private bool ValidateInputs()
         {
             string soortrekening = SoortenRekeningDropDown.Text.Trim();
-            string bedragtext = BedragText.Text.Replace("€", "").Trim();
+            string bedragtext = BedragText.Text.Replace("€","").Trim();
 
-            if (string.IsNullOrEmpty(soortrekening) || string.IsNullOrEmpty(bedragtext))
+            if(string.IsNullOrEmpty(soortrekening) || string.IsNullOrEmpty(bedragtext))
             {
                 MessageBox.Show("Please fill in all the fields!", "Empty fields", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
@@ -57,13 +53,11 @@ namespace EOB
 
         private void DepositButton_Click(object sender, EventArgs e)
         {
-            if (ValidateInputs())
+            if(ValidateInputs())
             {
                 string soortrekening = SoortenRekeningDropDown.Text.Trim();
-                string bedragtext = BedragText.Text.Replace("€", "").Trim();
+                string bedragtext = BedragText.Text.Replace("€","").Trim();
                 decimal bedrag = Convert.ToDecimal(bedragtext);
-                Data data = new Data();
-                User user = data.SelectUSerIfExist(Email);
 
                 // Parse the item name into the corresponding enumeration value
                 object enumValue = Enum.Parse(Type.GetType("EOB.Types"), soortrekening);
@@ -71,14 +65,14 @@ namespace EOB
                 // Cast the enumValue to the desired enumeration type
                 Types selectedRekening = (Types)enumValue;
 
-                user.CreateAccount(selectedRekening);
+                User.CreateAccount(selectedRekening);
 
                 //zet het bedrag als balance voor de user
-                List<Account> balances = user.AccountList;
+                List<Account> balances = User.AccountList;
                 Account balance = balances[balances.Count - 1];
                 balance.DepositMoney(bedrag);
 
-                FormUtils.OpenForm(new ClientMainPage(Email));
+                FormUtils.OpenForm(new ClientMainPage(User));
                 BedragText.Clear();
             }
         }
@@ -90,7 +84,7 @@ namespace EOB
 
         private void returnButton_Click(object sender, EventArgs e)
         {
-            FormUtils.OpenForm(new ClientMainPage(Email));
+            FormUtils.OpenForm(new ClientMainPage(User));
         }
     }
 }

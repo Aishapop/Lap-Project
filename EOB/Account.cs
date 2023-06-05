@@ -4,6 +4,7 @@ using System.Linq;
 using System.Runtime.InteropServices.ComTypes;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace EOB
 {
@@ -73,12 +74,10 @@ namespace EOB
                 this.Transactions.Add(transaction);
 
             }
-
-
-
-
-
-
+            else
+            {
+                MessageBox.Show("Je hebt dit bedrag niet op je rekening staan", "bedrag error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
         public void DepositMoney(decimal amount)
         {
@@ -89,14 +88,12 @@ namespace EOB
         {
            return _data.SelectAllTransactions(this);
         }
-        public void SetAutomaticTransfer(string startingdate, string termijn, string endingdate, int amount,int accountnr)
+        public void SetAutomaticTransfer(string startingdate, string termijn, string endingdate, decimal amount,int accountnr)
         {
-            _data.InsertAutomaticTransaction(this,startingdate,termijn,endingdate,amount);
-            
-            DateTime startdate = DateTime.Parse(startingdate);
-            DateTime enddate = DateTime.Parse(endingdate);
+            _data.InsertAutomaticTransaction(this,startingdate,termijn,endingdate,amount,accountnr);
 
-            DateTime currentDate = startdate;
+            DateTime currentDate = DateTime.Parse(startingdate);
+            DateTime enddate = DateTime.Parse(endingdate);
 
             while (currentDate <= enddate)
             {
@@ -106,16 +103,6 @@ namespace EOB
                 // Move to the next date
                 currentDate = currentDate.AddDays(1);
             }
-
-
-
         }
-
-
-
-
-
-    }
-
-    
+    } 
 }

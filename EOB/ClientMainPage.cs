@@ -18,15 +18,11 @@ namespace EOB
 {
     public partial class ClientMainPage : Form
     {
-        private string Email;
-        
-        
-        public ClientMainPage(string email) 
+        private User User;
+        internal ClientMainPage(User user) 
         {
             InitializeComponent();
-            this.Email = email;
-            
-
+            this.User = user;
         }
 
         private void ProfilePicturePictureBox_Click(object sender, EventArgs e)
@@ -59,65 +55,55 @@ namespace EOB
             "password=root;" +
             "database=eob;";
 
-            MySqlConnection connection = new MySqlConnection(connectionString);
-
-            // Create a command to retrieve the data
-            MySqlCommand command = new MySqlCommand("SELECT * FROM rekening", connection);
-
-            // Create a data adapter to fill the dataset
-            MySqlDataAdapter adapter = new MySqlDataAdapter(command);
-            DataTable dataTable = new DataTable();
-            Data data = new Data();
-            User user = data.SelectUSerIfExist(Email);
-
-
-            try
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
             {
-                if (connection.State != ConnectionState.Open)
-                    connection.Open();         
-                // Fill the dataset
-                adapter.Fill(dataTable);
+                // Create a command to retrieve the data
+                MySqlCommand command = new MySqlCommand("SELECT * FROM rekening", connection);
 
-                // Get the users id
-                
-
-                DepositButton.Tag = user;
-
-                // Iterate over the data and populate the ListView control
-                foreach (DataRow row in dataTable.Rows)
+                // Create a data adapter to fill the dataset
+                MySqlDataAdapter adapter = new MySqlDataAdapter(command);
+                DataTable dataTable = new DataTable();
+                try
                 {
-                    if (Convert.ToInt32(row["User_id"]) == user.ID)
+                    connection.Open();
+                    // Fill the dataset
+                    adapter.Fill(dataTable);
+
+                    // Iterate over the data and populate the ListView control
+                    foreach (DataRow row in dataTable.Rows)
                     {
-                        if (Convert.ToInt32(row["SoortRekening_id"]) == 1)
+                        if (Convert.ToInt32(row["User_id"]) == User.ID)
                         {
-                            ListViewItem item = new ListViewItem(row["Rekening_nr"].ToString());
-                            item.SubItems.Add(row["StartBedrag"].ToString());
+                            if (Convert.ToInt32(row["SoortRekening_id"]) == 1)
+                            {
+                                ListViewItem item = new ListViewItem(row["Rekening_nr"].ToString());
+                                item.SubItems.Add(row["StartBedrag"].ToString());
 
-                            ZichtrekeningBalancesListView.Items.Add(item);
-                        }
-                        else if (Convert.ToInt32(row["SoortRekening_id"]) == 2)
-                        {
-                            ListViewItem item = new ListViewItem(row["Rekening_nr"].ToString());
-                            item.SubItems.Add(row["StartBedrag"].ToString());
+                                ZichtrekeningBalancesListView.Items.Add(item);
+                            }
+                            else if (Convert.ToInt32(row["SoortRekening_id"]) == 2)
+                            {
+                                ListViewItem item = new ListViewItem(row["Rekening_nr"].ToString());
+                                item.SubItems.Add(row["StartBedrag"].ToString());
 
-                            SpaarrekeningBalancesListView.Items.Add(item);
+                                SpaarrekeningBalancesListView.Items.Add(item);
+                            }
                         }
                     }
                 }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                finally
+                {
+                    // Clean up resources
+                    adapter.Dispose();
+                    command.Dispose();
+                    connection.Close();
+                }
             }
-            catch(Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                // Clean up resources
-                adapter.Dispose();
-                command.Dispose();
-                connection.Close();
-            }
-            
-            byte[] picture = user.ProfilePicture;
+            byte[] picture = User.ProfilePicture;
             // Convert the blob data into an image
             Image image = ConvertBlobToImage(picture);
             // Assign the converted image to the PictureBox control
@@ -152,7 +138,7 @@ namespace EOB
 
         private void automatischToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FormUtils.OpenForm(new AutomatischeOverschrijvingPage(Email));
+            FormUtils.OpenForm(new AutomatischeOverschrijvingPage(User));
         }
 
         private void OverschrijvingenDropdownMenu_Click(object sender, EventArgs e)
@@ -167,21 +153,22 @@ namespace EOB
 
         private void DepositButton_Click(object sender, EventArgs e)
         {
-            
-            
-
-            if (DepositButton.Tag is User user)
-            {
-                FormUtils.OpenForm(new DepositPage(Email));
-            }
+            FormUtils.OpenForm(new DepositPage(User));
         }
 
         private void normaalToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FormUtils.OpenForm(new NormaleOverschrijvingPage(Email));
+            FormUtils.OpenForm(new NormaleOverschrijvingPage(User));
+        }
 
-            
+        private void accountToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormUtils.OpenForm(new DeleteAccountPage(User));
+        }
 
+        private void passwordToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormUtils.OpenForm(new ChangePasswordPage(User));
         }
     }
 }

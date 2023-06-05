@@ -14,16 +14,16 @@ namespace EOB
 {
     public partial class NormaleOverschrijvingPage : Form
     {
-        private string Email;
-        public NormaleOverschrijvingPage(string email)
+        private User User;
+        internal NormaleOverschrijvingPage(User user)
         {
             InitializeComponent();
-            this.Email = email;
+            this.User = user;
         }
 
         private void ReturnButton_Click(object sender, EventArgs e)
         {
-            FormUtils.OpenForm(new ClientMainPage(Email));
+            FormUtils.OpenForm(new ClientMainPage(User));
         }
 
         private void NormaleOverschrijvingPage_Load(object sender, EventArgs e)
@@ -50,13 +50,11 @@ namespace EOB
                     adapter.Fill(dataTable);
 
                     // Get the users id
-                    Data data = new Data();
-                    User user = data.SelectUSerIfExist(Email);
 
                     // Iterate over the data and populate the ListView control
                     foreach (DataRow row in dataTable.Rows)
                     {
-                        if (Convert.ToInt32(row["User_id"]) == user.ID)
+                        if (Convert.ToInt32(row["User_id"]) == User.ID)
                         {
                             string item = "BE" + row["Rekening_nr"];
 
@@ -79,11 +77,11 @@ namespace EOB
         }
         private bool ValidateInputs()
         {
-            string mijnrekeningnr = MijnRekeningenDropDown.Text.Replace("BE", "").Trim();
-            string ontvangerrekening = OntvangerRekeningNrText.Text.Replace("BE", "").Trim();
-            string bedragtext = BedragText.Text.Replace("€", "").Trim();
+            string mijnrekeningnr = MijnRekeningenDropDown.Text.Replace("BE","").Trim();
+            string ontvangerrekening = OntvangerRekeningNrText.Text.Replace("BE","").Trim();
+            string bedragtext = BedragText.Text.Replace("€","").Trim();
 
-            if (string.IsNullOrEmpty(mijnrekeningnr) || string.IsNullOrEmpty(ontvangerrekening) || string.IsNullOrEmpty(bedragtext))
+            if(string.IsNullOrEmpty(mijnrekeningnr) || string.IsNullOrEmpty(ontvangerrekening) || string.IsNullOrEmpty(bedragtext))
             {
                 MessageBox.Show("Please fill in all the fields!", "Empty fields", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
@@ -111,18 +109,16 @@ namespace EOB
         }
 
         private void OverschrijvenButton_Click(object sender, EventArgs e)
-        {
+        {           
             if (ValidateInputs())
             {
-                string mijnrekeningnrtext = MijnRekeningenDropDown.Text.Replace("BE", "").Trim();
+                string mijnrekeningnrtext = MijnRekeningenDropDown.Text.Replace("BE","").Trim();
                 int mijnrekeningnr = Convert.ToInt32(mijnrekeningnrtext);
                 string ontvangerrekeningtext = OntvangerRekeningNrText.Text.Replace("BE", "").Trim();
                 int ontvangerrekening = Convert.ToInt32(ontvangerrekeningtext);
                 string bedragtext = BedragText.Text.Replace("€", "").Trim();
                 decimal bedrag = decimal.Parse(bedragtext, CultureInfo.InvariantCulture);
-                Data data = new Data();
-                User user = data.SelectUSerIfExist(Email);
-                List<Account> accounts = user.AccountList;
+                List<Account> accounts = User.AccountList;
                 Account rekening = accounts[0];
                 foreach (Account account in accounts)
                 {
@@ -132,10 +128,10 @@ namespace EOB
                     }
                 }
                 rekening.TransferMoney(ontvangerrekening, bedrag);
-                FormUtils.OpenForm(new ClientMainPage(Email));
+                FormUtils.OpenForm(new ClientMainPage(User));
                 OntvangerRekeningNrText.Clear();
-                BedragText.Clear();
-            }
+                BedragText.Clear();             
+            }          
         }
     }
 }

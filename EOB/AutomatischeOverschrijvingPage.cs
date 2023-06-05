@@ -13,16 +13,16 @@ namespace EOB
 {
     public partial class AutomatischeOverschrijvingPage : Form
     {
-        private string Email;
-        public AutomatischeOverschrijvingPage(string email)
+        private User User;
+        internal AutomatischeOverschrijvingPage(User user)
         {
             InitializeComponent();
-            this.Email = email;
+            this.User = user;
         }
 
-        private void returnButton_Click(object sender, EventArgs e)
+        private void ReturnButton_Click(object sender, EventArgs e)
         {
-            FormUtils.OpenForm(new ClientMainPage(Email));
+            FormUtils.OpenForm(new ClientMainPage(User));
         }
 
         private void BeginDateAutoOverschrij_ValueChanged(object sender, EventArgs e)
@@ -54,17 +54,32 @@ namespace EOB
         {
             if(ValidateInputs())
             {
-                string rekeningNrText = OntvangersRekeningNR.Text.Replace("BE", "");
+                string mijnrekeningnrtext = MijnRekeningenDropDown.Text.Replace("BE","").Trim();
+                int mijnrekeningNr = Convert.ToInt32(mijnrekeningnrtext);
+                string rekeningNrText = OntvangersRekeningNR.Text.Replace("BE", "").Trim();
                 int rekeningNr = Convert.ToInt32(rekeningNrText);
-                string bedragtext = BedragText.Text.Replace("€", "");
-                float bedrag = (float)Convert.ToDouble(bedragtext);
+                string bedragtext = BedragText.Text.Replace("€", "").Trim();
+                decimal bedrag = Convert.ToDecimal(bedragtext);
                 string termijn = TermijnDropDownMenu.Text;
-                DateTime beginDate = BeginDateAutoOverschrij.Value.Date;
-                DateTime endDate = BeginDateAutoOverschrij.Value.Date;
-                string formattedBeginDate = beginDate.ToString("yyyy-MM-dd");
-                string formattedEndDate = endDate.ToString("yyyy-MM-dd");
-                
-                //              all de informatie gebruiken om een auto overschrijving te maken ***********
+                DateTime beginDate1 = BeginDateAutoOverschrij.Value.Date;
+                DateTime endDate1 = BeginDateAutoOverschrij.Value.Date;
+                string beginDate = beginDate1.ToString("yyyy-MM-dd HH:mm:ss");
+                string endDate = endDate1.ToString("yyyy-MM-dd HH:mm:ss");
+
+                //all de informatie gebruiken om een auto overschrijving te maken ***********
+                List<Account> accounts = User.AccountList;
+                Account rekening = accounts[0]; // give it a random account
+                foreach(Account account in accounts)
+                {
+                    if(account.AccountNumber == mijnrekeningNr)
+                    {
+                        rekening = account; // give this variable the right account
+                    }
+                }
+                rekening.SetAutomaticTransfer(beginDate, termijn, endDate, bedrag, rekeningNr);
+                FormUtils.OpenForm(new ClientMainPage(User));
+                OntvangersRekeningNR.Clear();
+                BedragText.Clear();
             }
         }
         private bool ValidateInputs()
@@ -72,10 +87,10 @@ namespace EOB
             DateTime beginDate = BeginDateAutoOverschrij.Value.Date;
             DateTime endDate = BeginDateAutoOverschrij.Value.Date;
 
-            string mijnrekeningen = MijnRekeningenDropDown.Text;
+            string mijnrekeningen = MijnRekeningenDropDown.Text.Replace("BE","").Trim();
             string termijn = TermijnDropDownMenu.Text;
-            string rekeningNrText = OntvangersRekeningNR.Text.Replace("BE", "");
-            string bedragtext = BedragText.Text.Replace("€", "");
+            string rekeningNrText = OntvangersRekeningNR.Text.Replace("BE", "").Trim();
+            string bedragtext = BedragText.Text.Replace("€", "").Trim();
             if (string.IsNullOrEmpty(rekeningNrText) || string.IsNullOrEmpty(bedragtext) || string.IsNullOrEmpty(mijnrekeningen) || string.IsNullOrEmpty(termijn))
             {
                 MessageBox.Show("Please fill in all the fields!", "Empty fields", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -94,9 +109,9 @@ namespace EOB
 
             foreach (var item in bedragtext)
             {
-                if (!"1234567890".Contains(item))
+                if (!"1234567890.".Contains(item))
                 {
-                    MessageBox.Show("Voer enkel nummers in dit veld in", "bedrag error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Voer enkel nummers of een punt in, in dit veld", "bedrag error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     BedragText.Clear();
                     return false;
                 }
@@ -108,7 +123,7 @@ namespace EOB
                 return false;
             }
             
-            if (termijn != "wekelijks" || termijn != "maandelijks" || termijn != "jaarlijks")
+            if (termijn != "wekelijks" && termijn != "maandelijks" && termijn != "jaarlijks")
             {
                 MessageBox.Show("Het ingevoerde termijn is geen optie", "Termijn error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
@@ -125,50 +140,43 @@ namespace EOB
             "password=root;" +
             "database=eob;";
 
-            MySqlConnection connection = new MySqlConnection(connectionString);
-
-            // Create a command to retrieve the data
-            MySqlCommand command = new MySqlCommand("SELECT * FROM rekening", connection);
-
-            // Create a data adapter to fill the dataset
-            MySqlDataAdapter adapter = new MySqlDataAdapter(command);
-            DataTable dataTable = new DataTable();
-
-            try
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
             {
-                connection.Open();
-                // Fill the dataset
-                adapter.Fill(dataTable);
+                // Create a command to retrieve the data
+                MySqlCommand command = new MySqlCommand("SELECT * FROM rekening", connection);
 
-                // Get the users id
-                Data data = new Data();
-                User user = data.SelectUSerIfExist(Email);
-
-                // Iterate over the data and populate the ListView control
-                foreach (DataRow row in dataTable.Rows)
+                // Create a data adapter to fill the dataset
+                MySqlDataAdapter adapter = new MySqlDataAdapter(command);
+                DataTable dataTable = new DataTable();
+                try
                 {
-                    if (Convert.ToInt32(row["User_id"]) == user.ID)
+                    connection.Open();
+                    // Fill the dataset
+                    adapter.Fill(dataTable);
+
+                    // Iterate over the data and populate the ListView control
+                    foreach (DataRow row in dataTable.Rows)
                     {
-                        if (Convert.ToInt32(row["SoortRekening_id"]) == 1)
+                        if (Convert.ToInt32(row["User_id"]) == User.ID)
                         {
-                            ListViewItem item = new ListViewItem("BE" + row["Rekening_nr"].ToString());
+                            string item = "BE" + row["Rekening_nr"];
 
                             MijnRekeningenDropDown.Items.Add(item);
                         }
                     }
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                // Clean up resources
-                adapter.Dispose();
-                command.Dispose();
-                connection.Close();
-            }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                finally
+                {
+                    // Clean up resources
+                    adapter.Dispose();
+                    command.Dispose();
+                    connection.Close();
+                }
+            }          
         }
 
         private void MijnRekeningenDropDown_SelectedIndexChanged(object sender, EventArgs e)

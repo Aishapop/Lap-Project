@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.returnButton = new System.Windows.Forms.Button();
+            this.ReturnButton = new System.Windows.Forms.Button();
             this.EmailText = new System.Windows.Forms.TextBox();
             this.PasswordText = new System.Windows.Forms.TextBox();
             this.EmailLabel = new System.Windows.Forms.Label();
@@ -38,15 +38,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.LogoPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
-            // returnButton
+            // ReturnButton
             // 
-            this.returnButton.Location = new System.Drawing.Point(0, 0);
-            this.returnButton.Name = "returnButton";
-            this.returnButton.Size = new System.Drawing.Size(75, 37);
-            this.returnButton.TabIndex = 1;
-            this.returnButton.Text = "Back";
-            this.returnButton.UseVisualStyleBackColor = true;
-            this.returnButton.Click += new System.EventHandler(this.returnButton_Click);
+            this.ReturnButton.Location = new System.Drawing.Point(0, 0);
+            this.ReturnButton.Name = "ReturnButton";
+            this.ReturnButton.Size = new System.Drawing.Size(75, 37);
+            this.ReturnButton.TabIndex = 1;
+            this.ReturnButton.Text = "Back";
+            this.ReturnButton.UseVisualStyleBackColor = true;
+            this.ReturnButton.Click += new System.EventHandler(this.ReturnButton_Click);
             // 
             // EmailText
             // 
@@ -115,7 +115,7 @@
             this.Controls.Add(this.EmailLabel);
             this.Controls.Add(this.PasswordText);
             this.Controls.Add(this.EmailText);
-            this.Controls.Add(this.returnButton);
+            this.Controls.Add(this.ReturnButton);
             this.Name = "AanmeldPage";
             this.Text = "AanmeldPage";
             this.Load += new System.EventHandler(this.AanmeldPage_Load);
@@ -127,7 +127,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Button returnButton;
+        private System.Windows.Forms.Button ReturnButton;
         private System.Windows.Forms.TextBox EmailText;
         private System.Windows.Forms.TextBox PasswordText;
         private System.Windows.Forms.Label EmailLabel;

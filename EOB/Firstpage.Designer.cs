@@ -38,12 +38,13 @@ namespace EOB
             this.aanmeldButton = new System.Windows.Forms.Button();
             this.adminButton = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.RecoverAccountButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // wordKlantButton
             // 
-            this.wordKlantButton.Location = new System.Drawing.Point(187, 248);
+            this.wordKlantButton.Location = new System.Drawing.Point(187, 250);
             this.wordKlantButton.Name = "wordKlantButton";
             this.wordKlantButton.Size = new System.Drawing.Size(200, 30);
             this.wordKlantButton.TabIndex = 0;
@@ -53,7 +54,7 @@ namespace EOB
             // 
             // aanmeldButton
             // 
-            this.aanmeldButton.Location = new System.Drawing.Point(187, 295);
+            this.aanmeldButton.Location = new System.Drawing.Point(187, 290);
             this.aanmeldButton.Name = "aanmeldButton";
             this.aanmeldButton.Size = new System.Drawing.Size(200, 30);
             this.aanmeldButton.TabIndex = 1;
@@ -63,7 +64,7 @@ namespace EOB
             // 
             // adminButton
             // 
-            this.adminButton.Location = new System.Drawing.Point(187, 344);
+            this.adminButton.Location = new System.Drawing.Point(187, 330);
             this.adminButton.Name = "adminButton";
             this.adminButton.Size = new System.Drawing.Size(200, 30);
             this.adminButton.TabIndex = 2;
@@ -81,12 +82,23 @@ namespace EOB
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
             // 
+            // RecoverAccountButton
+            // 
+            this.RecoverAccountButton.Location = new System.Drawing.Point(187, 370);
+            this.RecoverAccountButton.Name = "RecoverAccountButton";
+            this.RecoverAccountButton.Size = new System.Drawing.Size(200, 30);
+            this.RecoverAccountButton.TabIndex = 4;
+            this.RecoverAccountButton.Text = "Recover deleted account";
+            this.RecoverAccountButton.UseVisualStyleBackColor = true;
+            this.RecoverAccountButton.Click += new System.EventHandler(this.RecoverAccountButton_Click);
+            // 
             // Firstpage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.SlateGray;
             this.ClientSize = new System.Drawing.Size(593, 469);
+            this.Controls.Add(this.RecoverAccountButton);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.adminButton);
             this.Controls.Add(this.aanmeldButton);
@@ -106,5 +118,6 @@ namespace EOB
         private System.Windows.Forms.Button aanmeldButton;
         private System.Windows.Forms.Button adminButton;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private Button RecoverAccountButton;
     }
 }

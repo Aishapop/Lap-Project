@@ -7,6 +7,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -168,26 +169,26 @@ namespace EOB
             }
             return -1;
         }
-        public int InsertAutomaticTransaction(Account account,string startingdate,string termijn, string endingdate,int amount)
+        public int InsertAutomaticTransaction(Account verzenderaccount,string startingdate,string termijn, string endingdate,decimal amount, int ontvangerrekeningNR)
         {
             try
             {
                 if(termijn == "wekelijks")
                 {
-                    string query = $"INSERT INTO automatic_transfer(StartDatum,Einddatum,Termijn_id,Bedrag,rekening_id) " +
-                    $"VALUES('{startingdate}','{endingdate}',{1},{amount},{account.AccountNumber});";
+                    string query = $"INSERT INTO automatic_transfer(StartDatum,Einddatum,Termijn_id,Bedrag,Verzender_id,Ontvanger_id) " +
+                    $"VALUES('{startingdate}','{endingdate}',{1},{amount},{verzenderaccount.AccountNumber},{ontvangerrekeningNR});";
                     return Insert(query);
                 }
                 else if(termijn == "maandelijks")
                 {
-                    string query = $"INSERT INTO automatic_transfer(StartDatum,Einddatum,Termijn_id,Bedrag,rekening_id) " +
-                    $"VALUES('{startingdate}','{endingdate}',{2},{amount},{account.AccountNumber});";
+                    string query = $"INSERT INTO automatic_transfer(StartDatum,Einddatum,Termijn_id,Bedrag,Verzender_id,Ontvanger_id) " +
+                    $"VALUES('{startingdate}','{endingdate}',{2},{amount},{verzenderaccount.AccountNumber},{ontvangerrekeningNR});";
                     return Insert(query);
                 }
                 else if(termijn == "jaarlijks")
                 {
-                    string query = $"INSERT INTO automatic_transfer(StartDatum,Einddatum,Termijn_id,Bedrag,rekening_id) " +
-                    $"VALUES('{startingdate}','{endingdate}',{3},{amount},{account.AccountNumber});";
+                    string query = $"INSERT INTO automatic_transfer(StartDatum,Einddatum,Termijn_id,Bedrag,Verzender_id,Ontvanger_id) " +
+                    $"VALUES('{startingdate}','{endingdate}',{3},{amount},{verzenderaccount.AccountNumber},{ontvangerrekeningNR});";
                     return Insert(query);
                 }
                 else
@@ -274,10 +275,10 @@ namespace EOB
         }
         public int UpdateBalance(int rekeningnr, decimal amount)
         {
-            string query = $"UPDATE rekening SET StartBedrag = {amount} WHERE Rekening_nr like {rekeningnr};";
+            string query = $"UPDATE rekening SET StartBedrag = '{amount}' WHERE Rekening_nr LIKE '{rekeningnr}';";
 
             Insert(query);
-            
+
             return -1;
         }
         
@@ -326,6 +327,49 @@ namespace EOB
             }
             return null;
         }
+        public User SelectUSerWhenDeletedIfExist(string email)
+
+        {
+
+            string query = $"SELECT* FROM user WHERE Email LIKE '{email}' AND Deleted LIKE 1;";
+            MySqlConnection connection = new MySqlConnection(connectionString);
+            MySqlCommand commandDatabase = new MySqlCommand(query, connection);
+
+            try
+            {
+                connection.Open();
+                MySqlDataReader reader = commandDatabase.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    int id = reader.GetInt32(0);
+                    string firstname = reader.GetString(1);
+                    string lastname = reader.GetString(2);
+                    string email1 = reader.GetString(3);
+                    string password = reader.GetString(4);
+                    var profilepicture = reader.GetValue(5);
+
+                    return new User(id, firstname, lastname, password, email1, (byte[])profilepicture);
+                }
+                else
+                {
+                    MessageBox.Show("User still exists");
+                    return null;
+                }
+
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return null;
+            }
+            finally
+            {
+                connection.Close();
+
+            }
+        }
 
         public User SelectAdminIfExist(string email)
 
@@ -373,7 +417,7 @@ namespace EOB
         }
         public Account SelectAccountBynr(int accountnumer)
         {
-            string query = $"SELECT * FROM rekening INNER JOIN user on user.id = rekening.User_id WHERE Rekening_nr like {accountnumer}";
+            string query = $"SELECT * FROM rekening INNER JOIN user on user.id = rekening.User_id WHERE Rekening_nr LIKE '{accountnumer}';";
             MySqlConnection connection = new MySqlConnection(connectionString);
             MySqlCommand commandDatabase = new MySqlCommand(query, connection);
 
@@ -422,7 +466,7 @@ namespace EOB
 
         public List<Transaction> SelectAllTransactions(Account account)
         {
-            string query = $"SELECT * FROM overschrijvingen WHERE Verzender_nr LIKE {account.AccountNumber} ;";
+            string query = $"SELECT * FROM overschrijvingen WHERE Verzender_nr LIKE '{account.AccountNumber}';";
             MySqlConnection connection = new MySqlConnection(connectionString);
             MySqlCommand command = new MySqlCommand(query, connection);
 
@@ -436,7 +480,7 @@ namespace EOB
                 {
 
                     int id = (int)reader.GetInt32(0);
-                    int amount = (int)reader.GetInt32(1);
+                    decimal amount = (decimal)reader.GetDecimal(1);
                     int sender = (int)reader.GetInt32(2);
                     int reciver = (int)reader.GetInt32(3);
 
@@ -467,7 +511,7 @@ namespace EOB
             {
                 return null;
             } 
-            string query = $"SELECT * FROM rekening WHERE User_id like {user.ID}";
+            string query = $"SELECT * FROM rekening WHERE User_id LIKE '{user.ID}';";
             MySqlConnection connection = new MySqlConnection(connectionString);
             MySqlCommand command = new MySqlCommand(query, connection);
             
@@ -518,7 +562,7 @@ namespace EOB
         public List<User> SelectAllUser()
         {
             
-            string query = $"SELECT * FROM user WHERE Deleted LIKE 0 AND Admin like 0;";
+            string query = $"SELECT * FROM user WHERE Deleted LIKE 0 AND Admin LIKE 0;";
             MySqlConnection connection = new MySqlConnection(connectionString);
             MySqlCommand command = new MySqlCommand(query, connection);
 

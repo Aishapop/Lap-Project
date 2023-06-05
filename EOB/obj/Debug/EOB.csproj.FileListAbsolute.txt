@@ -3,7 +3,6 @@ C:\Users\alanl\source\repos\Lap-Project\EOB\obj\Debug\EOB.Firstpage.resources
 C:\Users\alanl\source\repos\Lap-Project\EOB\obj\Debug\EOB.csproj.GenerateResource.cache
 C:\Users\alanl\source\repos\Lap-Project\EOB\obj\Debug\EOB.exe
 C:\Users\alanl\source\repos\Lap-Project\EOB\obj\Debug\EOB.pdb
-C:\Users\alanl\source\repos\Lap-Project\EOB\obj\Debug\EOB.Test.resources
 C:\Users\alanl\source\repos\Lap-Project\EOB\obj\Debug\EOB.WordKlantPage.resources
 C:\Users\alanl\source\repos\Lap-Project\EOB\obj\Debug\EOB.Properties.Resources.resources
 C:\Users\alanl\source\repos\Lap-Project\EOB\obj\Debug\EOB.csproj.CoreCompileInputs.cache
@@ -55,9 +54,15 @@ C:\Users\alanl\source\repos\Lap-Project\EOB\obj\Debug\EOB.AanmeldPage.resources
 C:\Users\alanl\source\repos\Lap-Project\EOB\obj\Debug\EOB.ClientMainPage.resources
 C:\Users\aisha\source\repos\Lap-Project\EOB\obj\Debug\EOB.AanmeldPage.resources
 C:\Users\aisha\source\repos\Lap-Project\EOB\obj\Debug\EOB.ClientMainPage.resources
-C:\Users\alanl\source\repos\Lap-Project\EOB\obj\Debug\EOB.AutomatischeOverschrijving.resources
 C:\Users\alanl\source\repos\Lap-Project\EOB\obj\Debug\EOB.DepositPage.resources
 C:\Users\aisha\source\repos\Lap-Project\EOB\obj\Debug\EOB.AutomatischeOverschrijvingPage.resources
 C:\Users\aisha\source\repos\Lap-Project\EOB\obj\Debug\EOB.DepositPage.resources
 C:\Users\aisha\source\repos\Lap-Project\EOB\obj\Debug\EOB.AdminLoginpage.resources
 C:\Users\aisha\source\repos\Lap-Project\EOB\obj\Debug\EOB.AdminMainPage.resources
+C:\Users\alanl\source\repos\Lap-Project\EOB\obj\Debug\EOB.AdminLoginpage.resources
+C:\Users\alanl\source\repos\Lap-Project\EOB\obj\Debug\EOB.AdminMainPage.resources
+C:\Users\alanl\source\repos\Lap-Project\EOB\obj\Debug\EOB.AutomatischeOverschrijvingPage.resources
+C:\Users\alanl\source\repos\Lap-Project\EOB\obj\Debug\EOB.NormaleOverschrijvingPage.resources
+C:\Users\alanl\source\repos\Lap-Project\EOB\obj\Debug\EOB.DeleteAccountPage.resources
+C:\Users\alanl\source\repos\Lap-Project\EOB\obj\Debug\EOB.RecoverAccountPage.resources
+C:\Users\alanl\source\repos\Lap-Project\EOB\obj\Debug\EOB.ChangePasswordPage.resources

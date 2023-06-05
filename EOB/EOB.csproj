@@ -99,6 +99,12 @@
     <Compile Include="AutomatischeOverschrijvingPage.Designer.cs">
       <DependentUpon>AutomatischeOverschrijvingPage.cs</DependentUpon>
     </Compile>
+    <Compile Include="ChangePasswordPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChangePasswordPage.Designer.cs">
+      <DependentUpon>ChangePasswordPage.cs</DependentUpon>
+    </Compile>
     <Compile Include="ClientMainPage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -106,6 +112,12 @@
       <DependentUpon>ClientMainPage.cs</DependentUpon>
     </Compile>
     <Compile Include="Data.cs" />
+    <Compile Include="DeleteAccountPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DeleteAccountPage.Designer.cs">
+      <DependentUpon>DeleteAccountPage.cs</DependentUpon>
+    </Compile>
     <Compile Include="DepositPage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -131,6 +143,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RecoverAccountPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RecoverAccountPage.Designer.cs">
+      <DependentUpon>RecoverAccountPage.cs</DependentUpon>
+    </Compile>
     <Compile Include="Transaction.cs" />
     <Compile Include="User.cs" />
     <Compile Include="WordKlantPage.cs">
@@ -151,8 +169,14 @@
     <EmbeddedResource Include="AutomatischeOverschrijvingPage.resx">
       <DependentUpon>AutomatischeOverschrijvingPage.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ChangePasswordPage.resx">
+      <DependentUpon>ChangePasswordPage.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ClientMainPage.resx">
       <DependentUpon>ClientMainPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DeleteAccountPage.resx">
+      <DependentUpon>DeleteAccountPage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DepositPage.resx">
       <DependentUpon>DepositPage.cs</DependentUpon>
@@ -160,9 +184,15 @@
     <EmbeddedResource Include="Firstpage.resx">
       <DependentUpon>Firstpage.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="NormaleOverschrijvingPage.resx">
+      <DependentUpon>NormaleOverschrijvingPage.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RecoverAccountPage.resx">
+      <DependentUpon>RecoverAccountPage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WordKlantPage.resx">
       <DependentUpon>WordKlantPage.cs</DependentUpon>

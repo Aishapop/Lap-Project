@@ -34,9 +34,17 @@ namespace EOB
             // Convert the byte array into a MemoryStream
             using (MemoryStream ms = new MemoryStream(imageData))
             {
-                // Create an Image object from the MemoryStream
-                Image image = Image.FromStream(ms);
-                return image;
+                try
+                {
+                    // Create an Image object from the MemoryStream
+                    Image image = Image.FromStream(ms);
+                    return image;
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show("there was an error converting the image","converting problem",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                    return null;
+                }
             }
         }
 

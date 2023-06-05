@@ -55,23 +55,32 @@ namespace EOB
             
             if (this.Balance > amount)
             {
-                //your amount--
-                decimal yourbalance = this.Balance;
-                decimal newbalance = yourbalance - amount;
-                this.Balance = newbalance;
-                _data.UpdateBalance(this.AccountNumber, newbalance);
 
-                Account reciver = _data.SelectAccountBynr(accountnr);
+                try
+                {
+                    //your amount--
+                    decimal yourbalance = this.Balance;
+                    decimal newbalance = yourbalance - amount;
+                    this.Balance = newbalance;
+                    _data.UpdateBalance(this.AccountNumber, newbalance);
 
-                //resiver amount ++
-                decimal reciverbalance = reciver.Balance;
-                decimal newbalance2 = reciverbalance + amount;
-                _data.UpdateBalance(accountnr, newbalance2);
-                reciver.Balance = newbalance2;
+                    Account reciver = _data.SelectAccountBynr(accountnr);
 
-                //new transaction
-                Transaction transaction = new Transaction(this, reciver, amount);
-                this.Transactions.Add(transaction);
+                    //resiver amount ++
+                    decimal reciverbalance = reciver.Balance;
+                    decimal newbalance2 = reciverbalance + amount;
+                    _data.UpdateBalance(accountnr, newbalance2);
+                    reciver.Balance = newbalance2;
+
+                    //new transaction
+                    Transaction transaction = new Transaction(this, reciver, amount);
+                    this.Transactions.Add(transaction);
+                }
+                catch(Exception e)
+                {
+                    MessageBox.Show(e.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                
 
             }
             else

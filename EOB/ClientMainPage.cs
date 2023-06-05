@@ -49,11 +49,13 @@ namespace EOB
         {
             // Establish a connection to the MySQL database
             string connectionString =
-            "datasource=127.0.0.1;" +
-            "port=3306;" +
-            "username=root;" +
-            "password=root;" +
-            "database=eob;";
+                "datasource=127.0.0.1;" +
+                "port=3306;" +
+                "username=root;" +
+                "password=root;" +
+                "database=eob;" +
+                "Connect Timeout=60;" +
+                "Pooling=true;";
 
             using (MySqlConnection connection = new MySqlConnection(connectionString))
             {
@@ -63,6 +65,7 @@ namespace EOB
                 // Create a data adapter to fill the dataset
                 MySqlDataAdapter adapter = new MySqlDataAdapter(command);
                 DataTable dataTable = new DataTable();
+
                 try
                 {
                     connection.Open();
@@ -74,14 +77,14 @@ namespace EOB
                     {
                         if (Convert.ToInt32(row["User_id"]) == User.ID)
                         {
-                            if (Convert.ToInt32(row["SoortRekening_id"]) == 1)
+                            if (Convert.ToInt32(row["SoortRekening_id"]) == 3)
                             {
                                 ListViewItem item = new ListViewItem(row["Rekening_nr"].ToString());
                                 item.SubItems.Add(row["StartBedrag"].ToString());
 
                                 ZichtrekeningBalancesListView.Items.Add(item);
                             }
-                            else if (Convert.ToInt32(row["SoortRekening_id"]) == 2)
+                            else if (Convert.ToInt32(row["SoortRekening_id"]) == 4)
                             {
                                 ListViewItem item = new ListViewItem(row["Rekening_nr"].ToString());
                                 item.SubItems.Add(row["StartBedrag"].ToString());
@@ -100,9 +103,9 @@ namespace EOB
                     // Clean up resources
                     adapter.Dispose();
                     command.Dispose();
-                    connection.Close();
                 }
             }
+
             byte[] picture = User.ProfilePicture;
             // Convert the blob data into an image
             Image image = ConvertBlobToImage(picture);

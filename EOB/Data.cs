@@ -37,7 +37,7 @@ namespace EOB
             try
             {
                 connection.Open();
-                int result = commandDatabase.ExecuteNonQuery();
+                
                 return (int)commandDatabase.LastInsertedId;
                 
             }
@@ -275,7 +275,7 @@ namespace EOB
         }
         public int UpdateBalance(int rekeningnr, decimal amount)
         {
-            string query = $"UPDATE rekening SET StartBedrag = '{amount}' WHERE Rekening_nr LIKE '{rekeningnr}';";
+            string query = $"UPDATE rekening SET StartBedrag = {amount} WHERE Rekening_nr LIKE {rekeningnr};";
 
             Insert(query);
 
@@ -417,7 +417,7 @@ namespace EOB
         }
         public Account SelectAccountBynr(int accountnumer)
         {
-            string query = $"SELECT * FROM rekening INNER JOIN user on user.id = rekening.User_id WHERE Rekening_nr LIKE '{accountnumer}';";
+            string query = $"SELECT * FROM rekening INNER JOIN user on user.id = rekening.User_id WHERE Rekening_nr LIKE {accountnumer};";
             MySqlConnection connection = new MySqlConnection(connectionString);
             MySqlCommand commandDatabase = new MySqlCommand(query, connection);
 
@@ -435,12 +435,12 @@ namespace EOB
 
                     User user = SelectUSerIfExist(email);
                     List<Transaction> transactions = new List<Transaction>();   
-                    if (soortrekening == 1)
+                    if (soortrekening == 3)
                     {
                         Account account = new Account(accountnr, balance, Types.Zichtrekening, user);
                         return account;
                     }
-                    else if (soortrekening == 2)
+                    else if (soortrekening == 4)
                     {
                         Account account = new Account(accountnr, balance, Types.Spaarrekening, user);
                         return account;
@@ -509,6 +509,7 @@ namespace EOB
         {
             if (user == null)
             {
+                MessageBox.Show("user is null");
                 return null;
             } 
             string query = $"SELECT * FROM rekening WHERE User_id LIKE '{user.ID}';";
@@ -530,12 +531,12 @@ namespace EOB
                     decimal balance = (decimal)reader.GetDecimal(2);
                     
                     
-                    if (soortrekening == 1)
+                    if (soortrekening == 3)
                     {
                         Account account = new Account(accountnr, balance, Types.Zichtrekening, user);
                         accountslist.Add(account);
                     }
-                    else if (soortrekening == 2)
+                    else if (soortrekening == 4)
                     {
                         Account account = new Account(accountnr, balance, Types.Spaarrekening,user);
                         accountslist.Add(account);
@@ -548,15 +549,15 @@ namespace EOB
             }
             catch(Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                MessageBox.Show(ex.Message,"Error");
             }
             finally
             {
                 connection.Close();
             }
 
-
             return null;
+           
         }
 
         public List<User> SelectAllUser()

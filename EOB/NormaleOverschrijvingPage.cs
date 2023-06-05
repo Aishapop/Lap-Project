@@ -6,6 +6,7 @@ using System.Data;
 using System.Drawing;
 using System.Globalization;
 using System.Linq;
+using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -29,11 +30,13 @@ namespace EOB
         private void NormaleOverschrijvingPage_Load(object sender, EventArgs e)
         {
             string connectionString =
-            "datasource=127.0.0.1;" +
-            "port=3306;" +
-            "username=root;" +
-            "password=root;" +
-            "database=eob;";
+                "datasource=127.0.0.1;" +
+                "port=3306;" +
+                "username=root;" +
+                "password=root;" +
+                "database=eob;" +
+                "Connect Timeout=60;" +
+                "Pooling=true;"; // Enable connection pooling
 
             using (MySqlConnection connection = new MySqlConnection(connectionString))
             {
@@ -43,6 +46,7 @@ namespace EOB
                 // Create a data adapter to fill the dataset
                 MySqlDataAdapter adapter = new MySqlDataAdapter(command);
                 DataTable dataTable = new DataTable();
+
                 try
                 {
                     connection.Open();
@@ -71,7 +75,6 @@ namespace EOB
                     // Clean up resources
                     adapter.Dispose();
                     command.Dispose();
-                    connection.Close();
                 }
             }
         }
@@ -119,18 +122,27 @@ namespace EOB
                 string bedragtext = BedragText.Text.Replace("€", "").Trim();
                 decimal bedrag = decimal.Parse(bedragtext, CultureInfo.InvariantCulture);
                 List<Account> accounts = User.AccountList;
-                Account rekening = accounts[0];
+
+                Account rekening = null;
+
+                
+
                 foreach (Account account in accounts)
                 {
                     if (account.AccountNumber == mijnrekeningnr)
                     {
                         rekening = account; // give this variable the right account
+                        
                     }
                 }
+
+                
+                
+
                 rekening.TransferMoney(ontvangerrekening, bedrag);
                 FormUtils.OpenForm(new ClientMainPage(User));
                 OntvangerRekeningNrText.Clear();
-                BedragText.Clear();             
+                BedragText.Clear();
             }          
         }
     }

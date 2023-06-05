@@ -42,6 +42,8 @@ namespace EOB
         {
             if (!isRunning)
             {
+                Data data = new Data();
+                data.UpdateBalance(128573126, 10);
                 isRunning = true; // Set the flag to indicate that the application is running
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
@@ -50,6 +52,7 @@ namespace EOB
                 isRunning = false; // Reset the flag when the application is closed
             }
 
+           
             
 
             /*byte[] imageData = System.IO.File.ReadAllBytes("C:\\Users\\aisha\\Logo.png");

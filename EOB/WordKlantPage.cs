@@ -25,7 +25,7 @@ namespace EOB
             VerifyPasswordText.UseSystemPasswordChar= true;
         }
 
-        private void returnButton_Click(object sender, EventArgs e)
+        private void ReturnButton_Click(object sender, EventArgs e)
         {
             FormUtils.OpenForm(new Firstpage());
         }
@@ -92,7 +92,8 @@ namespace EOB
                 // Store the account information in the database
                 User user = new User(firstname, lastname,password, email,imageData);
 
-                FormUtils.OpenForm(new ClientMainPage(user));
+                MessageBox.Show("User was succesfully made", "User made", MessageBoxButtons.OK);
+                FormUtils.OpenForm(new Firstpage());
 
                 // Clear the input fields
                 FirstName.Clear();

@@ -34,9 +34,17 @@ namespace EOB
             // Convert the byte array into a MemoryStream
             using (MemoryStream ms = new MemoryStream(imageData))
             {
-                // Create an Image object from the MemoryStream
-                Image image = Image.FromStream(ms);
-                return image;
+                try
+                {
+                    // Create an Image object from the MemoryStream
+                    Image image = Image.FromStream(ms);
+                    return image;
+                }
+                catch
+                {
+                    MessageBox.Show("there was an error converting the image","converting problem",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                    return null;
+                }
             }
         }
 
@@ -79,15 +87,15 @@ namespace EOB
                         {
                             if (Convert.ToInt32(row["SoortRekening_id"]) == 3)
                             {
-                                ListViewItem item = new ListViewItem(row["Rekening_nr"].ToString());
-                                item.SubItems.Add(row["StartBedrag"].ToString());
+                                ListViewItem item = new ListViewItem("BE" + row["Rekening_nr"].ToString());
+                                item.SubItems.Add("€" + row["StartBedrag"].ToString());
 
                                 ZichtrekeningBalancesListView.Items.Add(item);
                             }
                             else if (Convert.ToInt32(row["SoortRekening_id"]) == 4)
                             {
-                                ListViewItem item = new ListViewItem(row["Rekening_nr"].ToString());
-                                item.SubItems.Add(row["StartBedrag"].ToString());
+                                ListViewItem item = new ListViewItem("BE" + row["Rekening_nr"].ToString());
+                                item.SubItems.Add("€" + row["StartBedrag"].ToString());
 
                                 SpaarrekeningBalancesListView.Items.Add(item);
                             }
@@ -121,7 +129,7 @@ namespace EOB
 
         private void ZichtrekeningBalancesListView_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            
         }
 
         private void SpaarrekeningBalancesListView_SelectedIndexChanged(object sender, EventArgs e)
@@ -129,9 +137,9 @@ namespace EOB
 
         }
 
-        private void SpaarrekeningHistoryButton_Click(object sender, EventArgs e)
+        private void HistoryRekeningenButton_Click(object sender, EventArgs e)
         {
-
+            FormUtils.OpenForm(new HistoryTransactionsPage(User));
         }
 
         private void ZichtrekeningHistoryButton_Click(object sender, EventArgs e)
@@ -172,6 +180,26 @@ namespace EOB
         private void passwordToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FormUtils.OpenForm(new ChangePasswordPage(User));
+        }
+
+        private void DeleteAccountButton_Click(object sender, EventArgs e)
+        {
+            FormUtils.OpenForm(new DeleteRekeningPage(User));
+        }
+
+        private void DropDownMenuOfOverschrijvingen_Opening(object sender, CancelEventArgs e)
+        {
+
+        }
+
+        private void profilePictureToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormUtils.OpenForm(new ProfilePicturePage(User));
+        }
+
+        private void MyAccountsButton_Click(object sender, EventArgs e)
+        {
+            FormUtils.OpenForm(new MyAccountsOverviewPage(User));
         }
     }
 }

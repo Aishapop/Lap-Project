@@ -101,7 +101,10 @@ namespace EOB
         {
             _data.SelectAllAccount(this);
         }
-
+        public void ChangeProfilePicture(byte[] profilepicture)
+        {
+            _data.UpdateProfilePicture(this, profilepicture);
+        }
 
     }
 

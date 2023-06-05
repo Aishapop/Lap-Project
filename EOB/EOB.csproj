@@ -118,6 +118,12 @@
     <Compile Include="DeleteAccountPage.Designer.cs">
       <DependentUpon>DeleteAccountPage.cs</DependentUpon>
     </Compile>
+    <Compile Include="DeleteRekeningPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DeleteRekeningPage.Designer.cs">
+      <DependentUpon>DeleteRekeningPage.cs</DependentUpon>
+    </Compile>
     <Compile Include="DepositPage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -130,11 +136,29 @@
     <Compile Include="Firstpage.Designer.cs">
       <DependentUpon>Firstpage.cs</DependentUpon>
     </Compile>
+    <Compile Include="HistoryTransactionsPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HistoryTransactionsPage.Designer.cs">
+      <DependentUpon>HistoryTransactionsPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MyAccountsOverviewPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MyAccountsOverviewPage.Designer.cs">
+      <DependentUpon>MyAccountsOverviewPage.cs</DependentUpon>
+    </Compile>
     <Compile Include="NormaleOverschrijvingPage.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="NormaleOverschrijvingPage.Designer.cs">
       <DependentUpon>NormaleOverschrijvingPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProfilePicturePage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProfilePicturePage.Designer.cs">
+      <DependentUpon>ProfilePicturePage.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -178,14 +202,26 @@
     <EmbeddedResource Include="DeleteAccountPage.resx">
       <DependentUpon>DeleteAccountPage.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="DeleteRekeningPage.resx">
+      <DependentUpon>DeleteRekeningPage.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DepositPage.resx">
       <DependentUpon>DepositPage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Firstpage.resx">
       <DependentUpon>Firstpage.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="HistoryTransactionsPage.resx">
+      <DependentUpon>HistoryTransactionsPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MyAccountsOverviewPage.resx">
+      <DependentUpon>MyAccountsOverviewPage.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="NormaleOverschrijvingPage.resx">
       <DependentUpon>NormaleOverschrijvingPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProfilePicturePage.resx">
+      <DependentUpon>ProfilePicturePage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

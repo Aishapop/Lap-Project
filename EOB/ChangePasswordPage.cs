@@ -41,7 +41,8 @@ namespace EOB
                     verify = HashPassword(verify);
 
                     User.ChangePassword(newP);
-                    FormUtils.OpenForm(new ClientMainPage(User));
+                    MessageBox.Show("You succesfully changed your password", "Password changed", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    FormUtils.OpenForm(new Firstpage());
                     OldPasswordText.Clear();
                     NewPasswordText.Clear();
                     VerifyNewPasswordText.Clear();

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Runtime.InteropServices.ComTypes;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace EOB
 {
@@ -73,12 +74,10 @@ namespace EOB
                 this.Transactions.Add(transaction);
 
             }
-
-
-
-
-
-
+            else
+            {
+                MessageBox.Show("Je hebt dit bedrag niet op je rekening staan", "bedrag error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
         public void DepositMoney(decimal amount)
         {

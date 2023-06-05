@@ -25,7 +25,7 @@ namespace EOB
             VerifyPasswordText.UseSystemPasswordChar= true;
         }
 
-        private void returnButton_Click(object sender, EventArgs e)
+        private void ReturnButton_Click(object sender, EventArgs e)
         {
             FormUtils.OpenForm(new Firstpage());
         }

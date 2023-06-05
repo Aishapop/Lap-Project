@@ -180,5 +180,15 @@ namespace EOB
         {
 
         }
+
+        private void profilePictureToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormUtils.OpenForm(new ProfilePicturePage(User));
+        }
+
+        private void MyAccountsButton_Click(object sender, EventArgs e)
+        {
+            FormUtils.OpenForm(new MyAccountsOverviewPage(User));
+        }
     }
 }

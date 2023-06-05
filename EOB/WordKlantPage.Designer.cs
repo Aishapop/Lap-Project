@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.returnButton = new System.Windows.Forms.Button();
+            this.ReturnButton = new System.Windows.Forms.Button();
             this.FirstName = new System.Windows.Forms.TextBox();
             this.LastName = new System.Windows.Forms.TextBox();
             this.Email = new System.Windows.Forms.TextBox();
@@ -48,15 +48,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
-            // returnButton
+            // ReturnButton
             // 
-            this.returnButton.Location = new System.Drawing.Point(-1, -1);
-            this.returnButton.Name = "returnButton";
-            this.returnButton.Size = new System.Drawing.Size(75, 37);
-            this.returnButton.TabIndex = 0;
-            this.returnButton.Text = "Back";
-            this.returnButton.UseVisualStyleBackColor = true;
-            this.returnButton.Click += new System.EventHandler(this.returnButton_Click);
+            this.ReturnButton.Location = new System.Drawing.Point(-1, -1);
+            this.ReturnButton.Name = "ReturnButton";
+            this.ReturnButton.Size = new System.Drawing.Size(75, 37);
+            this.ReturnButton.TabIndex = 0;
+            this.ReturnButton.Text = "Back";
+            this.ReturnButton.UseVisualStyleBackColor = true;
+            this.ReturnButton.Click += new System.EventHandler(this.ReturnButton_Click);
             // 
             // FirstName
             // 
@@ -218,7 +218,7 @@
             this.Controls.Add(this.Email);
             this.Controls.Add(this.LastName);
             this.Controls.Add(this.FirstName);
-            this.Controls.Add(this.returnButton);
+            this.Controls.Add(this.ReturnButton);
             this.ForeColor = System.Drawing.Color.Black;
             this.Name = "WordKlantPage";
             this.Text = "WordKlantPage";
@@ -231,7 +231,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Button returnButton;
+        private System.Windows.Forms.Button ReturnButton;
         private System.Windows.Forms.TextBox FirstName;
         private System.Windows.Forms.TextBox LastName;
         private System.Windows.Forms.TextBox Email;

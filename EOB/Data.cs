@@ -214,6 +214,15 @@ namespace EOB
 
             return -1;
         }
+        public int UpdateProfilePicture(User user, byte[] profilepicture)
+        {
+
+            string query = $"UPDATE user SET ProfilePicture = '{profilepicture}' WHERE id like {user.ID};";
+
+            Insert(query);
+
+            return -1;
+        }
         public int EditUser(User user, string columnedit,string newvalue)
         {
             //edit option (firtname,lastname,email,password)

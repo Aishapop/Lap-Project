@@ -142,11 +142,23 @@
     <Compile Include="HistoryTransactionsPage.Designer.cs">
       <DependentUpon>HistoryTransactionsPage.cs</DependentUpon>
     </Compile>
+    <Compile Include="MyAccountsOverviewPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MyAccountsOverviewPage.Designer.cs">
+      <DependentUpon>MyAccountsOverviewPage.cs</DependentUpon>
+    </Compile>
     <Compile Include="NormaleOverschrijvingPage.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="NormaleOverschrijvingPage.Designer.cs">
       <DependentUpon>NormaleOverschrijvingPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProfilePicturePage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProfilePicturePage.Designer.cs">
+      <DependentUpon>ProfilePicturePage.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -202,8 +214,14 @@
     <EmbeddedResource Include="HistoryTransactionsPage.resx">
       <DependentUpon>HistoryTransactionsPage.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="MyAccountsOverviewPage.resx">
+      <DependentUpon>MyAccountsOverviewPage.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="NormaleOverschrijvingPage.resx">
       <DependentUpon>NormaleOverschrijvingPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProfilePicturePage.resx">
+      <DependentUpon>ProfilePicturePage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

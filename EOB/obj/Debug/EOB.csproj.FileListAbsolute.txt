@@ -62,3 +62,4 @@ C:\Users\aisha\source\repos\Lap-Project\EOB\obj\Debug\EOB.AdminMainPage.resource
 C:\Users\alanl\source\repos\Lap-Project\EOB\obj\Debug\EOB.AdminLoginpage.resources
 C:\Users\alanl\source\repos\Lap-Project\EOB\obj\Debug\EOB.AdminMainPage.resources
 C:\Users\alanl\source\repos\Lap-Project\EOB\obj\Debug\EOB.AutomatischeOverschrijvingPage.resources
+C:\Users\alanl\source\repos\Lap-Project\EOB\obj\Debug\EOB.NormaleOverschrijvingPage.resources

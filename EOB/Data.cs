@@ -7,6 +7,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -168,7 +169,7 @@ namespace EOB
             }
             return -1;
         }
-        public int InsertAutomaticTransaction(Account verzenderaccount,DateTime startingdate,string termijn, DateTime endingdate,float amount, int ontvangerrekeningNR)
+        public int InsertAutomaticTransaction(Account verzenderaccount,string startingdate,string termijn, string endingdate,decimal amount, int ontvangerrekeningNR)
         {
             try
             {
@@ -241,12 +242,12 @@ namespace EOB
 
             return -1;
         }
-        public int UpdateBalance(int rekeningnr, float amount)
+        public int UpdateBalance(int rekeningnr, decimal amount)
         {
-            string query = $"UPDATE rekening SET StartBedrag = {amount} WHERE Rekening_nr like {rekeningnr};";
+            string query = $"UPDATE rekening SET StartBedrag = {amount} WHERE Rekening_nr LIKE '{rekeningnr}';";
 
             Insert(query);
-            
+
             return -1;
         }
         
@@ -342,7 +343,7 @@ namespace EOB
         }
         public Account SelectAccountBynr(int accountnumer)
         {
-            string query = $"SELECT * FROM rekening INNER JOIN user on user.id = rekening.User_id WHERE Rekening_nr like {accountnumer}";
+            string query = $"SELECT * FROM rekening INNER JOIN user on user.id = rekening.User_id WHERE Rekening_nr LIKE '{accountnumer}';";
             MySqlConnection connection = new MySqlConnection(connectionString);
             MySqlCommand commandDatabase = new MySqlCommand(query, connection);
 
@@ -354,7 +355,7 @@ namespace EOB
                 {
                     int accountnr = (int)reader.GetInt32(0);
                     int soortrekening = (int)reader.GetInt32(1);
-                    float balance = (float)reader.GetFloat(2);
+                    decimal balance = (decimal)reader.GetDecimal(2);
                     string email = reader.GetString(7);
                     string pw = reader.GetString(8);
 
@@ -391,7 +392,7 @@ namespace EOB
 
         public List<Transaction> SelectAllTransactions(Account account)
         {
-            string query = $"SELECT * FROM overschrijvingen WHERE Verzender_nr LIKE {account.AccountNumber} ;";
+            string query = $"SELECT * FROM overschrijvingen WHERE Verzender_nr LIKE '{account.AccountNumber}';";
             MySqlConnection connection = new MySqlConnection(connectionString);
             MySqlCommand command = new MySqlCommand(query, connection);
 
@@ -405,7 +406,7 @@ namespace EOB
                 {
 
                     int id = (int)reader.GetInt32(0);
-                    int amount = (int)reader.GetInt32(1);
+                    decimal amount = (decimal)reader.GetDecimal(1);
                     int sender = (int)reader.GetInt32(2);
                     int reciver = (int)reader.GetInt32(3);
 
@@ -436,7 +437,7 @@ namespace EOB
             {
                 return null;
             } 
-            string query = $"SELECT * FROM rekening WHERE User_id like {user.ID}";
+            string query = $"SELECT * FROM rekening WHERE User_id LIKE '{user.ID}';";
             MySqlConnection connection = new MySqlConnection(connectionString);
             MySqlCommand command = new MySqlCommand(query, connection);
             
@@ -452,7 +453,7 @@ namespace EOB
                     int accountnr = (int)reader.GetInt32(0);
                     int soortrekening = (int)reader.GetInt32(1);
                     
-                    float balance = (float)reader.GetFloat(2);
+                    decimal balance = (decimal)reader.GetDecimal(2);
                     
                     
                     if (soortrekening == 1)
@@ -487,7 +488,7 @@ namespace EOB
         public List<User> SelectAllUser()
         {
             
-            string query = $"SELECT * FROM user WHERE Deleted LIKE 0 AND Admin like 0;";
+            string query = $"SELECT * FROM user WHERE Deleted LIKE 0 AND Admin LIKE 0;";
             MySqlConnection connection = new MySqlConnection(connectionString);
             MySqlCommand command = new MySqlCommand(query, connection);
 

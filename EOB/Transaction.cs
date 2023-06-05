@@ -11,13 +11,13 @@ namespace EOB
         public int ID { get; set; }
         public int FromAccount { get; set; }
         public int ToAccount { get; set; }
-        public float Amount { get; set; }
+        public decimal Amount { get; set; }
         public string Date { get; set; }
 
         private Data _data = new Data();
 
         //new transaction ---> database
-        public Transaction(Account fromaccount, Account toaccount, float amount)
+        public Transaction(Account fromaccount, Account toaccount, decimal amount)
         {
             //new transaction is directly add in account list
             fromaccount.Transactions.Add(this);
@@ -30,7 +30,7 @@ namespace EOB
         }
 
         //new transaction <---- database
-        public Transaction(Account fromaccount, Account toaccount, float amount, int id)
+        public Transaction(Account fromaccount, Account toaccount, decimal amount, int id)
         {
             //new transaction is directly add in account list
             

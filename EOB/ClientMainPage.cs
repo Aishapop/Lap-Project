@@ -161,5 +161,10 @@ namespace EOB
         {
             FormUtils.OpenForm(new DepositPage(Email));
         }
+
+        private void normaalToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormUtils.OpenForm(new NormaleOverschrijvingPage(Email));
+        }
     }
 }

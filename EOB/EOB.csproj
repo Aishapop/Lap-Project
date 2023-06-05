@@ -118,6 +118,12 @@
     <Compile Include="Firstpage.Designer.cs">
       <DependentUpon>Firstpage.cs</DependentUpon>
     </Compile>
+    <Compile Include="NormaleOverschrijvingPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NormaleOverschrijvingPage.Designer.cs">
+      <DependentUpon>NormaleOverschrijvingPage.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -153,6 +159,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Firstpage.resx">
       <DependentUpon>Firstpage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NormaleOverschrijvingPage.resx">
+      <DependentUpon>NormaleOverschrijvingPage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

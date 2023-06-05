@@ -26,8 +26,8 @@ namespace EOB
 
         private bool ValidateInputs()
         {
-            string soortrekening = SoortenRekeningDropDown.Text;
-            string bedragtext = BedragText.Text.Replace("€","");
+            string soortrekening = SoortenRekeningDropDown.Text.Trim();
+            string bedragtext = BedragText.Text.Replace("€","").Trim();
 
             if(string.IsNullOrEmpty(soortrekening) || string.IsNullOrEmpty(bedragtext))
             {
@@ -55,9 +55,9 @@ namespace EOB
         {
             if(ValidateInputs())
             {
-                string soortrekening = SoortenRekeningDropDown.Text;
-                string bedragtext = BedragText.Text.Replace("€","");
-                float bedrag = (float)Convert.ToDouble(bedragtext);
+                string soortrekening = SoortenRekeningDropDown.Text.Trim();
+                string bedragtext = BedragText.Text.Replace("€","").Trim();
+                decimal bedrag = Convert.ToDecimal(bedragtext);
                 Data data = new Data();
                 User user = data.SelectUSerIfExist(Email);
 

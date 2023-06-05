@@ -98,20 +98,21 @@
             this.automatischToolStripMenuItem,
             this.normaalToolStripMenuItem});
             this.DropDownMenuOfOverschrijvingen.Name = "DropDownMenuOfOverschrijvingen";
-            this.DropDownMenuOfOverschrijvingen.Size = new System.Drawing.Size(143, 48);
+            this.DropDownMenuOfOverschrijvingen.Size = new System.Drawing.Size(181, 70);
             // 
             // automatischToolStripMenuItem
             // 
             this.automatischToolStripMenuItem.Name = "automatischToolStripMenuItem";
-            this.automatischToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.automatischToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.automatischToolStripMenuItem.Text = "Automatisch";
             this.automatischToolStripMenuItem.Click += new System.EventHandler(this.automatischToolStripMenuItem_Click);
             // 
             // normaalToolStripMenuItem
             // 
             this.normaalToolStripMenuItem.Name = "normaalToolStripMenuItem";
-            this.normaalToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.normaalToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.normaalToolStripMenuItem.Text = "Normaal";
+            this.normaalToolStripMenuItem.Click += new System.EventHandler(this.normaalToolStripMenuItem_Click);
             // 
             // ProfilePicturePictureBox
             // 

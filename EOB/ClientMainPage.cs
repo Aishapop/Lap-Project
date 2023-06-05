@@ -76,15 +76,15 @@ namespace EOB
                         {
                             if (Convert.ToInt32(row["SoortRekening_id"]) == 1)
                             {
-                                ListViewItem item = new ListViewItem(row["Rekening_nr"].ToString());
-                                item.SubItems.Add(row["StartBedrag"].ToString());
+                                ListViewItem item = new ListViewItem("BE" + row["Rekening_nr"].ToString());
+                                item.SubItems.Add("€" + row["StartBedrag"].ToString());
 
                                 ZichtrekeningBalancesListView.Items.Add(item);
                             }
                             else if (Convert.ToInt32(row["SoortRekening_id"]) == 2)
                             {
-                                ListViewItem item = new ListViewItem(row["Rekening_nr"].ToString());
-                                item.SubItems.Add(row["StartBedrag"].ToString());
+                                ListViewItem item = new ListViewItem("BE" + row["Rekening_nr"].ToString());
+                                item.SubItems.Add("€" + row["StartBedrag"].ToString());
 
                                 SpaarrekeningBalancesListView.Items.Add(item);
                             }
@@ -118,7 +118,7 @@ namespace EOB
 
         private void ZichtrekeningBalancesListView_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            
         }
 
         private void SpaarrekeningBalancesListView_SelectedIndexChanged(object sender, EventArgs e)
@@ -126,9 +126,9 @@ namespace EOB
 
         }
 
-        private void SpaarrekeningHistoryButton_Click(object sender, EventArgs e)
+        private void HistoryRekeningenButton_Click(object sender, EventArgs e)
         {
-
+            FormUtils.OpenForm(new HistoryTransactionsPage(User));
         }
 
         private void ZichtrekeningHistoryButton_Click(object sender, EventArgs e)
@@ -174,6 +174,11 @@ namespace EOB
         private void DeleteAccountButton_Click(object sender, EventArgs e)
         {
             FormUtils.OpenForm(new DeleteRekeningPage(User));
+        }
+
+        private void DropDownMenuOfOverschrijvingen_Opening(object sender, CancelEventArgs e)
+        {
+
         }
     }
 }

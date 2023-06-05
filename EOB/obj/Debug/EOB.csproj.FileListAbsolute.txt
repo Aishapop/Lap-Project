@@ -67,3 +67,4 @@ C:\Users\alanl\source\repos\Lap-Project\EOB\obj\Debug\EOB.DeleteAccountPage.reso
 C:\Users\alanl\source\repos\Lap-Project\EOB\obj\Debug\EOB.RecoverAccountPage.resources
 C:\Users\alanl\source\repos\Lap-Project\EOB\obj\Debug\EOB.ChangePasswordPage.resources
 C:\Users\alanl\source\repos\Lap-Project\EOB\obj\Debug\EOB.DeleteRekeningPage.resources
+C:\Users\alanl\source\repos\Lap-Project\EOB\obj\Debug\EOB.HistoryTransactionsPage.resources

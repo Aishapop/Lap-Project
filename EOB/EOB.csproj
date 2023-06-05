@@ -136,6 +136,12 @@
     <Compile Include="Firstpage.Designer.cs">
       <DependentUpon>Firstpage.cs</DependentUpon>
     </Compile>
+    <Compile Include="HistoryTransactionsPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HistoryTransactionsPage.Designer.cs">
+      <DependentUpon>HistoryTransactionsPage.cs</DependentUpon>
+    </Compile>
     <Compile Include="NormaleOverschrijvingPage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -192,6 +198,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Firstpage.resx">
       <DependentUpon>Firstpage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HistoryTransactionsPage.resx">
+      <DependentUpon>HistoryTransactionsPage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="NormaleOverschrijvingPage.resx">
       <DependentUpon>NormaleOverschrijvingPage.cs</DependentUpon>

@@ -30,32 +30,31 @@
         {
             this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.DeleteAccountButton = new System.Windows.Forms.Button();
             this.DepositButton = new System.Windows.Forms.Button();
             this.OverschrijvingenDropdownMenu = new System.Windows.Forms.Button();
             this.DropDownMenuOfOverschrijvingen = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.automatischToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.normaalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ProfilePicturePictureBox = new System.Windows.Forms.PictureBox();
             this.DropDownMenuOfPfp = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.passwordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.accountToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.logOutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.Logo = new System.Windows.Forms.PictureBox();
             this.ZichtrekeningenLabel = new System.Windows.Forms.Label();
             this.SpaarrekeningenLabel = new System.Windows.Forms.Label();
-            this.ZichtrekeningHistoryButton = new System.Windows.Forms.Button();
-            this.SpaarrekeningHistoryButton = new System.Windows.Forms.Button();
+            this.HistoryRekeningenButton = new System.Windows.Forms.Button();
             this.ZichtrekeningBalancesListView = new System.Windows.Forms.ListView();
             this.ZichtrekeningNr = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.BalanceZichtrekening = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SpaarrekeningBalancesListView = new System.Windows.Forms.ListView();
             this.SpaarrekeningNr = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.BalanceSpaarrekening = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.DeleteAccountButton = new System.Windows.Forms.Button();
-            this.ProfilePicturePictureBox = new System.Windows.Forms.PictureBox();
-            this.Logo = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             this.DropDownMenuOfOverschrijvingen.SuspendLayout();
-            this.DropDownMenuOfPfp.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ProfilePicturePictureBox)).BeginInit();
+            this.DropDownMenuOfPfp.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Logo)).BeginInit();
             this.SuspendLayout();
             // 
@@ -71,6 +70,16 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(547, 101);
             this.panel1.TabIndex = 0;
+            // 
+            // DeleteAccountButton
+            // 
+            this.DeleteAccountButton.Location = new System.Drawing.Point(294, 53);
+            this.DeleteAccountButton.Name = "DeleteAccountButton";
+            this.DeleteAccountButton.Size = new System.Drawing.Size(120, 25);
+            this.DeleteAccountButton.TabIndex = 4;
+            this.DeleteAccountButton.Text = "Delete account";
+            this.DeleteAccountButton.UseVisualStyleBackColor = true;
+            this.DeleteAccountButton.Click += new System.EventHandler(this.DeleteAccountButton_Click);
             // 
             // DepositButton
             // 
@@ -100,7 +109,8 @@
             this.automatischToolStripMenuItem,
             this.normaalToolStripMenuItem});
             this.DropDownMenuOfOverschrijvingen.Name = "DropDownMenuOfOverschrijvingen";
-            this.DropDownMenuOfOverschrijvingen.Size = new System.Drawing.Size(143, 48);
+            this.DropDownMenuOfOverschrijvingen.Size = new System.Drawing.Size(181, 70);
+            this.DropDownMenuOfOverschrijvingen.Opening += new System.ComponentModel.CancelEventHandler(this.DropDownMenuOfOverschrijvingen_Opening);
             // 
             // automatischToolStripMenuItem
             // 
@@ -115,6 +125,17 @@
             this.normaalToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
             this.normaalToolStripMenuItem.Text = "Normaal";
             this.normaalToolStripMenuItem.Click += new System.EventHandler(this.normaalToolStripMenuItem_Click);
+            // 
+            // ProfilePicturePictureBox
+            // 
+            this.ProfilePicturePictureBox.ContextMenuStrip = this.DropDownMenuOfPfp;
+            this.ProfilePicturePictureBox.Location = new System.Drawing.Point(459, 12);
+            this.ProfilePicturePictureBox.Name = "ProfilePicturePictureBox";
+            this.ProfilePicturePictureBox.Size = new System.Drawing.Size(75, 75);
+            this.ProfilePicturePictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.ProfilePicturePictureBox.TabIndex = 1;
+            this.ProfilePicturePictureBox.TabStop = false;
+            this.ProfilePicturePictureBox.Click += new System.EventHandler(this.ProfilePicturePictureBox_Click);
             // 
             // DropDownMenuOfPfp
             // 
@@ -147,10 +168,20 @@
             this.logOutToolStripMenuItem.Text = "Log out";
             this.logOutToolStripMenuItem.Click += new System.EventHandler(this.logOutToolStripMenuItem_Click);
             // 
+            // Logo
+            // 
+            this.Logo.Image = global::EOB.Properties.Resources.EOB_Logo;
+            this.Logo.Location = new System.Drawing.Point(0, 0);
+            this.Logo.Name = "Logo";
+            this.Logo.Size = new System.Drawing.Size(100, 100);
+            this.Logo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.Logo.TabIndex = 0;
+            this.Logo.TabStop = false;
+            // 
             // ZichtrekeningenLabel
             // 
             this.ZichtrekeningenLabel.AutoSize = true;
-            this.ZichtrekeningenLabel.Location = new System.Drawing.Point(70, 156);
+            this.ZichtrekeningenLabel.Location = new System.Drawing.Point(67, 197);
             this.ZichtrekeningenLabel.Name = "ZichtrekeningenLabel";
             this.ZichtrekeningenLabel.Size = new System.Drawing.Size(110, 13);
             this.ZichtrekeningenLabel.TabIndex = 1;
@@ -160,7 +191,7 @@
             // SpaarrekeningenLabel
             // 
             this.SpaarrekeningenLabel.AutoSize = true;
-            this.SpaarrekeningenLabel.Location = new System.Drawing.Point(367, 156);
+            this.SpaarrekeningenLabel.Location = new System.Drawing.Point(371, 197);
             this.SpaarrekeningenLabel.Name = "SpaarrekeningenLabel";
             this.SpaarrekeningenLabel.Size = new System.Drawing.Size(114, 13);
             this.SpaarrekeningenLabel.TabIndex = 2;
@@ -168,25 +199,16 @@
             this.SpaarrekeningenLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.SpaarrekeningenLabel.Click += new System.EventHandler(this.Spaarrekeningen_Click);
             // 
-            // ZichtrekeningHistoryButton
+            // HistoryRekeningenButton
             // 
-            this.ZichtrekeningHistoryButton.Location = new System.Drawing.Point(73, 172);
-            this.ZichtrekeningHistoryButton.Name = "ZichtrekeningHistoryButton";
-            this.ZichtrekeningHistoryButton.Size = new System.Drawing.Size(105, 25);
-            this.ZichtrekeningHistoryButton.TabIndex = 5;
-            this.ZichtrekeningHistoryButton.Text = "HISTORY";
-            this.ZichtrekeningHistoryButton.UseVisualStyleBackColor = true;
-            this.ZichtrekeningHistoryButton.Click += new System.EventHandler(this.ZichtrekeningHistoryButton_Click);
-            // 
-            // SpaarrekeningHistoryButton
-            // 
-            this.SpaarrekeningHistoryButton.Location = new System.Drawing.Point(370, 172);
-            this.SpaarrekeningHistoryButton.Name = "SpaarrekeningHistoryButton";
-            this.SpaarrekeningHistoryButton.Size = new System.Drawing.Size(105, 25);
-            this.SpaarrekeningHistoryButton.TabIndex = 6;
-            this.SpaarrekeningHistoryButton.Text = "HISTORY";
-            this.SpaarrekeningHistoryButton.UseVisualStyleBackColor = true;
-            this.SpaarrekeningHistoryButton.Click += new System.EventHandler(this.SpaarrekeningHistoryButton_Click);
+            this.HistoryRekeningenButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.HistoryRekeningenButton.Location = new System.Drawing.Point(215, 137);
+            this.HistoryRekeningenButton.Name = "HistoryRekeningenButton";
+            this.HistoryRekeningenButton.Size = new System.Drawing.Size(120, 25);
+            this.HistoryRekeningenButton.TabIndex = 6;
+            this.HistoryRekeningenButton.Text = "HISTORY";
+            this.HistoryRekeningenButton.UseVisualStyleBackColor = true;
+            this.HistoryRekeningenButton.Click += new System.EventHandler(this.HistoryRekeningenButton_Click);
             // 
             // ZichtrekeningBalancesListView
             // 
@@ -236,37 +258,6 @@
             this.BalanceSpaarrekening.Text = "Balance €";
             this.BalanceSpaarrekening.Width = 72;
             // 
-            // DeleteAccountButton
-            // 
-            this.DeleteAccountButton.Location = new System.Drawing.Point(294, 53);
-            this.DeleteAccountButton.Name = "DeleteAccountButton";
-            this.DeleteAccountButton.Size = new System.Drawing.Size(120, 25);
-            this.DeleteAccountButton.TabIndex = 4;
-            this.DeleteAccountButton.Text = "Delete account";
-            this.DeleteAccountButton.UseVisualStyleBackColor = true;
-            this.DeleteAccountButton.Click += new System.EventHandler(this.DeleteAccountButton_Click);
-            // 
-            // ProfilePicturePictureBox
-            // 
-            this.ProfilePicturePictureBox.ContextMenuStrip = this.DropDownMenuOfPfp;
-            this.ProfilePicturePictureBox.Location = new System.Drawing.Point(459, 12);
-            this.ProfilePicturePictureBox.Name = "ProfilePicturePictureBox";
-            this.ProfilePicturePictureBox.Size = new System.Drawing.Size(75, 75);
-            this.ProfilePicturePictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.ProfilePicturePictureBox.TabIndex = 1;
-            this.ProfilePicturePictureBox.TabStop = false;
-            this.ProfilePicturePictureBox.Click += new System.EventHandler(this.ProfilePicturePictureBox_Click);
-            // 
-            // Logo
-            // 
-            this.Logo.Image = global::EOB.Properties.Resources.EOB_Logo;
-            this.Logo.Location = new System.Drawing.Point(0, 0);
-            this.Logo.Name = "Logo";
-            this.Logo.Size = new System.Drawing.Size(100, 100);
-            this.Logo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.Logo.TabIndex = 0;
-            this.Logo.TabStop = false;
-            // 
             // ClientMainPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -275,8 +266,7 @@
             this.ClientSize = new System.Drawing.Size(546, 581);
             this.Controls.Add(this.SpaarrekeningBalancesListView);
             this.Controls.Add(this.ZichtrekeningBalancesListView);
-            this.Controls.Add(this.SpaarrekeningHistoryButton);
-            this.Controls.Add(this.ZichtrekeningHistoryButton);
+            this.Controls.Add(this.HistoryRekeningenButton);
             this.Controls.Add(this.SpaarrekeningenLabel);
             this.Controls.Add(this.ZichtrekeningenLabel);
             this.Controls.Add(this.panel1);
@@ -286,8 +276,8 @@
             this.Load += new System.EventHandler(this.ClientMainPage_Load);
             this.panel1.ResumeLayout(false);
             this.DropDownMenuOfOverschrijvingen.ResumeLayout(false);
-            this.DropDownMenuOfPfp.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ProfilePicturePictureBox)).EndInit();
+            this.DropDownMenuOfPfp.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Logo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -301,8 +291,7 @@
         private System.Windows.Forms.PictureBox ProfilePicturePictureBox;
         private System.Windows.Forms.Label ZichtrekeningenLabel;
         private System.Windows.Forms.Label SpaarrekeningenLabel;
-        private System.Windows.Forms.Button ZichtrekeningHistoryButton;
-        private System.Windows.Forms.Button SpaarrekeningHistoryButton;
+        private System.Windows.Forms.Button HistoryRekeningenButton;
         private System.Windows.Forms.ListView ZichtrekeningBalancesListView;
         private System.Windows.Forms.ColumnHeader ZichtrekeningNr;
         private System.Windows.Forms.ColumnHeader BalanceZichtrekening;

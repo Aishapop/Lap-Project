@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.ReturnButton = new System.Windows.Forms.Button();
             this.HistoryOfTransactionsListView = new System.Windows.Forms.ListView();
             this.MijnRekening = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -36,8 +35,8 @@
             this.Bedrag = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Datum = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.MyTransactionHistoryLabel = new System.Windows.Forms.Label();
+            this.MijnrekeningNrDropDown = new System.Windows.Forms.ComboBox();
             this.FilterButton = new System.Windows.Forms.Button();
-            this.MijnrekeningNrDropDown = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.SuspendLayout();
             // 
             // ReturnButton
@@ -96,22 +95,24 @@
             this.MyTransactionHistoryLabel.TabIndex = 4;
             this.MyTransactionHistoryLabel.Text = "Mijn transacties";
             // 
-            // FilterButton
-            // 
-            this.FilterButton.Location = new System.Drawing.Point(501, 125);
-            this.FilterButton.Name = "FilterButton";
-            this.FilterButton.Size = new System.Drawing.Size(160, 25);
-            this.FilterButton.TabIndex = 5;
-            this.FilterButton.Text = "Filter op mijn rekeningNr";
-            this.FilterButton.UseVisualStyleBackColor = true;
-            this.FilterButton.Click += new System.EventHandler(this.FilterButton_Click);
-            // 
             // MijnrekeningNrDropDown
             // 
-            this.MijnrekeningNrDropDown.BackColor = System.Drawing.Color.SlateGray;
+            this.MijnrekeningNrDropDown.FormattingEnabled = true;
+            this.MijnrekeningNrDropDown.Location = new System.Drawing.Point(512, 134);
             this.MijnrekeningNrDropDown.Name = "MijnrekeningNrDropDown";
-            this.MijnrekeningNrDropDown.Size = new System.Drawing.Size(61, 4);
-            this.MijnrekeningNrDropDown.Opening += new System.ComponentModel.CancelEventHandler(this.MijnrekeningNrDropDown_Opening);
+            this.MijnrekeningNrDropDown.Size = new System.Drawing.Size(144, 21);
+            this.MijnrekeningNrDropDown.TabIndex = 5;
+            this.MijnrekeningNrDropDown.SelectedIndexChanged += new System.EventHandler(this.MijnrekeningNrDropDown_SelectedIndexChanged);
+            // 
+            // FilterButton
+            // 
+            this.FilterButton.Location = new System.Drawing.Point(554, 195);
+            this.FilterButton.Name = "FilterButton";
+            this.FilterButton.Size = new System.Drawing.Size(75, 23);
+            this.FilterButton.TabIndex = 6;
+            this.FilterButton.Text = "Filter";
+            this.FilterButton.UseVisualStyleBackColor = true;
+            this.FilterButton.Click += new System.EventHandler(this.FilterButton_Click);
             // 
             // HistoryTransactionsPage
             // 
@@ -120,6 +121,7 @@
             this.BackColor = System.Drawing.Color.SlateGray;
             this.ClientSize = new System.Drawing.Size(668, 469);
             this.Controls.Add(this.FilterButton);
+            this.Controls.Add(this.MijnrekeningNrDropDown);
             this.Controls.Add(this.MyTransactionHistoryLabel);
             this.Controls.Add(this.HistoryOfTransactionsListView);
             this.Controls.Add(this.ReturnButton);
@@ -140,7 +142,7 @@
         private System.Windows.Forms.ColumnHeader Bedrag;
         private System.Windows.Forms.ColumnHeader OntvangerRekeningNr;
         private System.Windows.Forms.Label MyTransactionHistoryLabel;
+        private System.Windows.Forms.ComboBox MijnrekeningNrDropDown;
         private System.Windows.Forms.Button FilterButton;
-        private System.Windows.Forms.ContextMenuStrip MijnrekeningNrDropDown;
     }
 }

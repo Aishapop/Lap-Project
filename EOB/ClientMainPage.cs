@@ -96,8 +96,20 @@ namespace EOB
 
                                 SpaarrekeningBalancesListView.Items.Add(item);
                             }
+
                         }
                     }
+                    byte[] picture = User.ProfilePicture;
+                    // Convert the blob data into an image
+                    Image image = ConvertBlobToImage(picture);
+                    // Assign the converted image to the PictureBox control
+                    ProfilePicturePictureBox.Image = image;
+                    GraphicsPath path = new GraphicsPath();
+                    path.AddEllipse(new RectangleF(0, 0, ProfilePicturePictureBox.Width, ProfilePicturePictureBox.Height));
+                    ProfilePicturePictureBox.Region = new Region(path);
+
+                    // Set the PictureBox background to transparent
+                    ProfilePicturePictureBox.BackColor = Color.Transparent;
                 }
                 catch (Exception ex)
                 {
@@ -111,17 +123,7 @@ namespace EOB
                     connection.Close();
                 }
             }
-            byte[] picture = User.ProfilePicture;
-            // Convert the blob data into an image
-            Image image = ConvertBlobToImage(picture);
-            // Assign the converted image to the PictureBox control
-            ProfilePicturePictureBox.Image = image;
-            GraphicsPath path = new GraphicsPath();
-            path.AddEllipse(new RectangleF(0, 0, ProfilePicturePictureBox.Width, ProfilePicturePictureBox.Height));
-            ProfilePicturePictureBox.Region = new Region(path);
-
-            // Set the PictureBox background to transparent
-            ProfilePicturePictureBox.BackColor = Color.Transparent;
+            
         }
 
         private void ZichtrekeningBalancesListView_SelectedIndexChanged(object sender, EventArgs e)

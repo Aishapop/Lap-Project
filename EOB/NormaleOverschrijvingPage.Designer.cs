@@ -63,6 +63,7 @@
             this.MijnRekeningenDropDown.Name = "MijnRekeningenDropDown";
             this.MijnRekeningenDropDown.Size = new System.Drawing.Size(152, 21);
             this.MijnRekeningenDropDown.TabIndex = 4;
+            this.MijnRekeningenDropDown.SelectedIndexChanged += new System.EventHandler(this.MijnRekeningenDropDown_SelectedIndexChanged);
             // 
             // BedragText
             // 

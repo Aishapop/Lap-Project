@@ -133,5 +133,10 @@ namespace EOB
                 BedragText.Clear();             
             }          
         }
+
+        private void MijnRekeningenDropDown_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

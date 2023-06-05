@@ -19,10 +19,14 @@ namespace EOB
     public partial class ClientMainPage : Form
     {
         private string Email;
+        
+        
         public ClientMainPage(string email) 
         {
             InitializeComponent();
             this.Email = email;
+            
+
         }
 
         private void ProfilePicturePictureBox_Click(object sender, EventArgs e)
@@ -63,16 +67,21 @@ namespace EOB
             // Create a data adapter to fill the dataset
             MySqlDataAdapter adapter = new MySqlDataAdapter(command);
             DataTable dataTable = new DataTable();
+            Data data = new Data();
+            User user = data.SelectUSerIfExist(Email);
+
 
             try
             {
-                connection.Open();         
+                if (connection.State != ConnectionState.Open)
+                    connection.Open();         
                 // Fill the dataset
                 adapter.Fill(dataTable);
 
                 // Get the users id
-                Data data = new Data();
-                User user = data.SelectUSerIfExist(Email);
+                
+
+                DepositButton.Tag = user;
 
                 // Iterate over the data and populate the ListView control
                 foreach (DataRow row in dataTable.Rows)
@@ -107,9 +116,8 @@ namespace EOB
                 command.Dispose();
                 connection.Close();
             }
-            Data data1 = new Data();
-            User user1 = data1.SelectUSerIfExist(Email);
-            byte[] picture = user1.ProfilePicture;
+            
+            byte[] picture = user.ProfilePicture;
             // Convert the blob data into an image
             Image image = ConvertBlobToImage(picture);
             // Assign the converted image to the PictureBox control
@@ -159,7 +167,21 @@ namespace EOB
 
         private void DepositButton_Click(object sender, EventArgs e)
         {
-            FormUtils.OpenForm(new DepositPage(Email));
+            
+            
+
+            if (DepositButton.Tag is User user)
+            {
+                FormUtils.OpenForm(new DepositPage(Email));
+            }
+        }
+
+        private void normaalToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormUtils.OpenForm(new NormaleOverschrijvingPage(Email));
+
+            
+
         }
     }
 }

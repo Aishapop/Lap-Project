@@ -13,10 +13,14 @@ namespace EOB
     public partial class DepositPage : Form
     {
         private string Email;
-        public DepositPage(string email)
+        
+
+        public DepositPage(string email )
         {
             InitializeComponent();
             Email = email;
+            // Save the user object for further use in the DepositPage
+            
         }
 
         private void SoortenRekeningDropDown_SelectedIndexChanged(object sender, EventArgs e)
@@ -26,10 +30,10 @@ namespace EOB
 
         private bool ValidateInputs()
         {
-            string soortrekening = SoortenRekeningDropDown.Text;
-            string bedragtext = BedragText.Text.Replace("€","");
+            string soortrekening = SoortenRekeningDropDown.Text.Trim();
+            string bedragtext = BedragText.Text.Replace("€", "").Trim();
 
-            if(string.IsNullOrEmpty(soortrekening) || string.IsNullOrEmpty(bedragtext))
+            if (string.IsNullOrEmpty(soortrekening) || string.IsNullOrEmpty(bedragtext))
             {
                 MessageBox.Show("Please fill in all the fields!", "Empty fields", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
@@ -37,7 +41,7 @@ namespace EOB
 
             foreach (var item in bedragtext)
             {
-                if (!"1234567890".Contains(item))
+                if (!"1234567890.".Contains(item))
                 {
                     MessageBox.Show("Voer enkel nummers in dit veld in", "bedrag error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     BedragText.Clear();
@@ -53,12 +57,11 @@ namespace EOB
 
         private void DepositButton_Click(object sender, EventArgs e)
         {
-            if(ValidateInputs())
+            if (ValidateInputs())
             {
-                string soortrekening = SoortenRekeningDropDown.Text;
-                string bedragtext = BedragText.Text.Replace("€","");
-                //float bedrag = (float)Convert.ToDouble(bedragtext);
-                int bedrag = Convert.ToInt32(bedragtext);
+                string soortrekening = SoortenRekeningDropDown.Text.Trim();
+                string bedragtext = BedragText.Text.Replace("€", "").Trim();
+                decimal bedrag = Convert.ToDecimal(bedragtext);
                 Data data = new Data();
                 User user = data.SelectUSerIfExist(Email);
 

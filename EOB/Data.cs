@@ -93,12 +93,12 @@ namespace EOB
                 if (account.AccountType.ToString() == "Zichtrekening")
                 {
                     query = $"INSERT INTO rekening(Rekening_nr,SoortRekening_id,StartBedrag,User_id) " +
-                    $"VALUES({account.AccountNumber},{1},{0},{user.ID});";
+                    $"VALUES({account.AccountNumber},{3},{0},{user.ID});";
                 }
                 else if (account.AccountType.ToString() == "Spaarrekening")
                 {
                     query = $"INSERT INTO rekening(Rekening_nr,SoortRekening_id,StartBedrag,User_id) " +
-                    $"VALUES({account.AccountNumber},{2},{0},{user.ID});";
+                    $"VALUES({account.AccountNumber},{4},{0},{user.ID});";
                 }
                 else
                 {
@@ -222,6 +222,37 @@ namespace EOB
 
             return -1;
         }
+
+        public int EditUserProfilepicture(User user, byte[] newvalue)
+        {
+            string query = "UPDATE user SET ProfilePicture = @ProfilePicture WHERE id = @UserID";
+
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                using (MySqlCommand command = new MySqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@ProfilePicture", newvalue);
+                    command.Parameters.AddWithValue("@UserID", user.ID);
+
+                    try
+                    {
+                        connection.Open();
+                        int result = command.ExecuteNonQuery();
+                        return result;
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex);
+                        return -1;
+                    }
+                    finally
+                    {
+                        connection.Close();
+                    }
+                }
+            }
+        }
+
         public int UpdateUserToDeleted(User user)
         {
 
@@ -241,7 +272,7 @@ namespace EOB
 
             return -1;
         }
-        public int UpdateBalance(int rekeningnr, float amount)
+        public int UpdateBalance(int rekeningnr, decimal amount)
         {
             string query = $"UPDATE rekening SET StartBedrag = {amount} WHERE Rekening_nr like {rekeningnr};";
 
@@ -354,7 +385,7 @@ namespace EOB
                 {
                     int accountnr = (int)reader.GetInt32(0);
                     int soortrekening = (int)reader.GetInt32(1);
-                    float balance = (float)reader.GetFloat(2);
+                    decimal balance = (decimal)reader.GetDecimal(2);
                     string email = reader.GetString(7);
                     string pw = reader.GetString(8);
 
@@ -452,7 +483,7 @@ namespace EOB
                     int accountnr = (int)reader.GetInt32(0);
                     int soortrekening = (int)reader.GetInt32(1);
                     
-                    float balance = (float)reader.GetFloat(2);
+                    decimal balance = (decimal)reader.GetDecimal(2);
                     
                     
                     if (soortrekening == 1)

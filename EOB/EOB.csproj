@@ -118,6 +118,12 @@
     <Compile Include="Firstpage.Designer.cs">
       <DependentUpon>Firstpage.cs</DependentUpon>
     </Compile>
+    <Compile Include="NormaleOverschrijvingPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NormaleOverschrijvingPage.Designer.cs">
+      <DependentUpon>NormaleOverschrijvingPage.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

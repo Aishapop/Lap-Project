@@ -11,7 +11,7 @@ namespace EOB
     {
 
         public int AccountNumber { get; set; }
-        public float Balance { get; set; }
+        public decimal Balance { get; set; }
         public List<Transaction> Transactions { get; set; }
         public Types AccountType { get; set; }
         public User User { get; set; }
@@ -36,7 +36,7 @@ namespace EOB
         }
 
         //new account <---- database
-        public Account(int accountnr, float balance, Types accountTypes, User user)
+        public Account(int accountnr, decimal balance, Types accountTypes, User user)
         {
             AccountNumber = accountnr;
             Balance = balance;
@@ -45,26 +45,26 @@ namespace EOB
             User = user;
         }
 
-        public float GetBalance()
+        public decimal GetBalance()
         {
             return this.Balance;
         }
-        public void TransferMoney(int accountnr,float amount)
+        public void TransferMoney(int accountnr,decimal amount)
         {
             
             if (this.Balance > amount)
             {
                 //your amount--
-                float yourbalance = this.Balance;
-                float newbalance = yourbalance - amount;
+                decimal yourbalance = this.Balance;
+                decimal newbalance = yourbalance - amount;
                 this.Balance = newbalance;
                 _data.UpdateBalance(this.AccountNumber, newbalance);
 
                 Account reciver = _data.SelectAccountBynr(accountnr);
 
                 //resiver amount ++
-                float reciverbalance = reciver.Balance;
-                float newbalance2 = reciverbalance + amount;
+                decimal reciverbalance = reciver.Balance;
+                decimal newbalance2 = reciverbalance + amount;
                 _data.UpdateBalance(accountnr, newbalance2);
                 reciver.Balance = newbalance2;
 
@@ -80,7 +80,7 @@ namespace EOB
 
 
         }
-        public void DepositMoney(int amount)
+        public void DepositMoney(decimal amount)
         {
             this.Balance = this.Balance + amount;
             _data.UpdateBalance(this.AccountNumber,amount);

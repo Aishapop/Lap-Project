@@ -58,8 +58,8 @@ namespace EOB
                     deleteButtonCell.Value = "Delete";
                     row.Cells["DeleteColumn"] = deleteButtonCell;
 
-
-                    if (user.ProfilePicture != null)
+                    
+                    if (user.ProfilePicture != null && user.ProfilePicture.Length > 0)
                     {
                         System.Drawing.Image Imagepicture = ConvertBlobToImage(user.ProfilePicture);
                         System.Drawing.Image resizedImage1 = ResizeImage(Imagepicture, 100, 100);
@@ -73,13 +73,11 @@ namespace EOB
             }
             catch(Exception li)
             {
-                MessageBox.Show(li.Message,"Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                int lineNumber = (new System.Diagnostics.StackTrace(li, true)).GetFrame(0).GetFileLineNumber();
+                MessageBox.Show(li.Message,$"Error line:{lineNumber}",MessageBoxButtons.OK,MessageBoxIcon.Error);
 
 
             }
-
-
-            
 
 
         }
@@ -128,7 +126,177 @@ namespace EOB
             }
         }
 
-        
+        private void dataGridView1_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+
+            try
+            {
+                // Check if the edited cell belongs to the desired column Firstname
+                if (e.ColumnIndex == dataGridView1.Columns["FirsnameColumn"].Index)
+                {
+                    // Get the modified value from the edited cell
+                    object modifiedValue = dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value;
+
+                    // Retrieve the email value from the same row
+                    string email = dataGridView1.Rows[e.RowIndex].Cells["EmailColumn"].Value.ToString();
+
+                    // Perform the necessary update based on the modified value
+                    // You can update the value in the database or in the associated data source
+                    Data data = new Data();
+
+                    User user = data.SelectUSerIfExist(email);
+                    data.EditUser(user, "Firstname", modifiedValue.ToString());
+
+                    // Set the updated value back to the cell
+                    dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = modifiedValue;
+                }
+            }
+            catch(Exception ro)
+            {
+                MessageBox.Show(ro.Message,"Error",MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            try
+            {
+                //Lastname
+                if (e.ColumnIndex == dataGridView1.Columns["LastnameColumn"].Index)
+                {
+
+                    object modifiedValue = dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value;
+
+
+                    string email = dataGridView1.Rows[e.RowIndex].Cells["EmailColumn"].Value.ToString();
+
+
+                    Data data = new Data();
+
+                    User user = data.SelectUSerIfExist(email);
+                    data.EditUser(user, "Lastname", modifiedValue.ToString());
+
+
+                    dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = modifiedValue;
+                }
+            }
+            catch (Exception ro)
+            {
+                MessageBox.Show(ro.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+
+            try
+            {
+                if (e.ColumnIndex == dataGridView1.Columns["EmailColumn"].Index)
+                {
+
+                    object modifiedValue = dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value;
+
+
+                    string email = dataGridView1.Rows[e.RowIndex].Cells["EmailColumn"].Value.ToString();
+                    string modifiedValueString = modifiedValue.ToString();
+
+                    if (IsValidEmail(modifiedValueString) && EmailAlreadyExist(email) == false)
+                    {
+                        Data data = new Data();
+
+                        User user = data.SelectUSerIfExist(email);
+                        data.EditUser(user, "Email", modifiedValue.ToString());
+
+
+                        dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = modifiedValue;
+                    }
+                    else if (IsValidEmail(modifiedValueString) == false)
+                    {
+                        MessageBox.Show("this isn't a valid email", "Error email not valid", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = email;
+                    }
+                    else if (EmailAlreadyExist(email) == true)
+                    {
+                        MessageBox.Show("this email already exist", "Error email not valid", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = email;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Sorry something unexpected happend", "Unknow error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = email;
+                    }
+
+
+                }
+            }
+            catch (Exception ro)
+            {
+                MessageBox.Show(ro.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
+
+            //Email
+            
+
+
+        }
+
+        private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                // Check if the double-clicked cell belongs to the desired column
+                if (e.ColumnIndex == dataGridView1.Columns["ImageColumn"].Index)
+                {
+                    string email = dataGridView1.Rows[e.RowIndex].Cells["EmailColumn"].Value.ToString();
+                    // Open a file dialog to select the new image
+                    OpenFileDialog openfiledialog1 = new OpenFileDialog();
+                    openfiledialog1.Title = "Select Picture";
+                    openfiledialog1.InitialDirectory = @"C:\";
+                    openfiledialog1.Filter = "Pictures (*.png)|*.png|Pictures(*.jpg)|*.jpg";
+                    openfiledialog1.FilterIndex = 1;
+
+                    if (openfiledialog1.ShowDialog() == DialogResult.OK)
+                    {
+                        Data data = new Data();
+                        User user = data.SelectUSerIfExist(email);
+                        // Get the selected image path
+                        string imagePath = openfiledialog1.FileName;
+                        byte[] imageData = System.IO.File.ReadAllBytes(imagePath);
+
+                        data.EditUserProfilepicture(user, imageData);
+
+                        // Update the cell value with the new image
+                        DataGridViewImageCell clickedCell = (DataGridViewImageCell)dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex];
+
+
+                        user.ProfilePicture = imageData;
+
+
+                        if (user.ProfilePicture != null)
+                        {
+                            System.Drawing.Image Imagepicture = ConvertBlobToImage(user.ProfilePicture);
+                            System.Drawing.Image resizedImage1 = ResizeImage(Imagepicture, 100, 100);
+                            clickedCell.Value = resizedImage1;
+                            
+                        }
+
+                    }
+                }
+            }
+            catch(Exception f1)
+            {
+                MessageBox.Show(f1.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
+        }
+
+
+        private bool IsValidEmail(string email)
+        {
+            try
+            {
+                var addr = new System.Net.Mail.MailAddress(email); //System.Net.Mail.MailAddress can check and return the email in the correct format.
+                return addr.Address == email;
+            }
+            catch
+            {
+                return false;
+            }
+        }
 
 
         private System.Drawing.Image ConvertBlobToImage(byte[] imageData)
@@ -219,18 +387,7 @@ namespace EOB
             }
         }
 
-        private bool IsValidEmail(string email)
-        {
-            try
-            {
-                var addr = new System.Net.Mail.MailAddress(email); //System.Net.Mail.MailAddress can check and return the email in the correct format.
-                return addr.Address == email;
-            }
-            catch
-            {
-                return false;
-            }
-        }
+        
 
         public static string HashPassword(string password) //hash a pw
         {

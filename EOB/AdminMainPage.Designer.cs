@@ -30,18 +30,22 @@
         {
             this.UsertabControl = new System.Windows.Forms.TabControl();
             this.Usertab = new System.Windows.Forms.TabPage();
-            this.Createtab = new System.Windows.Forms.TabPage();
-            this.Logoutbutton = new System.Windows.Forms.Button();
-            this.Welkomlabel = new System.Windows.Forms.Label();
-            this.AdminNameLabel = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.ProfilepictureBox = new System.Windows.Forms.PictureBox();
             this.ImageColumn = new System.Windows.Forms.DataGridViewImageColumn();
             this.FirsnameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LastnameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EmailColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DeleteColumn = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Createtab = new System.Windows.Forms.TabPage();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.createAccount = new System.Windows.Forms.Button();
+            this.imageLabellabel2 = new System.Windows.Forms.Label();
+            this.PictureLocation1 = new System.Windows.Forms.TextBox();
+            this.selectPicture = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.passwordconfirmetext = new System.Windows.Forms.TextBox();
+            this.passwordtext = new System.Windows.Forms.TextBox();
+            this.emailtext = new System.Windows.Forms.TextBox();
             this.LogopictureBox = new System.Windows.Forms.PictureBox();
             this.PictureLocationLabel = new System.Windows.Forms.Label();
             this.PictureLocation = new System.Windows.Forms.TextBox();
@@ -55,21 +59,17 @@
             this.LabelLastName = new System.Windows.Forms.Label();
             this.LastNametext = new System.Windows.Forms.TextBox();
             this.FirstNametext = new System.Windows.Forms.TextBox();
-            this.emailtext = new System.Windows.Forms.TextBox();
-            this.passwordtext = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.passwordconfirmetext = new System.Windows.Forms.TextBox();
-            this.imageLabellabel2 = new System.Windows.Forms.Label();
-            this.PictureLocation1 = new System.Windows.Forms.TextBox();
-            this.selectPicture = new System.Windows.Forms.Button();
-            this.createAccount = new System.Windows.Forms.Button();
+            this.Logoutbutton = new System.Windows.Forms.Button();
+            this.Welkomlabel = new System.Windows.Forms.Label();
+            this.AdminNameLabel = new System.Windows.Forms.Label();
+            this.ProfilepictureBox = new System.Windows.Forms.PictureBox();
             this.UsertabControl.SuspendLayout();
             this.Usertab.SuspendLayout();
-            this.Createtab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ProfilepictureBox)).BeginInit();
+            this.Createtab.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.LogopictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ProfilepictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // UsertabControl
@@ -93,45 +93,6 @@
             this.Usertab.Text = "User";
             this.Usertab.UseVisualStyleBackColor = true;
             // 
-            // Createtab
-            // 
-            this.Createtab.Controls.Add(this.panel1);
-            this.Createtab.Location = new System.Drawing.Point(4, 25);
-            this.Createtab.Name = "Createtab";
-            this.Createtab.Padding = new System.Windows.Forms.Padding(3);
-            this.Createtab.Size = new System.Drawing.Size(1096, 363);
-            this.Createtab.TabIndex = 1;
-            this.Createtab.Text = "Create";
-            this.Createtab.UseVisualStyleBackColor = true;
-            // 
-            // Logoutbutton
-            // 
-            this.Logoutbutton.Location = new System.Drawing.Point(998, 8);
-            this.Logoutbutton.Name = "Logoutbutton";
-            this.Logoutbutton.Size = new System.Drawing.Size(103, 29);
-            this.Logoutbutton.TabIndex = 1;
-            this.Logoutbutton.Text = "Log out";
-            this.Logoutbutton.UseVisualStyleBackColor = true;
-            this.Logoutbutton.Click += new System.EventHandler(this.Logoutbutton_Click);
-            // 
-            // Welkomlabel
-            // 
-            this.Welkomlabel.AutoSize = true;
-            this.Welkomlabel.Location = new System.Drawing.Point(248, 47);
-            this.Welkomlabel.Name = "Welkomlabel";
-            this.Welkomlabel.Size = new System.Drawing.Size(100, 16);
-            this.Welkomlabel.TabIndex = 3;
-            this.Welkomlabel.Text = "Welkom admin:";
-            // 
-            // AdminNameLabel
-            // 
-            this.AdminNameLabel.AutoSize = true;
-            this.AdminNameLabel.Location = new System.Drawing.Point(344, 47);
-            this.AdminNameLabel.Name = "AdminNameLabel";
-            this.AdminNameLabel.Size = new System.Drawing.Size(44, 16);
-            this.AdminNameLabel.TabIndex = 4;
-            this.AdminNameLabel.Text = "label1";
-            // 
             // dataGridView1
             // 
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
@@ -149,14 +110,8 @@
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.Size = new System.Drawing.Size(1093, 360);
             this.dataGridView1.TabIndex = 0;
-            // 
-            // ProfilepictureBox
-            // 
-            this.ProfilepictureBox.Location = new System.Drawing.Point(5, 8);
-            this.ProfilepictureBox.Name = "ProfilepictureBox";
-            this.ProfilepictureBox.Size = new System.Drawing.Size(187, 52);
-            this.ProfilepictureBox.TabIndex = 5;
-            this.ProfilepictureBox.TabStop = false;
+            this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
+            this.dataGridView1.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellEndEdit);
             // 
             // ImageColumn
             // 
@@ -193,6 +148,17 @@
             this.DeleteColumn.Name = "DeleteColumn";
             this.DeleteColumn.Width = 125;
             // 
+            // Createtab
+            // 
+            this.Createtab.Controls.Add(this.panel1);
+            this.Createtab.Location = new System.Drawing.Point(4, 25);
+            this.Createtab.Name = "Createtab";
+            this.Createtab.Padding = new System.Windows.Forms.Padding(3);
+            this.Createtab.Size = new System.Drawing.Size(1096, 363);
+            this.Createtab.TabIndex = 1;
+            this.Createtab.Text = "Create";
+            this.Createtab.UseVisualStyleBackColor = true;
+            // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
@@ -221,6 +187,80 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1097, 391);
             this.panel1.TabIndex = 0;
+            // 
+            // createAccount
+            // 
+            this.createAccount.Location = new System.Drawing.Point(905, 236);
+            this.createAccount.Margin = new System.Windows.Forms.Padding(4);
+            this.createAccount.Name = "createAccount";
+            this.createAccount.Size = new System.Drawing.Size(177, 38);
+            this.createAccount.TabIndex = 37;
+            this.createAccount.Text = "Create Account";
+            this.createAccount.UseVisualStyleBackColor = true;
+            this.createAccount.Click += new System.EventHandler(this.createAccount_Click);
+            // 
+            // imageLabellabel2
+            // 
+            this.imageLabellabel2.AutoSize = true;
+            this.imageLabellabel2.Location = new System.Drawing.Point(643, 167);
+            this.imageLabellabel2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.imageLabellabel2.Name = "imageLabellabel2";
+            this.imageLabellabel2.Size = new System.Drawing.Size(98, 16);
+            this.imageLabellabel2.TabIndex = 36;
+            this.imageLabellabel2.Text = "Picture location";
+            // 
+            // PictureLocation1
+            // 
+            this.PictureLocation1.Location = new System.Drawing.Point(618, 187);
+            this.PictureLocation1.Margin = new System.Windows.Forms.Padding(4);
+            this.PictureLocation1.Name = "PictureLocation1";
+            this.PictureLocation1.Size = new System.Drawing.Size(272, 22);
+            this.PictureLocation1.TabIndex = 35;
+            // 
+            // selectPicture
+            // 
+            this.selectPicture.Location = new System.Drawing.Point(683, 219);
+            this.selectPicture.Margin = new System.Windows.Forms.Padding(4);
+            this.selectPicture.Name = "selectPicture";
+            this.selectPicture.Size = new System.Drawing.Size(131, 28);
+            this.selectPicture.TabIndex = 34;
+            this.selectPicture.Text = "Select picture";
+            this.selectPicture.UseVisualStyleBackColor = true;
+            this.selectPicture.Click += new System.EventHandler(this.SelectPicture_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(615, 278);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(143, 16);
+            this.label1.TabIndex = 33;
+            this.label1.Text = "Confirm your password";
+            // 
+            // passwordconfirmetext
+            // 
+            this.passwordconfirmetext.Location = new System.Drawing.Point(619, 297);
+            this.passwordconfirmetext.Margin = new System.Windows.Forms.Padding(4);
+            this.passwordconfirmetext.Name = "passwordconfirmetext";
+            this.passwordconfirmetext.Size = new System.Drawing.Size(224, 22);
+            this.passwordconfirmetext.TabIndex = 32;
+            // 
+            // passwordtext
+            // 
+            this.passwordtext.Location = new System.Drawing.Point(321, 297);
+            this.passwordtext.Margin = new System.Windows.Forms.Padding(4);
+            this.passwordtext.Name = "passwordtext";
+            this.passwordtext.Size = new System.Drawing.Size(224, 22);
+            this.passwordtext.TabIndex = 31;
+            // 
+            // emailtext
+            // 
+            this.emailtext.Location = new System.Drawing.Point(22, 297);
+            this.emailtext.Margin = new System.Windows.Forms.Padding(4);
+            this.emailtext.Name = "emailtext";
+            this.emailtext.Size = new System.Drawing.Size(224, 22);
+            this.emailtext.TabIndex = 30;
             // 
             // LogopictureBox
             // 
@@ -345,79 +385,41 @@
             this.FirstNametext.Size = new System.Drawing.Size(224, 22);
             this.FirstNametext.TabIndex = 17;
             // 
-            // emailtext
+            // Logoutbutton
             // 
-            this.emailtext.Location = new System.Drawing.Point(22, 297);
-            this.emailtext.Margin = new System.Windows.Forms.Padding(4);
-            this.emailtext.Name = "emailtext";
-            this.emailtext.Size = new System.Drawing.Size(224, 22);
-            this.emailtext.TabIndex = 30;
+            this.Logoutbutton.Location = new System.Drawing.Point(998, 8);
+            this.Logoutbutton.Name = "Logoutbutton";
+            this.Logoutbutton.Size = new System.Drawing.Size(103, 29);
+            this.Logoutbutton.TabIndex = 1;
+            this.Logoutbutton.Text = "Log out";
+            this.Logoutbutton.UseVisualStyleBackColor = true;
+            this.Logoutbutton.Click += new System.EventHandler(this.Logoutbutton_Click);
             // 
-            // passwordtext
+            // Welkomlabel
             // 
-            this.passwordtext.Location = new System.Drawing.Point(321, 297);
-            this.passwordtext.Margin = new System.Windows.Forms.Padding(4);
-            this.passwordtext.Name = "passwordtext";
-            this.passwordtext.Size = new System.Drawing.Size(224, 22);
-            this.passwordtext.TabIndex = 31;
+            this.Welkomlabel.AutoSize = true;
+            this.Welkomlabel.Location = new System.Drawing.Point(248, 47);
+            this.Welkomlabel.Name = "Welkomlabel";
+            this.Welkomlabel.Size = new System.Drawing.Size(100, 16);
+            this.Welkomlabel.TabIndex = 3;
+            this.Welkomlabel.Text = "Welkom admin:";
             // 
-            // label1
+            // AdminNameLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(615, 278);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(143, 16);
-            this.label1.TabIndex = 33;
-            this.label1.Text = "Confirm your password";
+            this.AdminNameLabel.AutoSize = true;
+            this.AdminNameLabel.Location = new System.Drawing.Point(344, 47);
+            this.AdminNameLabel.Name = "AdminNameLabel";
+            this.AdminNameLabel.Size = new System.Drawing.Size(44, 16);
+            this.AdminNameLabel.TabIndex = 4;
+            this.AdminNameLabel.Text = "label1";
             // 
-            // passwordconfirmetext
+            // ProfilepictureBox
             // 
-            this.passwordconfirmetext.Location = new System.Drawing.Point(619, 297);
-            this.passwordconfirmetext.Margin = new System.Windows.Forms.Padding(4);
-            this.passwordconfirmetext.Name = "passwordconfirmetext";
-            this.passwordconfirmetext.Size = new System.Drawing.Size(224, 22);
-            this.passwordconfirmetext.TabIndex = 32;
-            // 
-            // imageLabellabel2
-            // 
-            this.imageLabellabel2.AutoSize = true;
-            this.imageLabellabel2.Location = new System.Drawing.Point(643, 167);
-            this.imageLabellabel2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.imageLabellabel2.Name = "imageLabellabel2";
-            this.imageLabellabel2.Size = new System.Drawing.Size(98, 16);
-            this.imageLabellabel2.TabIndex = 36;
-            this.imageLabellabel2.Text = "Picture location";
-            // 
-            // PictureLocation1
-            // 
-            this.PictureLocation1.Location = new System.Drawing.Point(618, 187);
-            this.PictureLocation1.Margin = new System.Windows.Forms.Padding(4);
-            this.PictureLocation1.Name = "PictureLocation1";
-            this.PictureLocation1.Size = new System.Drawing.Size(272, 22);
-            this.PictureLocation1.TabIndex = 35;
-            // 
-            // selectPicture
-            // 
-            this.selectPicture.Location = new System.Drawing.Point(683, 219);
-            this.selectPicture.Margin = new System.Windows.Forms.Padding(4);
-            this.selectPicture.Name = "selectPicture";
-            this.selectPicture.Size = new System.Drawing.Size(131, 28);
-            this.selectPicture.TabIndex = 34;
-            this.selectPicture.Text = "Select picture";
-            this.selectPicture.UseVisualStyleBackColor = true;
-            this.selectPicture.Click += new System.EventHandler(this.SelectPicture_Click);
-            // 
-            // createAccount
-            // 
-            this.createAccount.Location = new System.Drawing.Point(905, 236);
-            this.createAccount.Margin = new System.Windows.Forms.Padding(4);
-            this.createAccount.Name = "createAccount";
-            this.createAccount.Size = new System.Drawing.Size(177, 38);
-            this.createAccount.TabIndex = 37;
-            this.createAccount.Text = "Create Account";
-            this.createAccount.UseVisualStyleBackColor = true;
-            this.createAccount.Click += new System.EventHandler(this.createAccount_Click);
+            this.ProfilepictureBox.Location = new System.Drawing.Point(5, 8);
+            this.ProfilepictureBox.Name = "ProfilepictureBox";
+            this.ProfilepictureBox.Size = new System.Drawing.Size(187, 52);
+            this.ProfilepictureBox.TabIndex = 5;
+            this.ProfilepictureBox.TabStop = false;
             // 
             // AdminMainPage
             // 
@@ -435,12 +437,12 @@
             this.Load += new System.EventHandler(this.AdminMainPage_Load);
             this.UsertabControl.ResumeLayout(false);
             this.Usertab.ResumeLayout(false);
-            this.Createtab.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ProfilepictureBox)).EndInit();
+            this.Createtab.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.LogopictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ProfilepictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

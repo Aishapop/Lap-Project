@@ -13,16 +13,16 @@ namespace EOB
 {
     public partial class AutomatischeOverschrijvingPage : Form
     {
-        private string Email;
-        public AutomatischeOverschrijvingPage(string email)
+        private User User;
+        internal AutomatischeOverschrijvingPage(User user)
         {
             InitializeComponent();
-            this.Email = email;
+            this.User = user;
         }
 
-        private void returnButton_Click(object sender, EventArgs e)
+        private void ReturnButton_Click(object sender, EventArgs e)
         {
-            FormUtils.OpenForm(new ClientMainPage(Email));
+            FormUtils.OpenForm(new ClientMainPage(User));
         }
 
         private void BeginDateAutoOverschrij_ValueChanged(object sender, EventArgs e)
@@ -67,9 +67,7 @@ namespace EOB
                 string endDate = endDate1.ToString("yyyy-MM-dd HH:mm:ss");
 
                 //all de informatie gebruiken om een auto overschrijving te maken ***********
-                Data data = new Data();
-                User user = data.SelectUSerIfExist(Email);
-                List<Account> accounts = user.AccountList;
+                List<Account> accounts = User.AccountList;
                 Account rekening = accounts[0]; // give it a random account
                 foreach(Account account in accounts)
                 {
@@ -79,7 +77,7 @@ namespace EOB
                     }
                 }
                 rekening.SetAutomaticTransfer(beginDate, termijn, endDate, bedrag, rekeningNr);
-                FormUtils.OpenForm(new ClientMainPage(Email));
+                FormUtils.OpenForm(new ClientMainPage(User));
                 OntvangersRekeningNR.Clear();
                 BedragText.Clear();
             }
@@ -156,14 +154,10 @@ namespace EOB
                     // Fill the dataset
                     adapter.Fill(dataTable);
 
-                    // Get the users id
-                    Data data = new Data();
-                    User user = data.SelectUSerIfExist(Email);
-
                     // Iterate over the data and populate the ListView control
                     foreach (DataRow row in dataTable.Rows)
                     {
-                        if (Convert.ToInt32(row["User_id"]) == user.ID)
+                        if (Convert.ToInt32(row["User_id"]) == User.ID)
                         {
                             string item = "BE" + row["Rekening_nr"];
 

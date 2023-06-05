@@ -18,11 +18,11 @@ namespace EOB
 {
     public partial class ClientMainPage : Form
     {
-        private string Email;
-        public ClientMainPage(string email) 
+        private User User;
+        internal ClientMainPage(User user) 
         {
             InitializeComponent();
-            this.Email = email;
+            this.User = user;
         }
 
         private void ProfilePicturePictureBox_Click(object sender, EventArgs e)
@@ -69,14 +69,10 @@ namespace EOB
                     // Fill the dataset
                     adapter.Fill(dataTable);
 
-                    // Get the users id
-                    Data data = new Data();
-                    User user = data.SelectUSerIfExist(Email);
-
                     // Iterate over the data and populate the ListView control
                     foreach (DataRow row in dataTable.Rows)
                     {
-                        if (Convert.ToInt32(row["User_id"]) == user.ID)
+                        if (Convert.ToInt32(row["User_id"]) == User.ID)
                         {
                             if (Convert.ToInt32(row["SoortRekening_id"]) == 1)
                             {
@@ -107,9 +103,7 @@ namespace EOB
                     connection.Close();
                 }
             }
-            Data data1 = new Data();
-            User user1 = data1.SelectUSerIfExist(Email);
-            byte[] picture = user1.ProfilePicture;
+            byte[] picture = User.ProfilePicture;
             // Convert the blob data into an image
             Image image = ConvertBlobToImage(picture);
             // Assign the converted image to the PictureBox control
@@ -144,7 +138,7 @@ namespace EOB
 
         private void automatischToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FormUtils.OpenForm(new AutomatischeOverschrijvingPage(Email));
+            FormUtils.OpenForm(new AutomatischeOverschrijvingPage(User));
         }
 
         private void OverschrijvingenDropdownMenu_Click(object sender, EventArgs e)
@@ -159,12 +153,22 @@ namespace EOB
 
         private void DepositButton_Click(object sender, EventArgs e)
         {
-            FormUtils.OpenForm(new DepositPage(Email));
+            FormUtils.OpenForm(new DepositPage(User));
         }
 
         private void normaalToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FormUtils.OpenForm(new NormaleOverschrijvingPage(Email));
+            FormUtils.OpenForm(new NormaleOverschrijvingPage(User));
+        }
+
+        private void accountToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormUtils.OpenForm(new DeleteAccountPage(User));
+        }
+
+        private void passwordToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

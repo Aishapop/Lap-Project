@@ -63,3 +63,5 @@ C:\Users\alanl\source\repos\Lap-Project\EOB\obj\Debug\EOB.AdminLoginpage.resourc
 C:\Users\alanl\source\repos\Lap-Project\EOB\obj\Debug\EOB.AdminMainPage.resources
 C:\Users\alanl\source\repos\Lap-Project\EOB\obj\Debug\EOB.AutomatischeOverschrijvingPage.resources
 C:\Users\alanl\source\repos\Lap-Project\EOB\obj\Debug\EOB.NormaleOverschrijvingPage.resources
+C:\Users\alanl\source\repos\Lap-Project\EOB\obj\Debug\EOB.DeleteAccountPage.resources
+C:\Users\alanl\source\repos\Lap-Project\EOB\obj\Debug\EOB.RecoverAccountPage.resources

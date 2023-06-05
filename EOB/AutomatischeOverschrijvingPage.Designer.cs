@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.returnButton = new System.Windows.Forms.Button();
+            this.ReturnButton = new System.Windows.Forms.Button();
             this.TermijnDropDownMenu = new System.Windows.Forms.ComboBox();
             this.OntvangersRekeningNR = new System.Windows.Forms.TextBox();
             this.BedragText = new System.Windows.Forms.TextBox();
@@ -44,15 +44,15 @@
             this.MijnRekeningenLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // returnButton
+            // ReturnButton
             // 
-            this.returnButton.Location = new System.Drawing.Point(1, 0);
-            this.returnButton.Name = "returnButton";
-            this.returnButton.Size = new System.Drawing.Size(75, 37);
-            this.returnButton.TabIndex = 1;
-            this.returnButton.Text = "Back";
-            this.returnButton.UseVisualStyleBackColor = true;
-            this.returnButton.Click += new System.EventHandler(this.returnButton_Click);
+            this.ReturnButton.Location = new System.Drawing.Point(1, 0);
+            this.ReturnButton.Name = "ReturnButton";
+            this.ReturnButton.Size = new System.Drawing.Size(75, 37);
+            this.ReturnButton.TabIndex = 1;
+            this.ReturnButton.Text = "Back";
+            this.ReturnButton.UseVisualStyleBackColor = true;
+            this.ReturnButton.Click += new System.EventHandler(this.ReturnButton_Click);
             // 
             // TermijnDropDownMenu
             // 
@@ -207,7 +207,7 @@
             this.Controls.Add(this.BedragText);
             this.Controls.Add(this.OntvangersRekeningNR);
             this.Controls.Add(this.TermijnDropDownMenu);
-            this.Controls.Add(this.returnButton);
+            this.Controls.Add(this.ReturnButton);
             this.Name = "AutomatischeOverschrijvingPage";
             this.Text = "AutomatischeOverschrijving";
             this.Load += new System.EventHandler(this.AutomatischeOverschrijving_Load);
@@ -218,7 +218,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Button returnButton;
+        private System.Windows.Forms.Button ReturnButton;
         private System.Windows.Forms.ComboBox TermijnDropDownMenu;
         private System.Windows.Forms.TextBox OntvangersRekeningNR;
         private System.Windows.Forms.TextBox BedragText;

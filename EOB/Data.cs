@@ -244,7 +244,7 @@ namespace EOB
         }
         public int UpdateBalance(int rekeningnr, decimal amount)
         {
-            string query = $"UPDATE rekening SET StartBedrag = {amount} WHERE Rekening_nr LIKE '{rekeningnr}';";
+            string query = $"UPDATE rekening SET StartBedrag = '{amount}' WHERE Rekening_nr LIKE '{rekeningnr}';";
 
             Insert(query);
 
@@ -295,6 +295,49 @@ namespace EOB
                 
             }
             return null;
+        }
+        public User SelectUSerWhenDeletedIfExist(string email)
+
+        {
+
+            string query = $"SELECT* FROM user WHERE Email LIKE '{email}' AND Deleted LIKE 1;";
+            MySqlConnection connection = new MySqlConnection(connectionString);
+            MySqlCommand commandDatabase = new MySqlCommand(query, connection);
+
+            try
+            {
+                connection.Open();
+                MySqlDataReader reader = commandDatabase.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    int id = reader.GetInt32(0);
+                    string firstname = reader.GetString(1);
+                    string lastname = reader.GetString(2);
+                    string email1 = reader.GetString(3);
+                    string password = reader.GetString(4);
+                    var profilepicture = reader.GetValue(5);
+
+                    return new User(id, firstname, lastname, password, email1, (byte[])profilepicture);
+                }
+                else
+                {
+                    MessageBox.Show("User still exists");
+                    return null;
+                }
+
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return null;
+            }
+            finally
+            {
+                connection.Close();
+
+            }
         }
 
         public User SelectAdminIfExist(string email)

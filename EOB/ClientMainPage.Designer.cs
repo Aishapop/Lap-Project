@@ -35,12 +35,10 @@
             this.DropDownMenuOfOverschrijvingen = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.automatischToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.normaalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ProfilePicturePictureBox = new System.Windows.Forms.PictureBox();
             this.DropDownMenuOfPfp = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.passwordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.accountToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.logOutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.Logo = new System.Windows.Forms.PictureBox();
             this.ZichtrekeningenLabel = new System.Windows.Forms.Label();
             this.SpaarrekeningenLabel = new System.Windows.Forms.Label();
             this.ZichtrekeningHistoryButton = new System.Windows.Forms.Button();
@@ -51,10 +49,12 @@
             this.SpaarrekeningBalancesListView = new System.Windows.Forms.ListView();
             this.SpaarrekeningNr = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.BalanceSpaarrekening = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.ProfilePicturePictureBox = new System.Windows.Forms.PictureBox();
+            this.Logo = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             this.DropDownMenuOfOverschrijvingen.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ProfilePicturePictureBox)).BeginInit();
             this.DropDownMenuOfPfp.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ProfilePicturePictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Logo)).BeginInit();
             this.SuspendLayout();
             // 
@@ -98,32 +98,21 @@
             this.automatischToolStripMenuItem,
             this.normaalToolStripMenuItem});
             this.DropDownMenuOfOverschrijvingen.Name = "DropDownMenuOfOverschrijvingen";
-            this.DropDownMenuOfOverschrijvingen.Size = new System.Drawing.Size(181, 70);
+            this.DropDownMenuOfOverschrijvingen.Size = new System.Drawing.Size(143, 48);
             // 
             // automatischToolStripMenuItem
             // 
             this.automatischToolStripMenuItem.Name = "automatischToolStripMenuItem";
-            this.automatischToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.automatischToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
             this.automatischToolStripMenuItem.Text = "Automatisch";
             this.automatischToolStripMenuItem.Click += new System.EventHandler(this.automatischToolStripMenuItem_Click);
             // 
             // normaalToolStripMenuItem
             // 
             this.normaalToolStripMenuItem.Name = "normaalToolStripMenuItem";
-            this.normaalToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.normaalToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
             this.normaalToolStripMenuItem.Text = "Normaal";
             this.normaalToolStripMenuItem.Click += new System.EventHandler(this.normaalToolStripMenuItem_Click);
-            // 
-            // ProfilePicturePictureBox
-            // 
-            this.ProfilePicturePictureBox.ContextMenuStrip = this.DropDownMenuOfPfp;
-            this.ProfilePicturePictureBox.Location = new System.Drawing.Point(459, 12);
-            this.ProfilePicturePictureBox.Name = "ProfilePicturePictureBox";
-            this.ProfilePicturePictureBox.Size = new System.Drawing.Size(75, 75);
-            this.ProfilePicturePictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.ProfilePicturePictureBox.TabIndex = 1;
-            this.ProfilePicturePictureBox.TabStop = false;
-            this.ProfilePicturePictureBox.Click += new System.EventHandler(this.ProfilePicturePictureBox_Click);
             // 
             // DropDownMenuOfPfp
             // 
@@ -133,36 +122,28 @@
             this.accountToolStripMenuItem,
             this.logOutToolStripMenuItem});
             this.DropDownMenuOfPfp.Name = "DropDownMenuOfPfp";
-            this.DropDownMenuOfPfp.Size = new System.Drawing.Size(125, 70);
+            this.DropDownMenuOfPfp.Size = new System.Drawing.Size(181, 92);
             // 
             // passwordToolStripMenuItem
             // 
             this.passwordToolStripMenuItem.Name = "passwordToolStripMenuItem";
-            this.passwordToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.passwordToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.passwordToolStripMenuItem.Text = "Password";
+            this.passwordToolStripMenuItem.Click += new System.EventHandler(this.passwordToolStripMenuItem_Click);
             // 
             // accountToolStripMenuItem
             // 
             this.accountToolStripMenuItem.Name = "accountToolStripMenuItem";
-            this.accountToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
-            this.accountToolStripMenuItem.Text = "Account";
+            this.accountToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.accountToolStripMenuItem.Text = "Delete Account";
+            this.accountToolStripMenuItem.Click += new System.EventHandler(this.accountToolStripMenuItem_Click);
             // 
             // logOutToolStripMenuItem
             // 
             this.logOutToolStripMenuItem.Name = "logOutToolStripMenuItem";
-            this.logOutToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.logOutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.logOutToolStripMenuItem.Text = "Log out";
             this.logOutToolStripMenuItem.Click += new System.EventHandler(this.logOutToolStripMenuItem_Click);
-            // 
-            // Logo
-            // 
-            this.Logo.Image = global::EOB.Properties.Resources.EOB_Logo;
-            this.Logo.Location = new System.Drawing.Point(0, 0);
-            this.Logo.Name = "Logo";
-            this.Logo.Size = new System.Drawing.Size(100, 100);
-            this.Logo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.Logo.TabIndex = 0;
-            this.Logo.TabStop = false;
             // 
             // ZichtrekeningenLabel
             // 
@@ -253,6 +234,27 @@
             this.BalanceSpaarrekening.Text = "Balance €";
             this.BalanceSpaarrekening.Width = 72;
             // 
+            // ProfilePicturePictureBox
+            // 
+            this.ProfilePicturePictureBox.ContextMenuStrip = this.DropDownMenuOfPfp;
+            this.ProfilePicturePictureBox.Location = new System.Drawing.Point(459, 12);
+            this.ProfilePicturePictureBox.Name = "ProfilePicturePictureBox";
+            this.ProfilePicturePictureBox.Size = new System.Drawing.Size(75, 75);
+            this.ProfilePicturePictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.ProfilePicturePictureBox.TabIndex = 1;
+            this.ProfilePicturePictureBox.TabStop = false;
+            this.ProfilePicturePictureBox.Click += new System.EventHandler(this.ProfilePicturePictureBox_Click);
+            // 
+            // Logo
+            // 
+            this.Logo.Image = global::EOB.Properties.Resources.EOB_Logo;
+            this.Logo.Location = new System.Drawing.Point(0, 0);
+            this.Logo.Name = "Logo";
+            this.Logo.Size = new System.Drawing.Size(100, 100);
+            this.Logo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.Logo.TabIndex = 0;
+            this.Logo.TabStop = false;
+            // 
             // ClientMainPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -272,8 +274,8 @@
             this.Load += new System.EventHandler(this.ClientMainPage_Load);
             this.panel1.ResumeLayout(false);
             this.DropDownMenuOfOverschrijvingen.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.ProfilePicturePictureBox)).EndInit();
             this.DropDownMenuOfPfp.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.ProfilePicturePictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Logo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

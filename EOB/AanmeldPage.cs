@@ -32,7 +32,7 @@ namespace EOB
                 string password = PasswordText.Text;
 
                 Data data = new Data();
-                User userData = data.SelectUSerIfExist(email);
+                User user = data.SelectUSerIfExist(email);
                 try
                 {
                     password = HashPassword(password);
@@ -41,14 +41,14 @@ namespace EOB
                 {
                     MessageBox.Show(d.Message);
                 }
-                if (userData == null)
+                if (user == null)
                 {
                     MessageBox.Show("Incorrect Email, Try again", "Incorrect email", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
-                else if(email == userData.Email && password == userData.Password)
+                else if(email == user.Email && password == user.Password)
                 {
-                    FormUtils.OpenForm(new ClientMainPage(email));
+                    FormUtils.OpenForm(new ClientMainPage(user));
                     EmailText.Clear();
                     PasswordText.Clear();
                 }

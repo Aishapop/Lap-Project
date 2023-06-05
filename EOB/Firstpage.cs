@@ -34,7 +34,12 @@ namespace EOB
 
         private void adminButton_Click(object sender, EventArgs e)
         {
-            //FormUtils.OpenForm(new AdminLoginpage());
+            FormUtils.OpenForm(new AdminLoginpage());
+        }
+
+        private void RecoverAccountButton_Click(object sender, EventArgs e)
+        {
+            FormUtils.OpenForm(new RecoverAccountPage());
         }
     }
 }

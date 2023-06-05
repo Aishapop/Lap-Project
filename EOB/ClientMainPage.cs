@@ -40,7 +40,7 @@ namespace EOB
                     Image image = Image.FromStream(ms);
                     return image;
                 }
-                catch(Exception ex)
+                catch
                 {
                     MessageBox.Show("there was an error converting the image","converting problem",MessageBoxButtons.OK,MessageBoxIcon.Error);
                     return null;

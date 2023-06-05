@@ -108,8 +108,10 @@
             // 
             // MijnrekeningNrDropDown
             // 
+            this.MijnrekeningNrDropDown.BackColor = System.Drawing.Color.SlateGray;
             this.MijnrekeningNrDropDown.Name = "MijnrekeningNrDropDown";
             this.MijnrekeningNrDropDown.Size = new System.Drawing.Size(61, 4);
+            this.MijnrekeningNrDropDown.Opening += new System.ComponentModel.CancelEventHandler(this.MijnrekeningNrDropDown_Opening);
             // 
             // HistoryTransactionsPage
             // 

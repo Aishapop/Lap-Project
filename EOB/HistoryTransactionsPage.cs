@@ -35,6 +35,15 @@ namespace EOB
                     HistoryOfTransactionsListView.Items.Add(item);
                 }
             }
+            ContextMenuStrip contextMenuStrip = MijnrekeningNrDropDown;
+            foreach (Account account in accounts)
+            {
+                ToolStripMenuItem item = new ToolStripMenuItem("BE" + account.AccountNumber.ToString());
+                contextMenuStrip.Items.Add(item);
+            }
+            // Attach the context menu to a control
+            MijnrekeningNrDropDown.ContextMenuStrip = contextMenuStrip;
+
         }
 
         private void ReturnButton_Click(object sender, EventArgs e)
@@ -49,7 +58,12 @@ namespace EOB
 
         private void FilterButton_Click(object sender, EventArgs e)
         {
-            MijnrekeningNrDropDown.Show(MijnrekeningNrDropDown, new Point(0, MijnrekeningNrDropDown.Height));
+            MijnrekeningNrDropDown.Show(FilterButton, new Point(0, FilterButton.Height));
+        }
+
+        private void MijnrekeningNrDropDown_Opening(object sender, CancelEventArgs e)
+        {
+            
         }
     }
 }

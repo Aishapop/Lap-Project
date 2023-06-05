@@ -28,8 +28,8 @@ namespace EOB
         {
             if(ValidateInput())
             {
-                string email = EmailText.Text;
-                string password = PasswordText.Text;
+                string email = EmailText.Text.Trim();
+                string password = PasswordText.Text.Trim();
 
                 Data data = new Data();
                 User user = data.SelectUSerIfExist(email);
@@ -41,9 +41,10 @@ namespace EOB
                 {
                     MessageBox.Show(d.Message);
                 }
+
                 if (user == null)
                 {
-                    MessageBox.Show("Incorrect Email, Try again", "Incorrect email", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Incorrect Email or account doesn't exist, Try again", "Incorrect email", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
                 else if(email == user.Email && password == user.Password)
@@ -61,8 +62,8 @@ namespace EOB
         }
         private bool ValidateInput()
         {
-            string email = EmailText.Text;
-            string password = PasswordText.Text;
+            string email = EmailText.Text.Trim();
+            string password = PasswordText.Text.Trim();
             if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
             {
                 MessageBox.Show("Please fill in all the fields!","Empty fields", MessageBoxButtons.OK, MessageBoxIcon.Error);

@@ -168,7 +168,7 @@ namespace EOB
 
         private void passwordToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            FormUtils.OpenForm(new ChangePasswordPage(User));
         }
     }
 }

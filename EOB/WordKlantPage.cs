@@ -75,13 +75,13 @@ namespace EOB
             if (ValidateInput())
             {
                 // Retrieve user input
-                string firstname = FirstName.Text;
+                string firstname = FirstName.Text.Trim();
 
-                string lastname = LastName.Text;
+                string lastname = LastName.Text.Trim();
 
-                string email = Email.Text;
+                string email = Email.Text.Trim();
 
-                string password = Password.Text;
+                string password = Password.Text.Trim();
 
                 string picturelocation = PictureLocation.Text;
                 byte[] imageData = System.IO.File.ReadAllBytes(picturelocation);
@@ -116,11 +116,11 @@ namespace EOB
         private bool ValidateInput()
         {
             // Retrieve user input
-            string firstname = FirstName.Text;
-            string lastname = LastName.Text;            
-            string email = Email.Text;
-            string password = Password.Text;
-            string verifypassword = VerifyPasswordText.Text;
+            string firstname = FirstName.Text.Trim();
+            string lastname = LastName.Text.Trim();            
+            string email = Email.Text.Trim();
+            string password = Password.Text.Trim();
+            string verifypassword = VerifyPasswordText.Text.Trim();
             string picturelocation = PictureLocation.Text;
 
             password = HashPassword(password);

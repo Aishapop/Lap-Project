@@ -65,3 +65,4 @@ C:\Users\alanl\source\repos\Lap-Project\EOB\obj\Debug\EOB.AutomatischeOverschrij
 C:\Users\alanl\source\repos\Lap-Project\EOB\obj\Debug\EOB.NormaleOverschrijvingPage.resources
 C:\Users\alanl\source\repos\Lap-Project\EOB\obj\Debug\EOB.DeleteAccountPage.resources
 C:\Users\alanl\source\repos\Lap-Project\EOB\obj\Debug\EOB.RecoverAccountPage.resources
+C:\Users\alanl\source\repos\Lap-Project\EOB\obj\Debug\EOB.ChangePasswordPage.resources
